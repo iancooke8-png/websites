@@ -24,7 +24,7 @@
             padding: 2rem 1rem;
         }
 
-        /* The centre line */
+        /* The centre line — hidden by default, positioned by JS */
         .tl::before {
             content: '';
             position: absolute;
@@ -34,19 +34,21 @@
             width: 3px;
             background: var(--border-light);
             transform: translateX(-50%);
+            display: none;
         }
 
-        /* Animated gold progress line */
-        .tl-progress {
+        .tl-line {
             position: absolute;
             left: 50%;
-            top: 0;
             width: 3px;
-            height: 0;
-            background: var(--gold);
+            background: var(--border-light);
             transform: translateX(-50%);
-            transition: height 0.1s linear;
-            z-index: 1;
+            z-index: 0;
+        }
+
+        /* Animated progress line — disabled for now */
+        .tl-progress {
+            display: none;
         }
 
         /* Each timeline item — use .tl-left / .tl-right instead of nth-child */
@@ -83,55 +85,26 @@
             padding-left: 2rem;
         }
 
-        /* The dot on the line */
+        /* Dot on the line — hidden by default, positioned by JS */
         .tl-item::before {
-            content: '';
+            display: none;
+        }
+
+        .tl-dot {
             position: absolute;
-            top: 20px;
             width: 16px;
             height: 16px;
-            background: var(--navy);
-            border: 3px solid var(--border-light);
+            background: var(--white);
+            border: 3px solid var(--navy);
             border-radius: 50%;
             z-index: 2;
-            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .tl-item.visible::before {
-            background: var(--gold);
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.2);
-        }
-
-        .tl-left::before {
-            right: -2.6rem;
-        }
-
-        .tl-right::before {
-            left: -2.6rem;
-        }
-
-        /* Connector line from dot to card */
+        /* No connector lines — dots sit on the line */
         .tl-item::after {
-            content: '';
-            position: absolute;
-            top: 27px;
-            width: 1.5rem;
-            height: 2px;
-            background: var(--border-light);
-            transition: background 0.4s ease;
-        }
-
-        .tl-item.visible::after {
-            background: var(--gold);
-        }
-
-        .tl-left::after {
-            right: -1.1rem;
-        }
-
-        .tl-right::after {
-            left: -1.1rem;
+            display: none;
         }
 
         /* The card */
@@ -181,7 +154,7 @@
             font-family: var(--font-body);
             font-size: 0.7rem;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-bottom: 0.8rem;
@@ -206,7 +179,7 @@
             transform: translateX(-50%) scale(0.8);
             width: fit-content;
             background: var(--navy);
-            color: var(--gold);
+            color: #ffffff;
             font-family: var(--font-heading);
             font-size: 1rem;
             padding: 0.4rem 1.2rem;
@@ -651,11 +624,12 @@
         <!-- 23. August 1993 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80" alt="Ian Cooke and Partners"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Aug 93.webp" alt="Ian Cooke and Partners"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">August 1993</div>
                     <div class="tl-subtitle">Ian Cooke and Partners Established</div>
-                    <p>Ian Cooke left Standard Life to establish his own independent financial advisory firm. Coincidentally, 1993 was also the year the World Wide Web became publicly accessible.</p>
+                    <p>In 1993, Ian Cooke left Standard Life to establish his own independent financial advisory firm, marking the inception of our first business. We improved our training and compliance capabilities through a partnership with DBS Financial Management, helmed by Ken Davy. During our collaboration, Ken was the president of the Life Assurance Association.</p>
+                    <p>Coincidentally, 1993 was also the year the World Wide Web became publicly accessible. The launch of the Mosaic web browser greatly enhanced internet usability, representing a significant milestone in its evolution into an integral part of everyday life.</p>
                 </div>
             </div>
         </div>
@@ -740,6 +714,27 @@
 
             window.addEventListener('scroll', updateProgress, { passive: true });
             updateProgress();
+
+            // Place dots on the timeline line for each item
+            tlItems.forEach(item => {
+                const dot = document.createElement('div');
+                dot.className = 'tl-dot';
+                dot.style.top = (item.offsetTop + 20) + 'px';
+                tl.appendChild(dot);
+            });
+
+            // Create the line from first year marker to last item
+            const firstYear = tlYears[0];
+            const lastItem = tlItems[tlItems.length - 1];
+            if (firstYear && lastItem && tl) {
+                const line = document.createElement('div');
+                line.className = 'tl-line';
+                const startY = firstYear.offsetTop + firstYear.offsetHeight;
+                const endY = lastItem.offsetTop + 40;
+                line.style.top = startY + 'px';
+                line.style.height = (endY - startY) + 'px';
+                tl.appendChild(line);
+            }
         });
     </script>
 </body>
