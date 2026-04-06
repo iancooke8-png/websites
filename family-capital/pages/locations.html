@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Family Capital offices — London and Leeds. Find your nearest office.">
-    <title>Our Offices | Family Capital</title>
+    <meta name="description" content="Family Capital — digital-first wealth management. We're wherever you are.">
+    <title>Locations | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -15,13 +15,13 @@
     <!-- Navigation -->
     <nav class="site-nav scrolled">
         <a href="../" class="nav-logo">
-            <img src="../images/logo-white.svg" alt="Family Capital">
+            <img src="../images/pwg-logo.png" alt="Family Capital">
         </a>
         <ul class="nav-links">
             <li><a href="../">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="people.html">Our People</a></li>
-            <li><a href="locations.html">Locations</a></li>
+            <li><a href="locations.html" class="active">Locations</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
         <button class="nav-toggle" aria-label="Toggle navigation">
@@ -29,67 +29,149 @@
         </button>
     </nav>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="container">
-            <h1>Our Offices</h1>
-            <p class="subtitle">Serving clients across the United Kingdom</p>
+    <!-- Hero Banner -->
+    <div class="page-hero page-hero-digital">
+        <canvas id="network-canvas"></canvas>
+        <div class="page-hero-content">
+            <h1>We're wherever you are</h1>
+            <p class="subtitle">Digital-first wealth management. Connected by technology.</p>
         </div>
     </div>
 
-    <!-- London -->
-    <section class="section" id="london">
+    <script>
+    // Network animation - dots connected by lines
+    (function() {
+        const canvas = document.getElementById('network-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+        const DOT_COUNT = 60;
+        const MAX_DIST = 150;
+
+        function resize() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+
+        function init() {
+            resize();
+            dots = [];
+            for (let i = 0; i < DOT_COUNT; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    r: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Lines
+            for (let i = 0; i < dots.length; i++) {
+                for (let j = i + 1; j < dots.length; j++) {
+                    const dx = dots[i].x - dots[j].x;
+                    const dy = dots[i].y - dots[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < MAX_DIST) {
+                        ctx.beginPath();
+                        ctx.moveTo(dots[i].x, dots[i].y);
+                        ctx.lineTo(dots[j].x, dots[j].y);
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${0.3 * (1 - dist / MAX_DIST)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            // Dots
+            dots.forEach(d => {
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
+                ctx.fill();
+                d.x += d.vx;
+                d.y += d.vy;
+                if (d.x < 0 || d.x > canvas.width) d.vx *= -1;
+                if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        init();
+        draw();
+        window.addEventListener('resize', init);
+    })();
+    </script>
+
+    <!-- Digital First Explanation -->
+    <section class="section">
         <div class="container">
-            <div class="branch-card reveal">
-                <div class="branch-card-image">
-                    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="London skyline">
+            <div class="intro-text reveal">
+                <p>
+                    Family Capital is digital first. Our technology connects you to your adviser
+                    wherever you are — through the Wealth Portal, secure messaging, and
+                    deep-linked investment tools.
+                </p>
+                <p>
+                    Your adviser isn't spending two hours in traffic. They're spending that time
+                    talking to you. More contact, not less. The platform is the office — the
+                    physical locations are just where some of us drink our coffee.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Presence -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Presence</h2>
+                <div class="divider"></div>
+                <p>We also have a physical presence across the UK</p>
+            </div>
+
+            <div class="cards-grid cards-three">
+                <div class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="../images/offices/King-William-St-London-2.jpg" alt="King William Street, London">
+                    </div>
+                    <div class="card-body">
+                        <h3>London</h3>
+                        <p>68 King William Street<br>London EC4N 7HR</p>
+                        <p style="margin-top: 0.5rem;">01403 456555</p>
+                    </div>
                 </div>
-                <div class="branch-card-info">
-                    <h3>Family Capital London</h3>
-                    <p class="address">68 King William Street, London EC4N 7HR</p>
-                    <p class="phone">01403 456555</p>
-                    <p class="email"><a href="mailto:info@familycapital.co.uk" style="color: var(--gold);">info@familycapital.co.uk</a></p>
-                    <p style="margin-top: 1rem; color: var(--text-grey); line-height: 1.7;">
-                        Our London headquarters sits in the heart of the City, close to Bank station
-                        and Monument. This is where it all began — and where our core team continues
-                        to deliver exceptional wealth management for families and entrepreneurs across
-                        the South East and beyond.
-                    </p>
+
+                <div class="card">
+                    <div class="card-colour-band"></div>
+                    <div class="card-body">
+                        <h3>Family Capital South</h3>
+                        <p>Horsham, West Sussex</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="../images/offices/Leeds.webp" alt="Leeds">
+                    </div>
+                    <div class="card-body">
+                        <h3>Family Capital North</h3>
+                        <p>Leeds, West Yorkshire</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leeds -->
-    <section class="section section-light" id="leeds">
-        <div class="container">
-            <div class="branch-card reveal">
-                <div class="branch-card-image">
-                    <img src="https://images.unsplash.com/photo-1588347818481-0e5882ab55d4?w=800&q=80" alt="Leeds">
-                </div>
-                <div class="branch-card-info">
-                    <h3>Family Capital Leeds</h3>
-                    <p class="address">Leeds, West Yorkshire</p>
-                    <p class="phone">Contact for details</p>
-                    <p class="email"><a href="mailto:info@familycapital.co.uk" style="color: var(--gold);">info@familycapital.co.uk</a></p>
-                    <p style="margin-top: 1rem; color: var(--text-grey); line-height: 1.7;">
-                        Our newest office brings Family Capital's wealth management expertise to
-                        the North of England. Led by Claire, the Leeds team serves families and
-                        entrepreneurs across Yorkshire and the wider North, with the same commitment
-                        to excellence that defines everything we do.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map / CTA -->
+    <!-- CTA -->
     <section class="section section-dark">
         <div class="container">
             <div class="section-header reveal">
                 <h2>Get in Touch</h2>
                 <div class="divider"></div>
-                <p>Whether you're in London, Leeds, or anywhere in between, we'd love to hear from you.</p>
+                <p>Wherever you are in the UK, we'd love to hear from you.</p>
                 <a href="contact.html" class="btn" style="margin-top: 2rem;">Contact Us</a>
             </div>
         </div>
@@ -100,25 +182,24 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="../images/logo-white.svg" alt="Family Capital" style="height: 40px;">
-                    <p>Securing Prosperity, Empowering Generations</p>
+                    <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
+                    <p>Wealth management for families and entrepreneurs.</p>
+                    <p class="footer-group-link">Part of <a href="https://www.perpetualwealth.co.uk">Perpetual Wealth Group</a></p>
                 </div>
                 <div class="footer-links">
                     <h4>Company</h4>
                     <ul>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="culture.html">Culture</a></li>
                         <li><a href="people.html">Our People</a></li>
-                        <li><a href="offices.html">Offices</a></li>
-                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="timeline.html">Timeline</a></li>
-                        <li><a href="#">Client Portal</a></li>
+                        <li><a href="#">Client Login</a></li>
+                        <li><a href="timeline.html">Our Timeline</a></li>
                     </ul>
                 </div>
             </div>
@@ -128,7 +209,6 @@
                     <a href="important-info.html">Important Information</a>
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="modern-slavery.html">Modern Slavery Statement</a>
-                    <a href="links.html">Manager Links</a>
                 </div>
             </div>
         </div>
