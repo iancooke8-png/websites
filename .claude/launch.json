@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "family-capital",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "C:/Users/ianco/source/repos/Websites/family-capital", "-p", "8080", "-c-1"],
+      "port": 8080
+    }
+  ]
+}

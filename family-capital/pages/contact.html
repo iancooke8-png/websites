@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Family Capital — Get in touch with our team for wealth management guidance.">
+    <title>Contact Us — Family Capital</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--navy);
+        }
+
+        .form-group textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav scrolled">
+        <a href="../" class="nav-logo">
+            <img src="../images/logo-white.svg" alt="Family Capital">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="culture.html">Culture</a></li>
+            <li><a href="people.html">Our People</a></li>
+            <li><a href="offices.html">Offices</a></li>
+            <li><a href="partnerships.html">Partnerships</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="#" class="nav-cta">Client Portal</a></li>
+        </ul>
+
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+        </div>
+    </section>
+
+
+    <!-- Contact Info + Image -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-split">
+                <div class="contact-info reveal-left">
+                    <p>
+                        Our team at Family Capital is here to guide you through integrating
+                        your personal and business financial strategies for lasting legacy and
+                        wealth. If you're ready to take the next step, we would love to hear
+                        from you.
+                    </p>
+
+                    <div class="contact-details">
+                        <h3>Family Capital</h3>
+                        <div class="detail">
+                            <span class="detail-label">Address</span>
+                            <span>68 King William Street, London EC4N 7HR</span>
+                        </div>
+                        <div class="detail">
+                            <span class="detail-label">Phone</span>
+                            <span>01403 456555</span>
+                        </div>
+                        <div class="detail">
+                            <span class="detail-label">Email</span>
+                            <span><a href="mailto:info@familycapital.co.uk">info@familycapital.co.uk</a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-image reveal-right">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80" alt="Scenic landscape">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Form -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Send Us a Message</h2>
+                <div class="divider"></div>
+                <p>We'll get back to you as soon as possible</p>
+            </div>
+
+            <div class="contact-form reveal">
+                <form action="#" method="post">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/logo-white.svg" alt="Family Capital" style="height: 40px;">
+                    <p>Securing Prosperity, Empowering Generations</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="people.html">Our People</a></li>
+                        <li><a href="offices.html">Offices</a></li>
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="#">Client Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-regulatory">
+                <p>
+                    Issued by Family Capital Limited (Reg. No. 10457142), which is authorised
+                    and regulated by the Financial Conduct Authority.
+                </p>
+                <div class="footer-legal-links">
+                    <a href="important-info.html">Important Information</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="modern-slavery.html">Modern Slavery Statement</a>
+                    <a href="links.html">Manager Links</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

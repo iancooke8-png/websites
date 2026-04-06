@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" fill="white">
+  <!-- Simplified wheat/tree logo -->
+  <path d="M30 75 L30 35" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M30 35 Q30 20 30 15" stroke="white" stroke-width="2" fill="none"/>
+  <!-- Leaves -->
+  <path d="M30 55 Q20 48 18 38 Q22 42 30 45" fill="white" opacity="0.9"/>
+  <path d="M30 55 Q40 48 42 38 Q38 42 30 45" fill="white" opacity="0.9"/>
+  <path d="M30 45 Q18 38 16 28 Q20 32 30 35" fill="white" opacity="0.9"/>
+  <path d="M30 45 Q42 38 44 28 Q40 32 30 35" fill="white" opacity="0.9"/>
+  <path d="M30 35 Q17 28 15 18 Q19 22 30 25" fill="white" opacity="0.9"/>
+  <path d="M30 35 Q43 28 45 18 Q41 22 30 25" fill="white" opacity="0.9"/>
+  <path d="M30 25 Q22 18 20 10 Q24 14 30 17" fill="white" opacity="0.9"/>
+  <path d="M30 25 Q38 18 40 10 Q36 14 30 17" fill="white" opacity="0.9"/>
+  <!-- Top -->
+  <ellipse cx="30" cy="10" rx="4" ry="7" fill="white" opacity="0.9"/>
+  <!-- Base -->
+  <circle cx="30" cy="78" r="3" fill="none" stroke="white" stroke-width="1.5"/>
+</svg>
