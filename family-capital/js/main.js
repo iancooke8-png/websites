@@ -37,16 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Nav scroll behaviour ---
     const nav = document.querySelector('.site-nav');
     if (nav) {
-        const hasHeroImage = document.querySelector('.hero-media');
+        const hasHero = document.querySelector('.hero-media') || document.querySelector('.page-hero');
+        const heroEl = document.querySelector('.hero') || document.querySelector('.page-hero');
+        const heroBottom = heroEl ? heroEl.offsetHeight - 80 : 100;
+
         const updateNav = () => {
-            if (window.scrollY > 100) {
+            if (window.scrollY > heroBottom) {
                 nav.classList.add('scrolled');
                 nav.classList.remove('transparent');
-            } else {
+            } else if (hasHero) {
                 nav.classList.remove('scrolled');
-                if (hasHeroImage) {
-                    nav.classList.add('transparent');
-                }
+                nav.classList.add('transparent');
             }
         };
         updateNav();
