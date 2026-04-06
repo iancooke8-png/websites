@@ -19,7 +19,7 @@
            ============================ */
         .tl {
             position: relative;
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
@@ -46,43 +46,41 @@
             z-index: 0;
         }
 
-        /* Animated progress line — disabled for now */
+        /* Animated progress line */
         .tl-progress {
-            display: none;
+            position: absolute;
+            left: 50%;
+            width: 3px;
+            height: 0;
+            background: var(--accent);
+            transform: translateX(-50%);
+            transition: height 0.1s linear;
+            z-index: 1;
         }
 
-        /* Each timeline item — use .tl-left / .tl-right instead of nth-child */
+        /* Each timeline item — full width, two columns split by the line */
         .tl-item {
             position: relative;
-            width: 47%;
-            padding-bottom: 2.5rem;
+            width: 100%;
+            padding-bottom: 3rem;
+            display: flex;
+            align-items: flex-start;
+            clear: both;
             opacity: 0;
             transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .tl-left {
-            transform: translateX(-60px);
+            transform: translateY(30px);
         }
 
         .tl-right {
-            transform: translateX(60px);
+            transform: translateY(30px);
         }
 
         .tl-item.visible {
             opacity: 1;
-            transform: translateX(0);
-        }
-
-        .tl-left {
-            float: left;
-            clear: both;
-            padding-right: 2rem;
-        }
-
-        .tl-right {
-            float: right;
-            clear: both;
-            padding-left: 2rem;
+            transform: translateY(0);
         }
 
         /* Dot on the line — hidden by default, positioned by JS */
@@ -107,64 +105,83 @@
             display: none;
         }
 
-        /* The card */
+        /* The card — image one side of line, text the other */
         .tl-card {
-            background: var(--white);
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 3px 16px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .tl-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            align-items: start;
         }
 
         .tl-card-img {
-            width: 100%;
-            height: 180px;
             overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 3px 16px rgba(0, 0, 0, 0.08);
         }
 
         .tl-card-img img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: transform 0.6s ease;
         }
 
-        .tl-card:hover .tl-card-img img {
-            transform: scale(1.05);
+        .tl-card-img:hover img {
+            transform: scale(1.02);
         }
 
         .tl-card-body {
-            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Left entries: image on left, text on right */
+        .tl-left .tl-card-img {
+            grid-column: 1;
+            margin-right: 2.5rem;
+        }
+        .tl-left .tl-card-body {
+            grid-column: 2;
+            padding-left: 2.5rem;
+        }
+
+        /* Right entries: text on left, image on right */
+        .tl-right .tl-card-img {
+            grid-column: 2;
+            grid-row: 1;
+            margin-left: 2.5rem;
+        }
+        .tl-right .tl-card-body {
+            grid-column: 1;
+            grid-row: 1;
+            padding-right: 2.5rem;
+            text-align: right;
         }
 
         .tl-date {
             font-family: var(--font-heading);
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             color: var(--navy);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
             line-height: 1.2;
         }
 
         .tl-subtitle {
             font-family: var(--font-body);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .tl-card-body p {
             color: var(--text-grey);
-            font-size: 0.85rem;
-            line-height: 1.65;
-            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 0.8rem;
         }
 
         .tl-card-body p:last-child {
@@ -215,11 +232,29 @@
                 left: 20px;
             }
 
+            .tl-line {
+                left: 20px !important;
+            }
+
+            .tl-dot {
+                left: 20px !important;
+                transform: translateX(-50%) !important;
+            }
+
             .tl-item {
                 width: 100%;
                 float: none !important;
                 padding-left: 50px !important;
                 padding-right: 0.5rem !important;
+            }
+
+            .tl-card {
+                flex-direction: column !important;
+            }
+
+            .tl-card-img {
+                flex: none;
+                min-height: 180px;
             }
 
             .tl-left::before,
@@ -702,14 +737,22 @@
             tlYears.forEach(year => tlObserver.observe(year));
 
             // Animate the progress line as user scrolls
+            const firstYearEl = tlYears[0];
+            const lastItemEl = tlItems[tlItems.length - 1];
+
             function updateProgress() {
-                if (!tl || !tlProgress) return;
+                if (!tl || !tlProgress || !firstYearEl || !lastItemEl) return;
+                const lineStart = firstYearEl.offsetTop + firstYearEl.offsetHeight;
+                const lineEnd = lastItemEl.offsetTop + 40;
+                const lineHeight = lineEnd - lineStart;
+
+                tlProgress.style.top = lineStart + 'px';
+
                 const tlRect = tl.getBoundingClientRect();
-                const tlTop = tlRect.top + window.scrollY;
-                const tlHeight = tlRect.height;
+                const startAbs = tlRect.top + lineStart;
                 const scrollPos = window.scrollY + window.innerHeight * 0.5;
-                const progress = Math.max(0, Math.min(1, (scrollPos - tlTop) / tlHeight));
-                tlProgress.style.height = (progress * tlHeight) + 'px';
+                const progress = Math.max(0, Math.min(1, (scrollPos - startAbs) / lineHeight));
+                tlProgress.style.height = (progress * lineHeight) + 'px';
             }
 
             window.addEventListener('scroll', updateProgress, { passive: true });
