@@ -70,17 +70,32 @@
             transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .tl-left {
-            transform: translateY(30px);
+        .tl-item {
+            overflow: visible;
         }
 
-        .tl-right {
-            transform: translateY(30px);
+        .tl-item .tl-card-img,
+        .tl-item .tl-card-body {
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .tl-item.visible {
+        /* Left entries: image slides from left, text from right */
+        .tl-left .tl-card-img { transform: translateX(-60px); }
+        .tl-left .tl-card-body { transform: translateX(60px); }
+
+        /* Right entries: text slides from left, image from right */
+        .tl-right .tl-card-img { transform: translateX(60px); }
+        .tl-right .tl-card-body { transform: translateX(-60px); }
+
+        .tl-item.visible .tl-card-img,
+        .tl-item.visible .tl-card-body {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
+        }
+
+        .tl-item.visible .tl-card-body {
+            transition-delay: 0.15s;
         }
 
         /* Dot on the line — hidden by default, positioned by JS */
@@ -156,7 +171,7 @@
             grid-column: 1;
             grid-row: 1;
             padding-right: 2.5rem;
-            text-align: right;
+            text-align: left;
         }
 
         .tl-date {
@@ -179,9 +194,9 @@
 
         .tl-card-body p {
             color: var(--text-grey);
-            font-size: 0.95rem;
-            line-height: 1.75;
-            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         .tl-card-body p:last-child {
@@ -365,12 +380,13 @@
         <!-- 1. September 2024 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Family Capital Partnership"></div>
+                <div class="tl-card-img"><img src="../images/timeline/FC Partnership 2024.webp" alt="Family Capital Partnership"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">September 2024</div>
                     <div class="tl-subtitle">Family Capital Partnership</div>
                     <p>We're proud to announce the launch of the Family Capital Partnership — a selective route for advisers and firms who meet the highest professional standards. Partner Firms become part of the Family Capital brand, sharing our culture, infrastructure, and a commitment to putting clients first.</p>
-                    <p>We're delighted to welcome <strong>Claire Stones</strong> as our first Partner Firm. Having built a highly successful business of her own, Claire now brings her team to lead <em>Family Capital North</em> in Leeds.</p>
+                    <p>To join as a Partner Firm requires Chartered status, discretionary management qualifications, and a proven record of excellence. In return, firms gain the capability of our systems and a voice in shaping how Family Capital develops.</p>
+                    <p>We're delighted to welcome <strong>Claire Stones</strong> as our first Partner Firm. Having built a highly successful business of her own, Claire now brings her team to lead <em>Family Capital North</em> in Leeds, extending our presence across the North of England.</p>
                 </div>
             </div>
         </div>
@@ -378,11 +394,13 @@
         <!-- 2. January 2024 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Industry Peers Programme"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Industry Peers 2024.webp" alt="Industry Peers Programme"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">January 2024</div>
                     <div class="tl-subtitle">Introducing the 'Industry Peers' Programme</div>
-                    <p>We're thrilled to introduce the 'Industry Peers' Programme — a comprehensive service for planners, fund managers, and advisers. The standout feature is exclusive access to our advanced systems and the Family Wealth Portal.</p>
+                    <p>We're thrilled to introduce the 'Industry Peers' Programme, an initiative that originates from a term fondly used within our community and has now developed into a comprehensive service for our fellow financial experts. This encompasses planners, fund managers, and advisers, who might find it particularly useful during periods of change, such as when selling their businesses.</p>
+                    <p>The standout feature of this programme is the exclusive access it provides to our advanced systems, and complete access to the Family Wealth Portal where you can manage your own affairs with guidance upon request. Tailored for the self-reliant professional, our service simplifies the experience, navigating through the complexity of stringent regulation.</p>
+                    <p>The introduction of 'Consumer Duty' encouraged us to officially define this offering. 'Industry Peers' is not merely a token of professional goodwill; it's a comprehensive package that includes secure custody, discretionary fund management, and pragmatic advice.</p>
                 </div>
             </div>
         </div>
@@ -392,11 +410,13 @@
         <!-- 3. April 2021 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Family Wealth Portal"></div>
+                <div class="tl-card-img"><img src="../images/timeline/FWP Launch 2021.webp" alt="Family Wealth Portal"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">April 2021</div>
                     <div class="tl-subtitle">Family Wealth Portal Launched</div>
-                    <p>As we emerged from the COVID-19 lockdown, we seized the opportunity to reinvigorate our passion for technology. We embarked on the development of our flagship product, 'Wealth Portal', alongside mobile applications for Apple and Google Play.</p>
+                    <p>As we emerged from the COVID-19 lockdown, it became increasingly clear that web-based communication was on the rise to becoming a mainstay. Amidst the burgeoning discussions surrounding AI, we seized the opportunity to reinvigorate our passion for technology, doing so with genuine enthusiasm in our partnership with Finovate.</p>
+                    <p>Brimming with excitement, reminiscent of a child in a sweet shop, we embarked on the development of our new flagship product, 'Wealth Portal'. Concurrently, we initiated the development of applications and prototypes, tailored specifically for other wealth managers and family offices.</p>
+                    <p>Our esteemed family clients were presented with a customised version of the Wealth Portal, and in a synchronised debut, we proudly launched on both the Apple and Google Play Stores.</p>
                 </div>
             </div>
         </div>
@@ -404,11 +424,12 @@
         <!-- 4. March 2021 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Schroders Sale"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Perpetual Sells 2021.webp" alt="Perpetual Sells Stake"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">March 2021</div>
                     <div class="tl-subtitle">Perpetual Sells Final Stake to Schroders</div>
-                    <p>Five years on from Schroder's initial acquisition, we bid farewell to our final portion of the stake. <strong>Family Capital</strong>, operating independently, remains steadfast in upholding the highest standards.</p>
+                    <p>Five years on from Schroder's initial acquisition of a stake in Benchmark Capital, we've now bid farewell to our final portion of the stake. It's been a compelling journey, not always straightforward, as integrating with a FTSE 100 company posed its unique challenges, yet it was a fulfilling experience.</p>
+                    <p><strong>Family Capital</strong>, operating independently from Benchmark, remains steadfast in upholding the stringent standards of security and compliance our clients expect. Our enduring confidence in SEI's secure custody services and the proficient tax wrapper operations we've honed over the last twenty years is unwavering.</p>
                 </div>
             </div>
         </div>
@@ -418,11 +439,12 @@
         <!-- 5. November 2020 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Group Rebrand"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Perpetual Logo 2020.webp" alt="Perpetual Rebrand"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">November 2020</div>
                     <div class="tl-subtitle">Group Rebrand to Perpetual</div>
-                    <p>We rebranded the group as 'Perpetual', reflecting our commitment to longevity. Our emblem, a digital leaf, represents the fusion of nature with technology. The group comprised Family Capital and Finovate, our fintech joint initiative.</p>
+                    <p>As we neared the completion of our divestment from Benchmark, we embarked on an exciting new era, rebranding the group as 'Perpetual'. This choice of name was deliberate, reflecting our deep-seated commitment to longevity and our goal to remain a steadfast and positive influence in the industry.</p>
+                    <p>Our emblem, a digital leaf, represents the harmonious fusion of nature with technology, underscoring our pledge to continual growth and flexibility. The Perpetual Wealth Group originally comprised of two primary divisions: Family Capital, catering to the complex requirements of Ultra High Net Worth individuals, and Finovate, our joint initiative with Aaron Smith in the realm of fintech.</p>
                 </div>
             </div>
         </div>
@@ -432,12 +454,13 @@
         <!-- 6. March 2017 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80" alt="Family Capital Rebrand"></div>
+                <div class="tl-card-img"><img src="../images/timeline/FC Logo 2017.webp" alt="Family Capital Rebrand"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">March 2017</div>
                     <div class="tl-subtitle">Rebrand to Family Capital</div>
-                    <p>24 years after establishing Ian Cooke &amp; Partners, we rebranded as <strong>Family Capital</strong> — redefining our approach around the family office ethos, powered by a fully digital framework.</p>
-                    <p>The rebrand reflected our focus on UHNW clients and their families, recognising the complexity of their trusts, companies, and private investments.</p>
+                    <p>24 years after the establishment of Ian Cooke &amp; Partners Ltd, we rebranded as Family Capital. This marked the evolution of our business — keeping all our existing clients, but redefining our approach around the family office ethos, powered by a fully digital framework.</p>
+                    <p>The rebrand reflected our focus on Ultra High Net Worth clients and their families, recognising the complexity of their trusts, companies, and private investments. Family Capital was created as a more specialised and customised entity, distinct from Benchmark, designed to deliver holistic financial advice at the highest level.</p>
+                    <p>Our digital-first model also strengthened risk management and reduced duplication, while continuing to rely on SEI for secure custody and the robust tax wrapper operations built over two decades.</p>
                 </div>
             </div>
         </div>
@@ -445,11 +468,12 @@
         <!-- 7. January 2017 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80" alt="Schroders Partnership"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Schroders 2017.webp" alt="Schroders Partnership"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">January 2017</div>
                     <div class="tl-subtitle">Schroders Buys Stake in Benchmark</div>
-                    <p>Schroders, a FTSE 100 company established in the UK since the 1800s, resonated with our culture and long-term vision. Ian Cooke maintained a 51% majority, ensuring control during the transition.</p>
+                    <p>In the midst of a wide array of suitors in 2016, one company distinguished itself by resonating with our culture and long-term vision. That company was Schroders, a well-established firm in the UK since the 1800s and a prominent FTSE 100 entity.</p>
+                    <p>Schroders acquired a significant stake, holding 49% of the voting control. This arrangement was strategically designed, allowing Ian Cooke to maintain a 51% majority, ensuring control during the crucial transition period.</p>
                 </div>
             </div>
         </div>
@@ -459,11 +483,12 @@
         <!-- 8. July 2016 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80" alt="PWC Engagement"></div>
+                <div class="tl-card-img"><img src="../images/timeline/PWC 2016.webp" alt="PWC Engagement"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">July 2016</div>
                     <div class="tl-subtitle">Engagement of PWC</div>
-                    <p>With nearly 300 staff, we reached a pivotal crossroads. Ian Cooke pointed us towards the trade route — targeting high-end asset management firms who valued compliance and sustained progress. We evaluated over 20 possibilities.</p>
+                    <p>In 2016, our business reached a pivotal crossroads, reminiscent of a bustling roundabout with nearly 300 staff members. We brought in PwC to guide us through a maze of options, leading us to a crucial decision between private equity investment and finding a trade buyer.</p>
+                    <p>It was Ian Cooke, our 'visionary helmsman', who pointed us towards the trade route. Our target was the high-end asset management firms, those who would value our solid stance on compliance and our philosophy of gradual, sustained progress. Our search involved the evaluation of no fewer than 20 possibilities.</p>
                 </div>
             </div>
         </div>
@@ -473,11 +498,12 @@
         <!-- 9. September 2015 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="SEI Contract Renewed"></div>
+                <div class="tl-card-img"><img src="../images/timeline/SEI Contract Renewed 2015.webp" alt="SEI Contract Renewed"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">September 2015</div>
                     <div class="tl-subtitle">SEI Contract Renewed</div>
-                    <p>We reaffirmed our partnership with SEI, swayed by their outstanding reputation in providing safe custody for client assets.</p>
+                    <p>In 2015, we reaffirmed our partnership with SEI, swayed by their outstanding reputation in providing safe custody for client assets. SEI's prominence in the field was underscored by their steadfast security and reliability.</p>
+                    <p>Moreover, the technological advancements offered by SEI were a significant aspect of our choice. Their range of web services enabled the development of vital client-side applications, boosting our operational efficiency. Additionally, SEI's commitment to innovation and excellence dovetailed seamlessly with our firm's "No Compromise" philosophy.</p>
                 </div>
             </div>
         </div>
@@ -485,11 +511,12 @@
         <!-- 10. January 2015 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Benchmark Capital"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Benchmark Logo 1.webp" alt="Benchmark Capital"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">January 2015</div>
                     <div class="tl-subtitle">Benchmark Capital Established</div>
-                    <p>We amalgamated our enterprises into 'Benchmark Capital', symbolising the high standards each business had established, setting a 'benchmark' for others.</p>
+                    <p>As our diverse enterprises expanded, we opted to amalgamate them into a singular entity for regulatory reporting and governance purposes. We wished to preserve the distinct identity of our original venture, Ian Cooke and Partners, along with our Family Office clientele, as separate entities.</p>
+                    <p>We named this collective 'Benchmark Capital', symbolising the high standards each business within our portfolio had established, setting a 'benchmark' for others. This title reflects our immense pride in what we'd accomplished over the last two decades.</p>
                 </div>
             </div>
         </div>
@@ -497,11 +524,12 @@
         <!-- 11. 2015 Awards -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c6da87?w=800&q=80" alt="Awards"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Jan Dec Award 1.webp" alt="Awards 2015"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">2015</div>
-                    <div class="tl-subtitle">A Remarkable Year for Awards</div>
-                    <p>Five awards in one year. Aspect8 won 'Adviser Firm of the Year' at both the Money Marketing and Professional Adviser Awards — akin to winning both a BAFTA and an Oscar.</p>
+                    <div class="tl-subtitle">A Remarkable Year for Achievements in Awards</div>
+                    <p>In 2015, we were humbled by the recognition our group received, winning a total of five awards. Among these, Aspect8 was honoured with the 'Adviser Firm of the Year' title at the Money Marketing Financial Services Awards 2015.</p>
+                    <p>Aspect8's achievement of winning 'Adviser Firm of the Year' at The Professional Adviser Awards, alongside the Money Marketing award, was an unusual and honourable distinction, akin to winning both a BAFTA and an Oscar in the same year.</p>
                 </div>
             </div>
         </div>
@@ -511,11 +539,12 @@
         <!-- 12. March 2014 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80" alt="Investment Management Award"></div>
+                <div class="tl-card-img"><img src="../images/timeline/March 2014 Award.webp" alt="Investment Manager of the Year"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">March 2014</div>
-                    <div class="tl-subtitle">Investment Manager of the Year</div>
-                    <p>Winning 'Investment Manager of the Year' validated our belief in a simpler, quantitative approach to fund management — proving effective over the long term.</p>
+                    <div class="tl-subtitle">Celebrating Excellence in Investment Management</div>
+                    <p>Winning 'Investment Manager of the Year' for the first time held significant importance for us as it validated our belief in a simpler approach to fund management. This accolade demonstrated that even at the highest levels, excessive complexity and ostentation can often lead to confusion.</p>
+                    <p>Our strategy has consistently relied on a sound quantitative approach, proving effective over the long term. We advocate against short-term trends, abrupt shifts in asset allocation, or frequent changes in fund managers.</p>
                 </div>
             </div>
         </div>
@@ -525,11 +554,12 @@
         <!-- 13. December 2012 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Creative Technologies"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Creative Tech Logo.webp" alt="Creative Technologies"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">December 2012</div>
-                    <div class="tl-subtitle">Creative Technologies: 20th Firm</div>
-                    <p>Our technology firm, the unsung hero with innovative IP and a talented team, onboarded its 20th firm — including pioneering tools for Court of Protection cases.</p>
+                    <div class="tl-subtitle">Creative Technologies: 20th Firm Milestone</div>
+                    <p>In addition to our other businesses — Best Practice, Aspect8, and Fusion — our technology firm, Creative Technologies, was the unsung hero, boasting innovative intellectual property and a talented team. In December 2012, we onboarded our 20th firm.</p>
+                    <p>Beyond the standard offerings of CRM, client portal, and platform development, we ventured into new territory with our first cash modeller. This tool was distinctive, especially since it was designed for use in Court of Protection cases, incorporating 'Ogden' tables along with several other unique variables.</p>
                 </div>
             </div>
         </div>
@@ -537,11 +567,12 @@
         <!-- 14. October 2012 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80" alt="Chartered Status"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Chartered Logo 2012.webp" alt="Chartered Status"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">October 2012</div>
                     <div class="tl-subtitle">Best Practice Achieves Chartered Status</div>
-                    <p>One of the first major national firms to achieve Chartered Status. Our quarterly CPD meetings at South Lodge in Horsham were legendary — members travelled from Scotland and Ireland.</p>
+                    <p>Best Practice IFA Group was at the forefront as one of the first major national firms to achieve Chartered Status in 2009. We were ardent champions of Chartered Status across the UK.</p>
+                    <p>Our quarterly CPD meetings at South Lodge in Horsham were not just a hub for professional discourse; they were also a culinary highlight. The venue was so splendid that members would journey from all corners of the UK — some even braved the trip from Scotland and Ireland.</p>
                 </div>
             </div>
         </div>
@@ -551,11 +582,12 @@
         <!-- 15. March 2011 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&q=80" alt="First Award"></div>
+                <div class="tl-card-img"><img src="../images/timeline/March 2011 Award.webp" alt="First Award"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">March 2011</div>
-                    <div class="tl-subtitle">Our First Award</div>
-                    <p>Winning 'Best Network of the Year' at the Money Marketing Awards — regarded as the pinnacle of industry recognition. A defining moment for our team.</p>
+                    <div class="tl-subtitle">Triumph in Recognition: Our First Award</div>
+                    <p>Undaunted by our initial attempt, we re-entered Best Practice into the 'Best Network of the Year' category, and winning our first award was not only a memorable milestone but also a recognition of our outstanding team. This was in the era before ChatGPT, when submissions were a lengthy and manual process.</p>
+                    <p>At that time, the Money Marketing Awards were regarded as the pinnacle of industry recognition. Being present at The Grosvenor, amidst such splendour, was both an honour and a defining moment for our remarkable team.</p>
                 </div>
             </div>
         </div>
@@ -563,11 +595,12 @@
         <!-- 16. January 2011 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="SEI Partnership"></div>
+                <div class="tl-card-img"><img src="../images/timeline/SEI Logo.webp" alt="SEI Partnership"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">January 2011</div>
                     <div class="tl-subtitle">SEI Partnership Initiated</div>
-                    <p>We chose SEI as our custodian partner for Fusion Wealth — a large global custodian providing rock-solid institutional security for client assets.</p>
+                    <p>After establishing connections with nearly every provider in the UK to integrate client valuations, we reached out to SEI, BNY Mellon, and FNZ as potential partners for our own platform, Fusion Wealth. Our choice landed on SEI, renowned for being a large global custodian, to safeguard clients' assets.</p>
+                    <p>SEI's stature as one of the largest global players in custody and administration lent an added layer of assurance, offering our larger clients complete security of assets on a rock-solid institutional platform.</p>
                 </div>
             </div>
         </div>
@@ -577,11 +610,12 @@
         <!-- 17. August 2010 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80" alt="Aspect8"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Aspect8 Logo.webp" alt="Aspect8"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">August 2010</div>
                     <div class="tl-subtitle">Aspect8 Established</div>
-                    <p>We rebranded our financial planning business to 'Aspect8' — a financial octopus with eight essential arms, each representing a crucial aspect of a financial plan.</p>
+                    <p>Seventeen years after the first seeds of Ian Cooke and Partners were sown, we decided it was time for a change of wardrobe, so to speak, and rebranded our financial planning business to 'Aspect8'.</p>
+                    <p>'Aspect8' isn't just a catchy title; it's an acronym we devised, encapsulating our unique recipe for holistic financial advice. Picture it as a financial octopus with eight essential arms — each representing a crucial aspect of a financial plan. By following this octo-approach, we ensure that when plotting a long-term financial roadmap for our clients, it's almost impossible to let anything slip through the tentacles!</p>
                 </div>
             </div>
         </div>
@@ -589,11 +623,12 @@
         <!-- 18. June 2010 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Best Practice 50 Members"></div>
+                <div class="tl-card-img"><img src="../images/timeline/June 2010 - Best Practice.webp" alt="Best Practice Awards"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">June 2010</div>
-                    <div class="tl-subtitle">Best Practice: 50th Member</div>
-                    <p>Our compliance network welcomed its 50th wealth management firm — with zero member attrition since inception.</p>
+                    <div class="tl-subtitle">Best Practice: Membership Reaches 50</div>
+                    <p>Best Practice, our compliance network, proudly welcomed its 50th wealth management firm in June 2010, having experienced no member attrition since its inception. IFA networks, often perceived negatively in the UK for substandard compliance, faced a challenge we were determined to address. Our goal was to drive meaningful change in the sector.</p>
+                    <p>Despite being relatively unknown to the broader public, we were actively instigating change. In an effort to raise awareness of our endeavours, we entered Best Practice for its first award, 'Network of the Year'. Unfortunately, we finished as runners-up, although we were highly commended for our efforts. Undeterred, we committed to re-enter in 2011.</p>
                 </div>
             </div>
         </div>
@@ -603,11 +638,11 @@
         <!-- 19. September 2008 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80" alt="Sussex House"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Sussex House.webp" alt="Sussex House"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">September 2008</div>
                     <div class="tl-subtitle">Sussex House</div>
-                    <p>Rapid expansion as the leading network for Chartered financial planners. We acquired Sussex House in Horsham — our headquarters for the next decade.</p>
+                    <p>The group experienced rapid expansion, quickly becoming renowned as the leading network for Chartered and Certified financial planners. With the swift growth in membership, we acquired a more spacious building in Horsham, named Sussex House. This facility would serve as our headquarters for the next 12 years, marking a significant phase in our journey.</p>
                 </div>
             </div>
         </div>
@@ -617,11 +652,12 @@
         <!-- 20. March 2006 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="First API Links"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Cofunds Logo.png" alt="Cofunds"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">March 2006</div>
                     <div class="tl-subtitle">First API Links Established</div>
-                    <p>One of the earliest real-world integrations with a custody platform. We launched an 'integration fest', connecting with nearly all major retail platforms in the UK.</p>
+                    <p>Platforms like Cofunds and Transact, which drew considerable inspiration from advancements in Australia and New Zealand, became widely adopted in the mid-2000s. This technology was clearly set to transform how wealth managers functioned in the UK.</p>
+                    <p>Keen to capitalise on this innovation, we didn't just integrate with Cofunds — one of the earliest real-world link-ups with a custody platform — but also launched into an 'integration fest'. We formed connections with nearly all the major retail platforms in the UK and expanded our scope to encompass legacy insurance providers, as well as some of the larger institutional models still used by ultra high net worth clients today.</p>
                 </div>
             </div>
         </div>
@@ -631,11 +667,12 @@
         <!-- 21. August 2003 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Best Practice IFA Group"></div>
+                <div class="tl-card-img"><img src="../images/timeline/Best Practice Logo.webp" alt="Best Practice IFA Group"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">August 2003</div>
-                    <div class="tl-subtitle">Best Practice IFA Group</div>
-                    <p>A decade after inception, we launched an independent network — growing to over 28 financial planners specialising in holistic planning for families, trusts, and companies.</p>
+                    <div class="tl-subtitle">Establishment of Best Practice IFA Group</div>
+                    <p>In 2003, a decade after our inception, alongside Ian Cooke and Partners, we launched an independent network. This expansion saw us grow to include over 28 financial planners specialising in holistic financial planning for families, trusts, and companies.</p>
+                    <p>This year marked a pivotal moment as we established the network, known as Best Practice. Aimed at promoting best practices within the sector, this initiative had a strong emphasis on learning and technology. Additionally, we began managing compliance for 7 other firms in the South East and London, significantly broadening our scope and influence.</p>
                 </div>
             </div>
         </div>
@@ -645,11 +682,12 @@
         <!-- 22. May 2000 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=800&q=80" alt="Old Bank Chambers"></div>
+                <div class="tl-card-img"><img src="../images/timeline/May 2000.webp" alt="Old Bank Chambers"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">May 2000</div>
-                    <div class="tl-subtitle">Old Bank Chambers</div>
-                    <p>We moved to Hurstpierpoint, taking over the Old Bank Building formerly owned by Barclays. Ian Cooke and Partners became the UK's largest network firm of Certified Financial Planners.</p>
+                    <div class="tl-subtitle">Acquisition of Old Bank Chambers</div>
+                    <p>Seven years into our journey, we moved to the picturesque village of Hurstpierpoint, taking over the Old Bank Building formerly owned by Barclays to facilitate our growth.</p>
+                    <p>Our commitment to education and professional development remained steadfast, with a strong emphasis on guiding our advisers through their Advanced Financial Planning Certificate (AFPC) training. During this period, Ian Cooke and Partners expanded significantly, becoming the UK's largest network firm.</p>
                 </div>
             </div>
         </div>
