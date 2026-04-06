@@ -341,7 +341,28 @@
         </a>
         <ul class="nav-links">
             <li><a href="../">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li class="nav-dropdown">
+                <a href="about.html" class="nav-dropdown-toggle">About Us</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                </ul>
+            </li>
+            <li><a href="people.html">Team</a></li>
+            <li class="nav-dropdown">
+                <a href="culture.html" class="nav-dropdown-toggle">Culture</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="culture.html#people">People</a></li>
+                    <li><a href="culture.html#purpose">Purpose</a></li>
+                    <li><a href="culture.html#process">Process</a></li>
+                    <li><a href="culture.html#price">Price</a></li>
+                    <li><a href="culture.html#progress">Progress</a></li>
+                </ul>
+            </li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+            </li>
             <li><a href="people.html">Our People</a></li>
             <li><a href="locations.html">Locations</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -352,12 +373,13 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
+    <div class="page-hero" style="background-image: url('../images/timeline/Aug 93.webp'); background-size: cover; background-position: center;">
+        <div class="hero-overlay"></div>
+        <div class="page-hero-content">
             <h1>Our Timeline</h1>
             <p class="subtitle">Three decades of innovation, growth, and excellence</p>
         </div>
-    </section>
+    </div>
 
     <!-- Timeline -->
     <div class="tl">
@@ -773,15 +795,17 @@
             function updateProgress() {
                 if (!tl || !tlProgress || !firstYearEl || !lastItemEl) return;
                 const lineStart = firstYearEl.offsetTop + firstYearEl.offsetHeight;
-                const lineEnd = lastItemEl.offsetTop + 40;
+                const lineEnd = lastItemEl.offsetTop + lastItemEl.offsetHeight;
                 const lineHeight = lineEnd - lineStart;
 
                 tlProgress.style.top = lineStart + 'px';
 
-                const tlRect = tl.getBoundingClientRect();
-                const startAbs = tlRect.top + lineStart;
-                const scrollPos = window.scrollY + window.innerHeight * 0.5;
-                const progress = Math.max(0, Math.min(1, (scrollPos - startAbs) / lineHeight));
+                // How far the bottom of the viewport has scrolled into the timeline
+                const tlTop = tl.getBoundingClientRect().top + window.scrollY;
+                const startAbs = tlTop + lineStart;
+                const endAbs = tlTop + lineEnd;
+                const scrollBottom = window.scrollY + window.innerHeight;
+                const progress = Math.max(0, Math.min(1, (scrollBottom - startAbs - window.innerHeight * 0.5) / (endAbs - startAbs)));
                 tlProgress.style.height = (progress * lineHeight) + 'px';
             }
 
