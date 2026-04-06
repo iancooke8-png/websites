@@ -860,6 +860,57 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
 }
 
 
+/* --- Pull-up Tab + Body --- */
+.pullup-wrapper {
+    position: relative;
+    z-index: 3;
+    margin-top: -6rem;
+    background: var(--navy);
+}
+
+.pullup-tab {
+    background: var(--navy);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 3.5rem;
+    border-radius: 14px 14px 0 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.pullup-tab p {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    color: var(--white);
+    line-height: 1.6;
+}
+
+.pullup-tab em {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.pullup-body {
+    background: var(--navy);
+    padding: 3rem 0 4rem;
+    text-align: center;
+}
+
+.pullup-body p {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-style: italic;
+    color: var(--muted-blue);
+    line-height: 1.9;
+}
+
+.pullup-body p:last-child {
+    margin-bottom: 0;
+}
+
+
 /* --- Solid Hero (no background image) --- */
 .hero-solid {
     background: var(--navy);
