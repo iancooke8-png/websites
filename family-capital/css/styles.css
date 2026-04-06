@@ -654,7 +654,7 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
 
 /* --- Footer --- */
 .site-footer {
-    background: var(--navy);
+    background: #1a1a1a;
     color: var(--muted-blue);
     padding: 4rem 0 2rem;
 }
