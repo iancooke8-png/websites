@@ -15,8 +15,11 @@
 
     <style>
         /* ============================
-           Animated Timeline
+           Timeline — Clean CSS
+           Mobile-first, grid on desktop
            ============================ */
+
+        /* --- Container --- */
         .tl {
             position: relative;
             max-width: 1400px;
@@ -24,19 +27,8 @@
             padding: 2rem 1rem;
         }
 
-        /* The centre line — hidden by default, positioned by JS */
-        .tl::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--border-light);
-            transform: translateX(-50%);
-            display: none;
-        }
-
+        /* --- Line (positioned by JS) --- */
+        .tl::before { display: none; }
         .tl-line {
             position: absolute;
             left: 50%;
@@ -46,7 +38,7 @@
             z-index: 0;
         }
 
-        /* Animated progress line */
+        /* --- Progress line (animated by JS) --- */
         .tl-progress {
             position: absolute;
             left: 50%;
@@ -58,49 +50,8 @@
             z-index: 1;
         }
 
-        /* Each timeline item — full width, two columns split by the line */
-        .tl-item {
-            position: relative;
-            width: 100%;
-            padding-bottom: 3rem;
-            display: flex;
-            align-items: flex-start;
-            clear: both;
-        }
-
-        .tl-item {
-            overflow: visible;
-        }
-
-        /* Animation: desktop only — slides in from edges */
-        @media (min-width: 769px) {
-            .tl-ready .tl-item .tl-card-img,
-            .tl-ready .tl-item .tl-card-body {
-                opacity: 0;
-                transition: opacity 0.8s ease, transform 0.8s ease;
-            }
-
-            .tl-ready .tl-left .tl-card-img { transform: translateX(-60px); }
-            .tl-ready .tl-left .tl-card-body { transform: translateX(60px); }
-            .tl-ready .tl-right .tl-card-img { transform: translateX(60px); }
-            .tl-ready .tl-right .tl-card-body { transform: translateX(-60px); }
-
-            .tl-ready .tl-item.visible .tl-card-img,
-            .tl-ready .tl-item.visible .tl-card-body {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            .tl-ready .tl-item.visible .tl-card-body {
-                transition-delay: 0.15s;
-            }
-        }
-
-        /* Dot on the line — hidden by default, positioned by JS */
-        .tl-item::before {
-            display: none;
-        }
-
+        /* --- Dots (positioned by JS) --- */
+        .tl-item::before, .tl-item::after { display: none; }
         .tl-dot {
             position: absolute;
             width: 16px;
@@ -113,32 +64,39 @@
             transform: translateX(-50%);
         }
 
-        /* No connector lines — dots sit on the line */
-        .tl-item::after {
-            display: none;
+        /* --- Year markers --- */
+        .tl-year {
+            clear: both;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            background: var(--navy);
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            text-align: center;
+            margin: 0.5rem 0 1.5rem;
+            z-index: 3;
         }
 
-        /* The card — image one side of line, text the other */
+        /* --- Items --- */
+        .tl-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 3rem;
+        }
+
+        /* --- Card (mobile-first: stacked) --- */
         .tl-card {
             display: block;
             width: 100%;
         }
 
-        @media (min-width: 769px) {
-            .tl-card {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                align-items: start;
-            }
-        }
-
         .tl-card-img {
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .tl-card-img-logo {
-            border-radius: 0;
+            margin-bottom: 1.5rem;
         }
 
         .tl-card-img img {
@@ -147,60 +105,22 @@
             display: block;
         }
 
-        .tl-card-img:hover img {
-            transform: scale(1.02);
-        }
-
         .tl-card-img-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem 0;
         }
 
         .tl-card-img-logo img {
-            max-width: 300px;
+            max-width: 250px;
             max-height: 200px;
             width: auto;
+            margin: 0 auto;
         }
 
         .tl-card-body {
             background: var(--white);
-        }
-
-        @media (min-width: 769px) {
-            .tl-card-body {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-        }
-
-        /* Left entries: image on left, text on right (desktop only) */
-        @media (min-width: 769px) {
-            .tl-left .tl-card-img {
-                grid-column: 1;
-                margin-right: 2.5rem;
-            }
-            .tl-left .tl-card-body {
-                grid-column: 2;
-                padding-left: 2.5rem;
-            }
-        }
-
-        /* Right entries: text on left, image on right (desktop only) */
-        @media (min-width: 769px) {
-            .tl-right .tl-card-img {
-                grid-column: 2;
-                grid-row: 1;
-                margin-left: 2.5rem;
-            }
-            .tl-right .tl-card-body {
-                grid-column: 1;
-                grid-row: 1;
-                padding-right: 2.5rem;
-                text-align: left;
-            }
         }
 
         .tl-date {
@@ -232,148 +152,87 @@
             margin-bottom: 0;
         }
 
-        /* Year markers on the line */
-        .tl-year {
-            clear: both;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%) scale(0.8);
-            width: fit-content;
-            background: var(--navy);
-            color: #ffffff;
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-            text-align: center;
-            margin: 0.5rem 0 1.5rem;
-            z-index: 3;
-            opacity: 1;
-        }
-
-        /* Clearfix for floats */
         .tl::after {
             content: '';
             display: table;
             clear: both;
         }
 
-        /* ============================
-           Responsive — Tablet & Mobile
-           ============================ */
-        @media (max-width: 768px) {
-            .tl::before { left: 20px; }
-            .tl-progress { left: 20px; }
-            .tl-line { left: 20px !important; }
-            .tl-dot { left: 20px !important; transform: translateX(-50%) !important; }
-
-            .tl-item {
-                width: 100%;
-                display: block;
-                padding-left: 50px;
-                padding-right: 1rem;
-            }
-
-            .tl-card,
-            .tl-card-img,
-            .tl-card-body {
-                display: block;
-                width: 100%;
-                float: none;
-                position: static;
-                margin: 0;
-                padding: 0;
-                grid-column: auto;
-                grid-row: auto;
-                flex: none;
-                text-align: left;
+        /* --- Desktop: two-column grid --- */
+        @media (min-width: 769px) {
+            .tl-card {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
             }
 
             .tl-card-img {
-                margin-bottom: 2rem;
-                border-radius: 0;
-                text-align: center;
-                position: relative;
-                clear: both;
-            }
-
-            .tl-card-body {
-                clear: both;
-                position: relative;
-                z-index: 1;
-                background: white;
-            }
-
-            .tl-card-img img {
-                height: auto !important;
-                max-height: none !important;
+                border-radius: 8px;
+                overflow: hidden;
+                margin-bottom: 0;
             }
 
             .tl-card-img-logo {
-                padding: 0;
+                border-radius: 0;
+                padding: 2rem;
             }
 
             .tl-card-img-logo img {
-                max-width: 250px;
-                margin: 0 auto;
-            }
-
-            .tl-year {
-                left: 20px;
-            }
-
-            .tl-card-img {
-                height: auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tl {
-                padding: 1rem 0;
-            }
-
-            .tl::before {
-                left: 14px;
-            }
-
-            .tl-progress {
-                left: 14px;
-            }
-
-            .tl-item {
-                padding-left: 38px !important;
-                padding-bottom: 1.5rem;
-            }
-
-            .tl-left::before,
-            .tl-right::before {
-                left: 7px !important;
-                width: 14px;
-                height: 14px;
-            }
-
-            .tl-left::after,
-            .tl-right::after {
-                left: 21px !important;
-                width: 10px;
+                max-width: 300px;
             }
 
             .tl-card-body {
-                padding: 0.8rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
-            .tl-date {
-                font-size: 1.1rem;
-            }
+            /* Left: image left, text right */
+            .tl-left .tl-card-img { grid-column: 1; margin-right: 2.5rem; }
+            .tl-left .tl-card-body { grid-column: 2; padding-left: 2.5rem; }
 
-            .tl-card-img {
-                height: 130px;
-            }
+            /* Right: text left, image right */
+            .tl-right .tl-card-img { grid-column: 2; grid-row: 1; margin-left: 2.5rem; }
+            .tl-right .tl-card-body { grid-column: 1; grid-row: 1; padding-right: 2.5rem; }
 
-            .tl-year {
-                left: 14px;
-                font-size: 0.85rem;
+            /* Slide animations */
+            .tl-ready .tl-item .tl-card-img,
+            .tl-ready .tl-item .tl-card-body {
+                opacity: 0;
+                transition: opacity 0.8s ease, transform 0.8s ease;
             }
+            .tl-ready .tl-left .tl-card-img { transform: translateX(-60px); }
+            .tl-ready .tl-left .tl-card-body { transform: translateX(60px); }
+            .tl-ready .tl-right .tl-card-img { transform: translateX(60px); }
+            .tl-ready .tl-right .tl-card-body { transform: translateX(-60px); }
+            .tl-ready .tl-item.visible .tl-card-img,
+            .tl-ready .tl-item.visible .tl-card-body {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .tl-ready .tl-item.visible .tl-card-body {
+                transition-delay: 0.15s;
+            }
+        }
+
+        /* --- Mobile: timeline line on left --- */
+        @media (max-width: 768px) {
+            .tl-line { left: 20px !important; }
+            .tl-progress { left: 20px; }
+            .tl-dot { left: 20px !important; transform: translateX(-50%) !important; }
+            .tl-year { left: 20px; transform: translateX(0); }
+            .tl-item { padding-left: 50px; padding-right: 1rem; }
+        }
+
+        /* --- Small mobile --- */
+        @media (max-width: 480px) {
+            .tl { padding: 1rem 0; }
+            .tl-line { left: 14px !important; }
+            .tl-progress { left: 14px; }
+            .tl-dot { left: 14px !important; }
+            .tl-year { left: 14px; font-size: 0.85rem; }
+            .tl-item { padding-left: 38px; padding-bottom: 1.5rem; }
+            .tl-date { font-size: 1.1rem; }
         }
     </style>
 </head>
