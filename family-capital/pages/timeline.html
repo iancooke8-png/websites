@@ -72,26 +72,28 @@
             overflow: visible;
         }
 
-        /* Animation: starts visible, JS adds .tl-ready to enable animations after load */
-        .tl-ready .tl-item .tl-card-img,
-        .tl-ready .tl-item .tl-card-body {
-            opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
+        /* Animation: desktop only — slides in from edges */
+        @media (min-width: 769px) {
+            .tl-ready .tl-item .tl-card-img,
+            .tl-ready .tl-item .tl-card-body {
+                opacity: 0;
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
 
-        .tl-ready .tl-left .tl-card-img { transform: translateX(-60px); }
-        .tl-ready .tl-left .tl-card-body { transform: translateX(60px); }
-        .tl-ready .tl-right .tl-card-img { transform: translateX(60px); }
-        .tl-ready .tl-right .tl-card-body { transform: translateX(-60px); }
+            .tl-ready .tl-left .tl-card-img { transform: translateX(-60px); }
+            .tl-ready .tl-left .tl-card-body { transform: translateX(60px); }
+            .tl-ready .tl-right .tl-card-img { transform: translateX(60px); }
+            .tl-ready .tl-right .tl-card-body { transform: translateX(-60px); }
 
-        .tl-ready .tl-item.visible .tl-card-img,
-        .tl-ready .tl-item.visible .tl-card-body {
-            opacity: 1;
-            transform: translateX(0);
-        }
+            .tl-ready .tl-item.visible .tl-card-img,
+            .tl-ready .tl-item.visible .tl-card-body {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-        .tl-ready .tl-item.visible .tl-card-body {
-            transition-delay: 0.15s;
+            .tl-ready .tl-item.visible .tl-card-body {
+                transition-delay: 0.15s;
+            }
         }
 
         /* Dot on the line — hidden by default, positioned by JS */
@@ -118,14 +120,25 @@
 
         /* The card — image one side of line, text the other */
         .tl-card {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: block;
             width: 100%;
-            align-items: start;
+        }
+
+        @media (min-width: 769px) {
+            .tl-card {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
+            }
         }
 
         .tl-card-img {
             overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .tl-card-img-logo {
+            border-radius: 0;
         }
 
         .tl-card-img img {
@@ -138,34 +151,56 @@
             transform: scale(1.02);
         }
 
-        .tl-card-body {
+        .tl-card-img-logo {
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            padding: 2rem;
+        }
+
+        .tl-card-img-logo img {
+            max-width: 300px;
+            max-height: 200px;
+            width: auto;
+        }
+
+        .tl-card-body {
             background: var(--white);
         }
 
-        /* Left entries: image on left, text on right */
-        .tl-left .tl-card-img {
-            grid-column: 1;
-            margin-right: 2.5rem;
-        }
-        .tl-left .tl-card-body {
-            grid-column: 2;
-            padding-left: 2.5rem;
+        @media (min-width: 769px) {
+            .tl-card-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
         }
 
-        /* Right entries: text on left, image on right */
-        .tl-right .tl-card-img {
-            grid-column: 2;
-            grid-row: 1;
-            margin-left: 2.5rem;
+        /* Left entries: image on left, text on right (desktop only) */
+        @media (min-width: 769px) {
+            .tl-left .tl-card-img {
+                grid-column: 1;
+                margin-right: 2.5rem;
+            }
+            .tl-left .tl-card-body {
+                grid-column: 2;
+                padding-left: 2.5rem;
+            }
         }
-        .tl-right .tl-card-body {
-            grid-column: 1;
-            grid-row: 1;
-            padding-right: 2.5rem;
-            text-align: left;
+
+        /* Right entries: text on left, image on right (desktop only) */
+        @media (min-width: 769px) {
+            .tl-right .tl-card-img {
+                grid-column: 2;
+                grid-row: 1;
+                margin-left: 2.5rem;
+            }
+            .tl-right .tl-card-body {
+                grid-column: 1;
+                grid-row: 1;
+                padding-right: 2.5rem;
+                text-align: left;
+            }
         }
 
         .tl-date {
@@ -227,50 +262,60 @@
            Responsive — Tablet & Mobile
            ============================ */
         @media (max-width: 768px) {
-            .tl::before {
-                left: 20px;
-            }
-
-            .tl-progress {
-                left: 20px;
-            }
-
-            .tl-line {
-                left: 20px !important;
-            }
-
-            .tl-dot {
-                left: 20px !important;
-                transform: translateX(-50%) !important;
-            }
+            .tl::before { left: 20px; }
+            .tl-progress { left: 20px; }
+            .tl-line { left: 20px !important; }
+            .tl-dot { left: 20px !important; transform: translateX(-50%) !important; }
 
             .tl-item {
                 width: 100%;
-                float: none !important;
-                padding-left: 50px !important;
-                padding-right: 0.5rem !important;
+                display: block;
+                padding-left: 50px;
+                padding-right: 1rem;
             }
 
-            .tl-card {
-                flex-direction: column !important;
+            .tl-card,
+            .tl-card-img,
+            .tl-card-body {
+                display: block;
+                width: 100%;
+                float: none;
+                position: static;
+                margin: 0;
+                padding: 0;
+                grid-column: auto;
+                grid-row: auto;
+                flex: none;
+                text-align: left;
             }
 
             .tl-card-img {
-                flex: none;
-                min-height: 180px;
+                margin-bottom: 2rem;
+                border-radius: 0;
+                text-align: center;
+                position: relative;
+                clear: both;
             }
 
-            .tl-left::before,
-            .tl-right::before {
-                left: 12px !important;
-                right: auto !important;
+            .tl-card-body {
+                clear: both;
+                position: relative;
+                z-index: 1;
+                background: white;
             }
 
-            .tl-left::after,
-            .tl-right::after {
-                left: 28px !important;
-                right: auto !important;
-                width: 14px;
+            .tl-card-img img {
+                height: auto !important;
+                max-height: none !important;
+            }
+
+            .tl-card-img-logo {
+                padding: 0;
+            }
+
+            .tl-card-img-logo img {
+                max-width: 250px;
+                margin: 0 auto;
             }
 
             .tl-year {
@@ -445,7 +490,7 @@
         <!-- 5. November 2020 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/Perpetual Logo 2020.webp" alt="Perpetual Rebrand"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/Perpetual Logo 2020.webp" alt="Perpetual Rebrand"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">November 2020</div>
                     <div class="tl-subtitle">Group Rebrand to Perpetual</div>
@@ -460,7 +505,7 @@
         <!-- 6. March 2017 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/FC Logo 2017.webp" alt="Family Capital Rebrand"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/FC Logo 2017.webp" alt="Family Capital Rebrand"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">March 2017</div>
                     <div class="tl-subtitle">Rebrand to Family Capital</div>
@@ -517,7 +562,7 @@
         <!-- 10. January 2015 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/Benchmark Logo 1.webp" alt="Benchmark Capital"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/Benchmark Logo 1.webp" alt="Benchmark Capital"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">January 2015</div>
                     <div class="tl-subtitle">Benchmark Capital Established</div>
@@ -560,7 +605,7 @@
         <!-- 13. December 2012 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/Creative Tech Logo.webp" alt="Creative Technologies"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/Creative Tech Logo.webp" alt="Creative Technologies"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">December 2012</div>
                     <div class="tl-subtitle">Creative Technologies: 20th Firm Milestone</div>
@@ -573,7 +618,7 @@
         <!-- 14. October 2012 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/Chartered Logo 2012.webp" alt="Chartered Status"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/cii-chartered-financial-planner-fill.png" alt="Chartered Status"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">October 2012</div>
                     <div class="tl-subtitle">Best Practice Achieves Chartered Status</div>
@@ -601,7 +646,7 @@
         <!-- 16. January 2011 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/SEI Logo.webp" alt="SEI Partnership"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/SEIC.png" alt="SEI Partnership"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">January 2011</div>
                     <div class="tl-subtitle">SEI Partnership Initiated</div>
@@ -616,7 +661,7 @@
         <!-- 17. August 2010 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/Aspect8 Logo.webp" alt="Aspect8"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/Aspect8 Logo.webp" alt="Aspect8"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">August 2010</div>
                     <div class="tl-subtitle">Aspect8 Established</div>
@@ -658,7 +703,7 @@
         <!-- 20. March 2006 -->
         <div class="tl-item tl-right">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/Cofunds Logo.png" alt="Cofunds"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/Cofunds Logo.png" alt="Cofunds"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">March 2006</div>
                     <div class="tl-subtitle">First API Links Established</div>
@@ -673,7 +718,7 @@
         <!-- 21. August 2003 -->
         <div class="tl-item tl-left">
             <div class="tl-card">
-                <div class="tl-card-img"><img src="../images/timeline/Best Practice Logo.webp" alt="Best Practice IFA Group"></div>
+                <div class="tl-card-img tl-card-img-logo"><img src="../images/timeline/Best Practice Logo.webp" alt="Best Practice IFA Group"></div>
                 <div class="tl-card-body">
                     <div class="tl-date">August 2003</div>
                     <div class="tl-subtitle">Establishment of Best Practice IFA Group</div>
