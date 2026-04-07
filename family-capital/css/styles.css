@@ -1299,19 +1299,59 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
     .nav-links {
         display: none;
         position: fixed;
-        top: var(--nav-height);
+        top: 65px;
         left: 0;
         right: 0;
         bottom: 0;
         background: var(--navy);
         flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
-        padding: 2rem;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+        list-style: none;
     }
 
     .nav-links.open {
         display: flex;
+    }
+
+    .nav-links > li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links > li > a {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1rem;
+    }
+
+    /* Show dropdown items inline on mobile — no hover, always visible when menu open */
+    .nav-dropdown-menu {
+        position: static;
+        display: block;
+        transform: none;
+        background: none;
+        box-shadow: none;
+        padding: 0 0 0.5rem;
+        min-width: auto;
+    }
+
+    .nav-dropdown-toggle::after {
+        display: none;
+    }
+
+    .nav-dropdown-menu a {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0;
+        opacity: 0.7;
+    }
+
+    .nav-dropdown::before {
+        display: none;
     }
 
     .nav-toggle {
@@ -1330,6 +1370,17 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links {
+        text-align: center;
     }
 
     .branch-card {
