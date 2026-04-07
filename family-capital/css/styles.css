@@ -1299,37 +1299,48 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
     .nav-links {
         display: none;
         position: fixed;
-        top: 65px;
+        top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         background: var(--navy);
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         gap: 0;
-        padding: 2rem 1rem;
+        padding: 2rem;
         overflow-y: auto;
         list-style: none;
+        z-index: 999;
     }
 
     .nav-links.open {
-        display: flex;
+        display: flex !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        height: 100vh !important;
+        width: 100vw !important;
     }
 
     .nav-links > li {
         width: 100%;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .nav-links > li > a {
         display: block;
-        padding: 1rem 0;
-        font-size: 1rem;
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
     }
 
-    /* Show dropdown items inline on mobile — no hover, always visible when menu open */
+    .nav-links > li > a::after {
+        display: none;
+    }
+
+    /* Show dropdown items inline on mobile */
     .nav-dropdown-menu {
         position: static;
         display: block;
@@ -1344,10 +1355,14 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
         display: none;
     }
 
+    .nav-dropdown-menu li {
+        padding: 0;
+    }
+
     .nav-dropdown-menu a {
-        font-size: 0.8rem !important;
-        padding: 0.4rem 0;
-        opacity: 0.7;
+        font-size: 0.85rem !important;
+        padding: 0.3rem 0;
+        opacity: 0.6;
     }
 
     .nav-dropdown::before {
@@ -1356,6 +1371,7 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
 
     .nav-toggle {
         display: flex;
+        z-index: 1000;
     }
 
     .two-col {
