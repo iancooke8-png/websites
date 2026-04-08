@@ -87,9 +87,9 @@
 
             <!-- Legend -->
             <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-grey);">
-                <span><span style="display: inline-block; width: 14px; height: 14px; background: #001e42; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Essential</span>
-                <span><span style="display: inline-block; width: 14px; height: 14px; background: #3b82f6; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Lifestyle</span>
-                <span><span style="display: inline-block; width: 14px; height: 3px; background: #22c55e; vertical-align: middle; margin-right: 0.4rem;"></span>Income</span>
+                <span><span style="display: inline-block; width: 14px; height: 14px; background: #001e42; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Essential Spending</span>
+                <span><span style="display: inline-block; width: 14px; height: 14px; background: #3b82f6; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Non-Essential Spending</span>
+                <span><span style="display: inline-block; width: 14px; height: 3px; background: #22c55e; vertical-align: middle; margin-right: 0.4rem;"></span>Earned Income</span>
             </div>
 
             <div id="cashflow-chart" style="position: relative; width: 100%;">
@@ -113,30 +113,38 @@
         for (let a = 30; a <= 90; a++) years.push(a);
         const numBars = years.length;
 
-        // Generate positive cashflow data — income always comfortable above spending
+        // Realistic cashflow — income crosses below spending at retirement
         function getData() {
             return years.map(age => {
-                // Essential spending — stable base
-                let essential = 25 + (age > 65 ? (age - 65) * 0.5 : 0);
+                // Essential spending — high early (mortgage, kids), drops as mortgage paid off, kids leave
+                let essential;
+                if (age < 38) essential = 55;
+                else if (age < 45) essential = 55 - (age - 38) * 2;
+                else if (age < 55) essential = 41 - (age - 45) * 1.5;
+                else if (age < 65) essential = 26;
+                else essential = 28 + (age - 65) * 0.8; // care costs creep up
 
-                // Lifestyle — grows with success, stays comfortable in retirement
+                // Non-essential — grows as disposable income increases
                 let lifestyle;
-                if (age < 40) lifestyle = 12 + (age - 30) * 1.5;
-                else if (age < 55) lifestyle = 27 + (age - 40) * 0.8;
-                else if (age < 65) lifestyle = 39;
-                else lifestyle = 35;
+                if (age < 40) lifestyle = 10;
+                else if (age < 50) lifestyle = 10 + (age - 40) * 2;
+                else if (age < 60) lifestyle = 30 + (age - 50) * 1;
+                else if (age < 70) lifestyle = 40;
+                else lifestyle = 35 - (age - 70) * 1;
+                if (lifestyle < 10) lifestyle = 10;
 
-                // School fees bump
-                if (age >= 42 && age <= 53) essential += 12;
-
-                // Income — grows, peaks, then transitions to pension/drawdown (still strong)
+                // Income — smooth curve: rises, peaks mid-50s, drops at retirement
                 let income;
-                if (age < 45) income = 70 + (age - 30) * 5;
-                else if (age < 55) income = 145 + (age - 45) * 2;
-                else if (age < 60) income = 165;
-                else if (age < 67) income = 140;
-                else income = 100 - (age - 67) * 1;
-                if (income < 70) income = 70;
+                const t = (age - 30) / 60; // 0 to 1
+                if (age < 65) {
+                    // Bell curve peaking around age 55
+                    const peak = 0.42; // where peak falls (55 = 25/60)
+                    income = 40 + 120 * Math.exp(-Math.pow((t - peak) / 0.2, 2));
+                } else {
+                    // Pension/drawdown — drops significantly
+                    income = 45 - (age - 65) * 0.8;
+                    if (income < 25) income = 25;
+                }
 
                 return { age, essential, lifestyle, income };
             });
@@ -215,18 +223,28 @@
             // Age label
             ctx.fillText('Age', (LEFT + RIGHT) / 2, BOTTOM + 40);
 
-            // Income line
-            if (barsToShow > 1) {
+            // Income line — smooth bezier curve
+            if (barsToShow > 2) {
                 ctx.strokeStyle = '#22c55e';
                 ctx.lineWidth = 3;
                 ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
                 ctx.beginPath();
+
+                const pts = [];
                 for (let i = 0; i < barsToShow && i < numBars; i++) {
-                    const d = data[i];
-                    const x = LEFT + ((i + 0.5) / numBars) * chartW;
-                    const y = toY(d.income);
-                    if (i === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
+                    pts.push({
+                        x: LEFT + ((i + 0.5) / numBars) * chartW,
+                        y: toY(data[i].income)
+                    });
+                }
+
+                ctx.moveTo(pts[0].x, pts[0].y);
+                for (let i = 1; i < pts.length; i++) {
+                    const prev = pts[i - 1];
+                    const curr = pts[i];
+                    const cpx = (prev.x + curr.x) / 2;
+                    ctx.bezierCurveTo(cpx, prev.y, cpx, curr.y, curr.x, curr.y);
                 }
                 ctx.stroke();
             }
