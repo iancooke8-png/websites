@@ -113,37 +113,47 @@
         for (let a = 30; a <= 90; a++) years.push(a);
         const numBars = years.length;
 
-        // Realistic cashflow — income crosses below spending at retirement
+        // J-curve spending with inflation, earned income peaks then drops at retirement
         function getData() {
+            const inflation = 1.03; // 3% annual inflation
+
             return years.map(age => {
-                // Essential spending — high early (mortgage, kids), drops as mortgage paid off, kids leave
-                let essential;
-                if (age < 38) essential = 55;
-                else if (age < 45) essential = 55 - (age - 38) * 2;
-                else if (age < 55) essential = 41 - (age - 45) * 1.5;
-                else if (age < 65) essential = 26;
-                else essential = 28 + (age - 65) * 0.8; // care costs creep up
+                const yearsIn = age - 30;
+                const inflationFactor = Math.pow(inflation, yearsIn);
 
-                // Non-essential — grows as disposable income increases
-                let lifestyle;
-                if (age < 40) lifestyle = 10;
-                else if (age < 50) lifestyle = 10 + (age - 40) * 2;
-                else if (age < 60) lifestyle = 30 + (age - 50) * 1;
-                else if (age < 70) lifestyle = 40;
-                else lifestyle = 35 - (age - 70) * 1;
-                if (lifestyle < 10) lifestyle = 10;
+                // Base essential spending — mortgage heavy early, drops mid-life, care costs late
+                let essentialBase;
+                if (age < 40) essentialBase = 40;          // mortgage + kids
+                else if (age < 50) essentialBase = 35;      // mortgage reducing
+                else if (age < 60) essentialBase = 28;      // mortgage paid off
+                else if (age < 70) essentialBase = 25;      // basics
+                else essentialBase = 25 + (age - 70) * 1.5; // care costs creep
 
-                // Income — smooth curve: rises, peaks mid-50s, drops at retirement
+                // School fees
+                if (age >= 40 && age <= 52) essentialBase += 10;
+
+                // Base non-essential — grows as disposable income increases
+                let lifestyleBase;
+                if (age < 40) lifestyleBase = 8;
+                else if (age < 50) lifestyleBase = 12;
+                else if (age < 60) lifestyleBase = 20;
+                else if (age < 70) lifestyleBase = 25;  // enjoying retirement
+                else lifestyleBase = 18;                 // slowing down
+
+                // Apply inflation J-curve to both
+                const essential = essentialBase * inflationFactor;
+                const lifestyle = lifestyleBase * inflationFactor;
+
+                // Earned income — smooth bell curve, peaks ~55, drops at retirement
                 let income;
-                const t = (age - 30) / 60; // 0 to 1
+                const t = (age - 30) / 60;
                 if (age < 65) {
-                    // Bell curve peaking around age 55
-                    const peak = 0.42; // where peak falls (55 = 25/60)
-                    income = 40 + 120 * Math.exp(-Math.pow((t - peak) / 0.2, 2));
+                    const peak = 0.42;
+                    income = 50 + 110 * Math.exp(-Math.pow((t - peak) / 0.22, 2));
+                    income *= Math.pow(1.02, yearsIn); // wage growth (slower than inflation)
                 } else {
-                    // Pension/drawdown — drops significantly
-                    income = 45 - (age - 65) * 0.8;
-                    if (income < 25) income = 25;
+                    // Pension — much lower than earned income
+                    income = 35 * inflationFactor * 0.6;
                 }
 
                 return { age, essential, lifestyle, income };
@@ -151,7 +161,7 @@
         }
 
         const data = getData();
-        const maxVal = 220;
+        const maxVal = Math.ceil(Math.max(...data.map(d => Math.max(d.essential + d.lifestyle, d.income))) / 20) * 20 + 20;
         let animProgress = 0;
         let started = false;
 
