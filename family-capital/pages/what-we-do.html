@@ -116,7 +116,7 @@
 
         // J-curve spending with inflation, earned income peaks then drops at retirement
         function getData() {
-            const inflation = 1.03; // 3% annual inflation
+            const inflation = 1.02; // 2% annual inflation — gentler J-curve
 
             return years.map(age => {
                 const yearsIn = age - 30;
@@ -128,33 +128,35 @@
                 else if (age < 50) essentialBase = 35;      // mortgage reducing
                 else if (age < 60) essentialBase = 28;      // mortgage paid off
                 else if (age < 70) essentialBase = 25;      // basics
-                else essentialBase = 25 + (age - 70) * 1.5; // care costs creep
+                else essentialBase = 25 + (age - 70) * 0.5; // care costs creep gently
 
                 // School fees
                 if (age >= 40 && age <= 52) essentialBase += 10;
 
-                // Base non-essential — grows as disposable income increases
+                // Non-essential — grows mid-life, jumps at retirement (travel, hobbies), eases later
                 let lifestyleBase;
                 if (age < 40) lifestyleBase = 8;
                 else if (age < 50) lifestyleBase = 12;
-                else if (age < 60) lifestyleBase = 20;
-                else if (age < 70) lifestyleBase = 25;  // enjoying retirement
-                else lifestyleBase = 18;                 // slowing down
+                else if (age < 60) lifestyleBase = 18;
+                else if (age < 68) lifestyleBase = 30;  // retirement — travel, enjoying life
+                else if (age < 75) lifestyleBase = 25;  // still active
+                else lifestyleBase = 15;                 // slowing down
 
                 // Apply inflation J-curve to both
                 const essential = essentialBase * inflationFactor;
                 const lifestyle = lifestyleBase * inflationFactor;
 
-                // Earned income — smooth bell curve, peaks ~55, drops at retirement
+                // Earned income — gentle J-curve rising to 65, then drops
                 let income;
-                const t = (age - 30) / 60;
                 if (age < 65) {
-                    const peak = 0.42;
-                    income = 50 + 110 * Math.exp(-Math.pow((t - peak) / 0.22, 2));
-                    income *= Math.pow(1.02, yearsIn); // wage growth (slower than inflation)
+                    // Gentle J: slow early, accelerates mid-career
+                    const progress = (age - 30) / 35; // 0 to 1
+                    income = 45 + 75 * Math.pow(progress, 1.4); // gentle curve not linear
+                    income *= inflationFactor;
                 } else {
-                    // Pension — much lower than earned income
-                    income = 35 * inflationFactor * 0.6;
+                    // Retirement — income drops
+                    const retireYears = age - 65;
+                    income = 35 * inflationFactor * Math.max(0.45, 1 - retireYears * 0.025);
                 }
 
                 return { age, essential, lifestyle, income };
