@@ -39,7 +39,7 @@
     </nav>
 
     <!-- Page Header -->
-    <div class="page-hero" style="background-image: url('../images/timeline-header.jpg'); background-size: cover; background-position: center;">
+    <div class="page-hero" style="background-image: url('../images/offices/King-William-St-London-2.jpg'); background-size: cover; background-position: center top;">
         <div class="hero-overlay"></div>
         <div class="page-hero-content">
             <h1>What We Do</h1>
@@ -87,10 +87,9 @@
             </div>
 
             <!-- Legend -->
-            <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-grey);">
+            <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 0; font-size: 0.85rem; color: var(--text-grey);">
                 <span><span style="display: inline-block; width: 14px; height: 14px; background: #001e42; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Essential Spending</span>
                 <span><span style="display: inline-block; width: 14px; height: 14px; background: #3b82f6; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Non-Essential Spending</span>
-                <span><span style="display: inline-block; width: 14px; height: 3px; background: #22c55e; vertical-align: middle; margin-right: 0.4rem;"></span>Earned Income</span>
             </div>
 
             <div id="cashflow-chart" style="position: relative; width: 100%;">
@@ -146,17 +145,19 @@
                 const essential = essentialBase * inflationFactor;
                 const lifestyle = lifestyleBase * inflationFactor;
 
-                // Earned income — gentle J-curve rising to 65, then drops
+                // Earned income — rises with inflation through career, drops at retirement
                 let income;
-                if (age < 65) {
-                    // Gentle J: slow early, accelerates mid-career
-                    const progress = (age - 30) / 35; // 0 to 1
-                    income = 45 + 75 * Math.pow(progress, 1.4); // gentle curve not linear
-                    income *= inflationFactor;
+                if (age < 55) {
+                    income = (50 + (age - 30) * 2.8) * inflationFactor;
+                } else if (age < 65) {
+                    income = (120 + (age - 55) * 0.5) * inflationFactor;
+                } else if (age < 70) {
+                    // Part-time — drops
+                    const peak = (125) * Math.pow(inflation, 35);
+                    income = peak - (age - 65) * (peak * 0.12);
                 } else {
-                    // Retirement — income drops
-                    const retireYears = age - 65;
-                    income = 35 * inflationFactor * Math.max(0.45, 1 - retireYears * 0.025);
+                    // Pension only — flat and low
+                    income = 30 * Math.pow(inflation, 40);
                 }
 
                 return { age, essential, lifestyle, income };
@@ -236,31 +237,8 @@
             // Age label
             ctx.fillText('Age', (LEFT + RIGHT) / 2, BOTTOM + 40);
 
-            // Income line — smooth bezier curve
-            if (barsToShow > 2) {
-                ctx.strokeStyle = '#22c55e';
-                ctx.lineWidth = 3;
-                ctx.lineJoin = 'round';
-                ctx.lineCap = 'round';
-                ctx.beginPath();
-
-                const pts = [];
-                for (let i = 0; i < barsToShow && i < numBars; i++) {
-                    pts.push({
-                        x: LEFT + ((i + 0.5) / numBars) * chartW,
-                        y: toY(data[i].income)
-                    });
-                }
-
-                ctx.moveTo(pts[0].x, pts[0].y);
-                for (let i = 1; i < pts.length; i++) {
-                    const prev = pts[i - 1];
-                    const curr = pts[i];
-                    const cpx = (prev.x + curr.x) / 2;
-                    ctx.bezierCurveTo(cpx, prev.y, cpx, curr.y, curr.x, curr.y);
-                }
-                ctx.stroke();
-            }
+            // Income line — disabled for now
+            // TODO: add back when data is right
 
             // Animate
             if (started && animProgress < 1) {
