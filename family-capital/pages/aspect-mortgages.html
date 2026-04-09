@@ -3,100 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mortgages — Why invest at 5% while paying 6% on debt?">
+    <meta name="description" content="Mortgages — Before we decide where your money should go, we look at what it's already doing.">
     <title>Mortgages | Eight Aspects | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
-        .aspect-hero {
-            background: var(--navy);
-            padding: calc(var(--nav-height) + 4rem) 0 4rem;
-            color: var(--white);
+        :root {
+            --navy: #001e42;
+            --accent: #3b82f6;
+            --white: #ffffff;
+            --off-white: #f3f4f6;
+            --text-grey: #64748b;
+            --border-light: #e2e8f0;
         }
-        .aspect-step {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--muted-blue);
-            margin-bottom: 0.5rem;
+
+        /* HERO */
+        .mortgage-hero {
+            padding: calc(var(--nav-height, 80px) + 4rem) 0 4rem;
+            background: var(--white);
         }
-        .aspect-tier {
-            font-size: 0.8rem;
-            color: var(--muted-blue);
-            margin-bottom: 1rem;
-        }
-        .aspect-icon-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+        .mortgage-hero .container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            gap: 4rem;
         }
-        .aspect-hero h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 0.5rem;
+        .hero-text {
+            flex: 1;
         }
-        .aspect-hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--muted-blue);
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-        }
-        .aspect-content {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-        .aspect-content p {
-            font-size: 1.1rem;
-            line-height: 1.9;
+            font-size: 1.15rem;
             color: var(--text-grey);
             margin-bottom: 1.5rem;
         }
-        .connects-section {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-light);
+        .hero-intro {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #334155;
+            margin-bottom: 1.25rem;
         }
-        .connects-label {
+        .hero-intro-secondary {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-grey);
+            margin-bottom: 1.5rem;
+        }
+        .hero-step {
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+        .hero-illustration {
+            flex: 0 0 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-illustration svg {
+            width: 260px;
+            height: 220px;
+        }
+
+        /* CARDS */
+        .cards-section {
+            padding: 4rem 0;
+            background: var(--off-white);
+        }
+        .cards-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .aspect-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .aspect-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--navy);
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .card-bold {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .card-copy {
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--text-grey);
             margin-bottom: 1rem;
         }
-        .connects-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        .card-copy:last-child {
+            margin-bottom: 0;
         }
-        .connect-pill {
-            display: inline-block;
-            font-size: 0.85rem;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
+
+        /* DEBT SPLIT CARD */
+        .debt-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .debt-card {
+            padding: 1.5rem;
+            border-radius: 10px;
             background: var(--off-white);
+        }
+        .debt-card-bad {
+            border-left: 3px solid #ef4444;
+        }
+        .debt-card-good {
+            border-left: 3px solid #22c55e;
+        }
+        .debt-card .card-icon {
+            margin-bottom: 0.75rem;
+        }
+        .debt-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .debt-card li {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+            padding-left: 0;
+        }
+        .debt-card li.debt-verdict {
+            font-weight: 600;
             color: var(--navy);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* CALLOUT BOX */
+        .callout-box {
+            background: #fef9e7;
+            border-left: 4px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
+        }
+        .callout-box p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #92400e;
+            margin: 0;
+        }
+
+        /* WHAT WE LOOK AT LIST */
+        .look-at-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 1.5rem;
+        }
+        .look-at-list li {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+        }
+        .look-at-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* SUB HEADING */
+        .card-subheading {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--navy);
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* EXPANDABLE */
+        .expandable-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.75rem 0 0;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            transition: color 0.2s ease;
+        }
+        .expandable-trigger:hover {
+            color: var(--navy);
+        }
+        .expandable-trigger svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+        .expandable-trigger.open svg {
+            transform: rotate(180deg);
+        }
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .expandable-inner {
+            padding-top: 1rem;
+        }
+        .expandable-inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .expandable-inner li {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+            padding: 0.3rem 0 0.3rem 1.5rem;
+            position: relative;
+        }
+        .expandable-inner li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border-light);
+        }
+        .expandable-inner .detail-final {
+            font-style: italic;
+            color: var(--navy);
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        /* PSYCHOLOGY CARD */
+        .card-psychology {
+            background: var(--off-white);
+            border-left-color: var(--navy);
+        }
+
+        /* CONNECTION GRID */
+        .connect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        .connect-card {
+            display: block;
+            padding: 1.25rem;
+            border-radius: 10px;
+            background: var(--off-white);
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .connect-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .connect-card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+        .connect-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-grey);
+            font-style: italic;
+        }
+
+        /* SUMMARY */
+        .summary-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+        .summary-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+        }
+        .summary-box .card-bold {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy {
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy:last-child {
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        /* PREV/NEXT NAV */
+        .prev-next {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 2.5rem 0;
+        }
+        .prev-next a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .prev-next a:hover {
+            color: var(--navy);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--navy);
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
             text-decoration: none;
             transition: background 0.2s ease;
         }
-        .connect-pill:hover {
-            background: var(--accent-light);
-            color: var(--accent);
+        .cta-btn:hover {
+            background: #2563eb;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .mortgage-hero .container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .hero-illustration {
+                flex: none;
+                order: -1;
+            }
+            .hero-illustration svg {
+                width: 200px;
+                height: 170px;
+            }
+            .debt-split {
+                grid-template-columns: 1fr;
+            }
+            .connect-grid {
+                grid-template-columns: 1fr;
+            }
+            .aspect-card {
+                padding: 1.75rem;
+            }
+            .prev-next {
+                padding: 2rem 1rem;
+            }
+            .summary-box {
+                padding: 2rem 1.5rem;
+            }
         }
-        .back-link:hover { color: var(--navy); }
     </style>
 </head>
 <body>
@@ -128,59 +463,253 @@
         <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </nav>
 
-    <div class="aspect-hero">
+    <!-- HERO -->
+    <section class="mortgage-hero">
         <div class="container">
-            <div class="aspect-step">Step 1</div>
-            <div class="aspect-tier">Clear the deck</div>
-            <div class="aspect-icon-large" style="background: #E6F1FB; color: #0C447C;">&#8962;</div>
-            <h1>Mortgages</h1>
-            <p class="subtitle">Debt before anything else.</p>
+            <div class="hero-text">
+                <h1>Mortgages</h1>
+                <p class="hero-subtitle">(and everything else you owe)</p>
+                <p class="hero-intro">Before we decide where your money should go, we look at what it's already doing.</p>
+                <p class="hero-intro-secondary">There's a certain snobbery in wealth management where firms will say: 'We don't do mortgages &mdash; we focus on investments.' Which is fine&hellip; until you realise: You can't make sensible investment decisions without understanding the debt behind them.</p>
+                <span class="hero-step">Step 1 of 8 &middot; Clear the deck</span>
+            </div>
+            <div class="hero-illustration">
+                <svg viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- House outline -->
+                    <path d="M130 30L30 110V200H230V110L130 30Z" stroke="#001e42" stroke-width="1.5" stroke-linejoin="round" opacity="0.15"/>
+                    <path d="M130 30L30 110V200H230V110L130 30Z" fill="#001e42" opacity="0.03"/>
+                    <!-- Roof peak -->
+                    <path d="M20 115L130 25L240 115" stroke="#001e42" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
+                    <!-- Door -->
+                    <rect x="110" y="145" width="40" height="55" rx="3" stroke="#001e42" stroke-width="1.5" opacity="0.15"/>
+                    <!-- Windows -->
+                    <rect x="55" y="130" width="35" height="30" rx="2" stroke="#001e42" stroke-width="1.5" opacity="0.15"/>
+                    <rect x="170" y="130" width="35" height="30" rx="2" stroke="#001e42" stroke-width="1.5" opacity="0.15"/>
+                    <!-- Arrows: money flowing -->
+                    <path d="M45 80L80 60" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M80 60L75 67M80 60L73 56" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M215 80L180 60" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M180 60L187 56M180 60L185 67" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M50 185L15 170" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+                    <path d="M15 170L22 167M15 170L19 177" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+                    <path d="M210 185L245 170" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+                    <path d="M245 170L241 177M245 170L238 167" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+                    <!-- Chimney -->
+                    <rect x="165" y="50" width="18" height="35" stroke="#001e42" stroke-width="1.5" opacity="0.12"/>
+                </svg>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <section class="section">
+    <!-- STACKED CARDS -->
+    <section class="cards-section">
         <div class="container">
-            <div class="aspect-content">
-                <p>If someone's paying 6% on a mortgage and you invest their spare cash at 5%, you're going backwards. Paying down the mortgage is a guaranteed, tax-free return. That's why this is step one.</p>
+            <div class="cards-wrapper">
 
-                <p>But it's not just mortgages. Credit cards, personal loans, car finance — high-interest debt is corrosive. Credit card debt at 20%+ is the enemy of any financial plan. Clear it first. Always.</p>
+                <!-- CARD 1: WHY WE START HERE -->
+                <div class="aspect-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                        </svg>
+                    </div>
+                    <p class="card-bold">You don't invest in isolation. You invest around your debt.</p>
+                    <p class="card-copy">Before we talk about portfolios, tax wrappers or long-term returns, we start with a simple question: What do you owe &mdash; and what might you owe in the future?</p>
+                    <p class="card-copy">Because every financial decision you make sits on top of that foundation.</p>
+                </div>
 
-                <p>That said, debt isn't always bad. Sometimes borrowing makes sense — to fund a business venture, to restructure assets for inheritance tax, or to take advantage of an opportunity that won't wait. A well-structured loan at 4% might free up capital that earns 8% elsewhere. The maths matters more than the principle.</p>
+                <!-- CARD 2: GOOD DEBT VS BAD DEBT -->
+                <div class="aspect-card">
+                    <div class="debt-split">
+                        <div class="debt-card debt-card-bad">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                    <line x1="1" y1="10" x2="23" y2="10"/>
+                                </svg>
+                            </div>
+                            <ul>
+                                <li>High-interest credit cards</li>
+                                <li>Expensive personal loans</li>
+                                <li class="debt-verdict">These get cleared first. No debate.</li>
+                            </ul>
+                        </div>
+                        <div class="debt-card debt-card-good">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <ul>
+                                <li>Mortgages (typically the cheapest borrowing you'll access)</li>
+                                <li>Business or qualifying debt (which may carry tax advantages)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="card-bold">Not all debt is bad. But all debt needs thinking about.</p>
+                    <p class="card-copy">Debt itself isn't the issue. How it fits into your wider plan is.</p>
+                </div>
 
-                <p>What we always come back to is this: there's something liberating about clearing debt. When the mortgage goes, something changes. People make better decisions. They sleep differently. They take smarter risks. That clarity is worth more than any investment return.</p>
+                <!-- CARD 3: INVEST OR REDUCE DEBT? -->
+                <div class="aspect-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="3" x2="12" y2="21"/>
+                            <path d="M17 8l-5-5-5 5"/>
+                            <path d="M17 16l-5 5-5-5"/>
+                            <line x1="3" y1="12" x2="6" y2="12"/>
+                            <line x1="18" y1="12" x2="21" y2="12"/>
+                        </svg>
+                    </div>
+                    <p class="card-bold">This is where most people get it wrong.</p>
+                    <p class="card-copy">It's very easy to separate the conversation: 'Here's my mortgage' / 'Here are my investments' &mdash; But in reality, they are directly linked.</p>
 
-                <p>We look at the full picture — mortgages, loans, credit, leverage — and work out what should be paid down, what should be restructured, and what's actually working for you.</p>
+                    <div class="callout-box">
+                        <p>If you're investing cautiously while paying interest on a loan: There are plenty of situations where your investment returns &mdash; after tax &mdash; won't outperform your borrowing cost.</p>
+                    </div>
 
-                <div class="connects-section">
-                    <div class="connects-label">This connects to</div>
-                    <div class="connects-pills">
-                        <a href="aspect-taxation.html" class="connect-pill">Taxation</a>
-                        <a href="aspect-investments.html" class="connect-pill">Investments</a>
-                        <a href="aspect-savings.html" class="connect-pill">Savings</a>
-                        <a href="aspect-protection.html" class="connect-pill">Protection</a>
+                    <p class="card-copy">Which leads to a slightly uncomfortable conclusion: You may be better off reducing the debt first. Not always. But often enough that it should never be ignored.</p>
+
+                    <p class="card-subheading">What we look at:</p>
+                    <ul class="look-at-list">
+                        <li>Interest rates vs expected returns</li>
+                        <li>Tax on income and withdrawals</li>
+                        <li>Cashflow and flexibility</li>
+                        <li>Your overall risk position</li>
+                    </ul>
+
+                    <p class="card-copy">There isn't a default answer &mdash; but there is a right answer for you.</p>
+
+                    <button class="expandable-trigger" onclick="toggleExpand(this)">
+                        The detail
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="expandable-content">
+                        <div class="expandable-inner">
+                            <ul>
+                                <li>Mortgage interest is paid from post-tax income</li>
+                                <li>Investment returns may be: taxed as income, taxed as capital gains, or sheltered (depending on wrappers)</li>
+                                <li>Lower-risk portfolios may not exceed borrowing costs</li>
+                                <li>Overpaying debt reduces flexibility</li>
+                                <li>Investing introduces volatility</li>
+                            </ul>
+                            <p class="detail-final">The decision isn't just about return &mdash; it's about risk, tax, and control.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Prev/Next -->
-                <div style="display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
-                    <a href="eight-aspects.html" class="back-link">&larr; All Eight Aspects</a>
-                    <a href="aspect-income-protection.html" class="back-link">Next: Income Protection &rarr;</a>
+                <!-- CARD 4: SMALL CHANGES, BIG IMPACT -->
+                <div class="aspect-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <polyline points="1 20 1 14 7 14"/>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                        </svg>
+                    </div>
+                    <p class="card-bold">The biggest financial wins are often the least exciting.</p>
+                    <p class="card-copy">We're not always talking about dramatic changes. Sometimes it's: Refinancing a mortgage / Adjusting repayment strategy / Restructuring existing borrowing.</p>
+                    <p class="card-copy">But: If you reduce what you're paying out, you increase what you can invest. And over time, that matters far more than people expect.</p>
                 </div>
+
+                <!-- CARD 5: FAMILY & INFORMAL DEBT -->
+                <div class="aspect-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <p class="card-bold">If money has moved, it counts &mdash; even if it's informal.</p>
+                    <p class="card-copy">A proper plan doesn't stop at banks and lenders. We also look at: Money you've lent to family / Support you may give in the future / Debts owed to you.</p>
+                    <p class="card-copy">Even when it's not written down, it still affects your financial position &mdash; and your options.</p>
+                </div>
+
+                <!-- CARD 6: THE PSYCHOLOGY OF BEING DEBT-FREE -->
+                <div class="aspect-card card-psychology">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <p class="card-bold">Paying off a mortgage feels incredible.</p>
+                    <p class="card-copy">There's no denying it &mdash; it's one of the most satisfying financial milestones there is. A real sense of freedom.</p>
+                    <p class="card-copy">But: That doesn't automatically mean it was the most efficient financial decision. Sometimes it is. Sometimes keeping the debt and deploying capital elsewhere makes more sense.</p>
+                    <p class="card-copy">This is where logic and emotion need to be balanced &mdash; not confused.</p>
+                </div>
+
+                <!-- CARD 7: HOW THIS CONNECTS -->
+                <div class="aspect-card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="6" y1="3" x2="6" y2="15"/>
+                            <circle cx="18" cy="6" r="3"/>
+                            <circle cx="6" cy="18" r="3"/>
+                            <path d="M18 9a9 9 0 0 1-9 9"/>
+                        </svg>
+                    </div>
+                    <p class="card-bold">Debt isn't a separate conversation. It drives everything.</p>
+                    <div class="connect-grid">
+                        <a href="aspect-investments.html" class="connect-card">
+                            <div class="connect-card-title">Investments</div>
+                            <div class="connect-card-desc">whether you repay or invest</div>
+                        </a>
+                        <a href="aspect-taxation.html" class="connect-card">
+                            <div class="connect-card-title">Taxation</div>
+                            <div class="connect-card-desc">how repayments and withdrawals are treated</div>
+                        </a>
+                        <a href="aspect-protection.html" class="connect-card">
+                            <div class="connect-card-title">Protection</div>
+                            <div class="connect-card-desc">what happens if income stops</div>
+                        </a>
+                        <a href="aspect-pensions.html" class="connect-card">
+                            <div class="connect-card-title">Pensions</div>
+                            <div class="connect-card-desc">affordability and long-term planning</div>
+                        </a>
+                    </div>
+                    <p class="card-copy" style="margin-top: 1.25rem;">This is why we deal with it first.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="section section-dark">
+    <!-- SUMMARY -->
+    <section class="summary-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Worth a conversation?</h2>
-                <div class="divider"></div>
-                <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
-                <a href="contact.html" class="btn" style="margin-top: 2rem;">Get in Touch</a>
+            <div class="summary-box">
+                <p class="card-bold">We don't start by asking where to invest your money.</p>
+                <p class="card-copy">We start by making sure nothing is quietly working against you.</p>
+                <p class="card-copy">Because once that's sorted&hellip; Everything else tends to fall into place.</p>
             </div>
         </div>
     </section>
 
+    <!-- PREV/NEXT -->
+    <section style="background: var(--off-white);">
+        <div class="container">
+            <div class="prev-next">
+                <a href="eight-aspects.html">&larr; All Eight Aspects</a>
+                <a href="aspect-income-protection.html">Next: Income Protection &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Worth a conversation?</h2>
+            <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
@@ -217,6 +746,18 @@
             </div>
         </div>
     </footer>
+
     <script src="../js/main.js"></script>
+    <script>
+        function toggleExpand(trigger) {
+            const content = trigger.nextElementSibling;
+            trigger.classList.toggle('open');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+    </script>
 </body>
 </html>
