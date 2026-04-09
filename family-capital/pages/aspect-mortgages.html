@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://kit.fontawesome.com/f56da6eea0.js" crossorigin="anonymous"></script>
     <style>
         :root {
             --navy: #001e42;
@@ -109,12 +110,9 @@
             justify-content: center;
             margin-bottom: 1.25rem;
         }
-        .card-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: var(--navy);
-            stroke-width: 1.5;
-            fill: none;
+        .card-icon i {
+            font-size: 1.5rem;
+            color: var(--navy);
         }
         .card-bold {
             font-family: 'Playfair Display', serif;
@@ -464,39 +462,21 @@
     </nav>
 
     <!-- HERO -->
-    <section class="mortgage-hero">
-        <div class="container">
-            <div class="hero-text">
-                <h1>Mortgages</h1>
-                <p class="hero-subtitle">(and everything else you owe)</p>
-                <p class="hero-intro">Before we decide where your money should go, we look at what it's already doing.</p>
-                <p class="hero-intro-secondary">There's a certain snobbery in wealth management where firms will say: 'We don't do mortgages &mdash; we focus on investments.' Which is fine&hellip; until you realise: You can't make sensible investment decisions without understanding the debt behind them.</p>
-                <span class="hero-step">Step 1 of 8 &middot; Clear the deck</span>
-            </div>
-            <div class="hero-illustration">
-                <svg viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- House outline -->
-                    <path d="M130 30L30 110V200H230V110L130 30Z" stroke="#001e42" stroke-width="1.5" stroke-linejoin="round" opacity="0.15"/>
-                    <path d="M130 30L30 110V200H230V110L130 30Z" fill="#001e42" opacity="0.03"/>
-                    <!-- Roof peak -->
-                    <path d="M20 115L130 25L240 115" stroke="#001e42" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
-                    <!-- Door -->
-                    <rect x="110" y="145" width="40" height="55" rx="3" stroke="#001e42" stroke-width="1.5" opacity="0.15"/>
-                    <!-- Windows -->
-                    <rect x="55" y="130" width="35" height="30" rx="2" stroke="#001e42" stroke-width="1.5" opacity="0.15"/>
-                    <rect x="170" y="130" width="35" height="30" rx="2" stroke="#001e42" stroke-width="1.5" opacity="0.15"/>
-                    <!-- Arrows: money flowing -->
-                    <path d="M45 80L80 60" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-                    <path d="M80 60L75 67M80 60L73 56" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-                    <path d="M215 80L180 60" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-                    <path d="M180 60L187 56M180 60L185 67" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-                    <path d="M50 185L15 170" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-                    <path d="M15 170L22 167M15 170L19 177" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-                    <path d="M210 185L245 170" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-                    <path d="M245 170L241 177M245 170L238 167" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-                    <!-- Chimney -->
-                    <rect x="165" y="50" width="18" height="35" stroke="#001e42" stroke-width="1.5" opacity="0.12"/>
-                </svg>
+    <div class="page-hero" style="background-image: url('../images/Mortgage.jpg'); background-size: cover; background-position: center;">
+        <div class="hero-overlay"></div>
+        <div class="page-hero-content" style="text-align: left; max-width: 600px; margin-left: 8%;">
+            <span class="hero-step" style="display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted-blue); margin-bottom: 1rem;">Step 1 of 8 &middot; Clear the deck</span>
+            <h1>Mortgages</h1>
+            <p style="font-size: 1.3rem; color: var(--muted-blue); font-style: italic; margin-top: 0.5rem;">(and everything else you owe)</p>
+            <p style="font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-top: 1.5rem; line-height: 1.7;">Before we decide where your money should go, we look at what it's already doing.</p>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <section class="section">
+        <div class="container" style="max-width: 800px;">
+            <div class="intro-text">
+                <p>There's a certain snobbery in wealth management where firms will say: "We don't do mortgages — we focus on investments." Which is fine… until you realise: You can't make sensible investment decisions without understanding the debt behind them.</p>
             </div>
         </div>
     </section>
@@ -508,12 +488,7 @@
 
                 <!-- CARD 1: WHY WE START HERE -->
                 <div class="aspect-card">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-                        </svg>
-                    </div>
+                    <div class="card-icon"><i class="fa-light fa-compass"></i></div>
                     <p class="card-bold">You don't invest in isolation. You invest around your debt.</p>
                     <p class="card-copy">Before we talk about portfolios, tax wrappers or long-term returns, we start with a simple question: What do you owe &mdash; and what might you owe in the future?</p>
                     <p class="card-copy">Because every financial decision you make sits on top of that foundation.</p>
@@ -521,48 +496,26 @@
 
                 <!-- CARD 2: GOOD DEBT VS BAD DEBT -->
                 <div class="aspect-card">
+                    <p class="card-bold">Not all debt is bad. But all debt needs thinking about.</p>
                     <div class="debt-split">
                         <div class="debt-card debt-card-bad">
-                            <div class="card-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                                    <line x1="1" y1="10" x2="23" y2="10"/>
-                                </svg>
-                            </div>
-                            <ul>
-                                <li>High-interest credit cards</li>
-                                <li>Expensive personal loans</li>
-                                <li class="debt-verdict">These get cleared first. No debate.</li>
-                            </ul>
+                            <div class="card-icon"><i class="fa-light fa-credit-card"></i></div>
+                            <p class="card-copy">High-interest credit cards</p>
+                            <p class="card-copy">Expensive personal loans</p>
+                            <p class="card-bold" style="font-size: 1rem;">These get cleared first. No debate.</p>
                         </div>
                         <div class="debt-card debt-card-good">
-                            <div class="card-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                    <polyline points="9 22 9 12 15 12 15 22"/>
-                                </svg>
-                            </div>
-                            <ul>
-                                <li>Mortgages (typically the cheapest borrowing you'll access)</li>
-                                <li>Business or qualifying debt (which may carry tax advantages)</li>
-                            </ul>
+                            <div class="card-icon"><i class="fa-light fa-house"></i></div>
+                            <p class="card-copy">Mortgages (typically the cheapest borrowing you'll access)</p>
+                            <p class="card-copy">Business or qualifying debt (which may carry tax advantages)</p>
                         </div>
                     </div>
-                    <p class="card-bold">Not all debt is bad. But all debt needs thinking about.</p>
                     <p class="card-copy">Debt itself isn't the issue. How it fits into your wider plan is.</p>
                 </div>
 
-                <!-- CARD 3: INVEST OR REDUCE DEBT? -->
+                <!-- CARD 3: INVEST OR REDUCE DEBT -->
                 <div class="aspect-card">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="12" y1="3" x2="12" y2="21"/>
-                            <path d="M17 8l-5-5-5 5"/>
-                            <path d="M17 16l-5 5-5-5"/>
-                            <line x1="3" y1="12" x2="6" y2="12"/>
-                            <line x1="18" y1="12" x2="21" y2="12"/>
-                        </svg>
-                    </div>
+                    <div class="card-icon"><i class="fa-light fa-scale-balanced"></i></div>
                     <p class="card-bold">This is where most people get it wrong.</p>
                     <p class="card-copy">It's very easy to separate the conversation: 'Here's my mortgage' / 'Here are my investments' &mdash; But in reality, they are directly linked.</p>
 
@@ -602,13 +555,7 @@
 
                 <!-- CARD 4: SMALL CHANGES, BIG IMPACT -->
                 <div class="aspect-card">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="23 4 23 10 17 10"/>
-                            <polyline points="1 20 1 14 7 14"/>
-                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-                        </svg>
-                    </div>
+                    <div class="card-icon"><i class="fa-light fa-arrows-rotate"></i></div>
                     <p class="card-bold">The biggest financial wins are often the least exciting.</p>
                     <p class="card-copy">We're not always talking about dramatic changes. Sometimes it's: Refinancing a mortgage / Adjusting repayment strategy / Restructuring existing borrowing.</p>
                     <p class="card-copy">But: If you reduce what you're paying out, you increase what you can invest. And over time, that matters far more than people expect.</p>
@@ -616,14 +563,7 @@
 
                 <!-- CARD 5: FAMILY & INFORMAL DEBT -->
                 <div class="aspect-card">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
+                    <div class="card-icon"><i class="fa-light fa-people-group"></i></div>
                     <p class="card-bold">If money has moved, it counts &mdash; even if it's informal.</p>
                     <p class="card-copy">A proper plan doesn't stop at banks and lenders. We also look at: Money you've lent to family / Support you may give in the future / Debts owed to you.</p>
                     <p class="card-copy">Even when it's not written down, it still affects your financial position &mdash; and your options.</p>
@@ -631,12 +571,7 @@
 
                 <!-- CARD 6: THE PSYCHOLOGY OF BEING DEBT-FREE -->
                 <div class="aspect-card card-psychology">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
-                    </div>
+                    <div class="card-icon"><i class="fa-light fa-lock-open"></i></div>
                     <p class="card-bold">Paying off a mortgage feels incredible.</p>
                     <p class="card-copy">There's no denying it &mdash; it's one of the most satisfying financial milestones there is. A real sense of freedom.</p>
                     <p class="card-copy">But: That doesn't automatically mean it was the most efficient financial decision. Sometimes it is. Sometimes keeping the debt and deploying capital elsewhere makes more sense.</p>
@@ -645,14 +580,7 @@
 
                 <!-- CARD 7: HOW THIS CONNECTS -->
                 <div class="aspect-card">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="6" y1="3" x2="6" y2="15"/>
-                            <circle cx="18" cy="6" r="3"/>
-                            <circle cx="6" cy="18" r="3"/>
-                            <path d="M18 9a9 9 0 0 1-9 9"/>
-                        </svg>
-                    </div>
+                    <div class="card-icon"><i class="fa-light fa-diagram-project"></i></div>
                     <p class="card-bold">Debt isn't a separate conversation. It drives everything.</p>
                     <div class="connect-grid">
                         <a href="aspect-investments.html" class="connect-card">
