@@ -124,38 +124,78 @@
 
         .aspect-card {
             background: var(--white);
-            border: 0.5px solid rgba(0,0,0,0.12);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border: none;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
 
+        .aspect-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--border-light);
+            transition: background 0.3s ease;
+        }
+
         .aspect-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+        }
+
+        .aspect-card:hover::before {
+            background: var(--accent);
         }
 
         .aspect-icon {
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.3rem;
+            margin: 0 auto 1.2rem;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .aspect-card:hover .aspect-icon {
+            transform: scale(1.1);
         }
 
         .aspect-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--navy);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .aspect-card-arrow {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, letter-spacing 0.3s ease;
+        }
+
+        .aspect-card:hover .aspect-card-arrow {
+            color: var(--accent);
+            letter-spacing: 2px;
         }
 
         .aspect-card p {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-grey);
         }
 
@@ -352,43 +392,43 @@
             <div class="aspects-grid">
                 <a href="aspect-mortgages.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #E6F1FB; color: #0C447C;">⌂</div>
-                    <h3>Mortgages &amp; Debt</h3>
-                    <p>Debt before anything else</p>
+                    <h3>Mortgages</h3>
+                    <p>Debt before anything else</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
                 <a href="aspect-income-protection.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #EEEDFE; color: #3C3489;">⏱</div>
                     <h3>Income Protection</h3>
-                    <p>Replacing earnings</p>
+                    <p>Replacing earnings</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
                 <a href="aspect-protection.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #E1F5EE; color: #085041;">⛨</div>
                     <h3>Protection</h3>
-                    <p>Life &amp; critical illness</p>
+                    <p>Life &amp; critical illness</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
                 <a href="aspect-pensions.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #FAEEDA; color: #633806;">⏳</div>
                     <h3>Pensions</h3>
-                    <p>Accumulation &amp; drawdown</p>
+                    <p>Accumulation &amp; drawdown</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
                 <a href="aspect-savings.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #FAECE7; color: #712B13;">💰</div>
                     <h3>Savings</h3>
-                    <p>ISAs &amp; cash</p>
+                    <p>ISAs &amp; cash</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
                 <a href="aspect-investments.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #FBEAF0; color: #72243E;">📈</div>
                     <h3>Investments</h3>
-                    <p>Portfolios &amp; DFM</p>
+                    <p>Portfolios &amp; DFM</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
                 <a href="aspect-taxation.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #EAF3DE; color: #27500A;">📋</div>
                     <h3>Taxation</h3>
-                    <p>CGT, IHT, income</p>
+                    <p>CGT, IHT, income</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
                 <a href="aspect-trusts.html" class="aspect-card">
                     <div class="aspect-icon" style="background: #F1EFE8; color: #444441;">👥</div>
                     <h3>Trusts</h3>
-                    <p>FICs &amp; settlements</p>
+                    <p>FICs &amp; settlements</p><span class="aspect-card-arrow">Explore →</span>
                 </a>
             </div>
         </div>
