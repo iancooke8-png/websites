@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eight aspects of holistic financial planning — in order. Most firms start at step 6. We start at step 1.">
+    <title>Eight Aspects | Family Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Hierarchy */
+        .hierarchy {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tier-label {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin: 3rem 0 1.5rem;
+            padding-left: 60px;
+        }
+
+        .tier-label:first-of-type {
+            margin-top: 0;
+        }
+
+        .step {
+            position: relative;
+            padding-left: 60px;
+            padding-bottom: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Connecting line */
+        .step::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-light);
+        }
+
+        .step:last-child::before {
+            display: none;
+        }
+
+        /* Step number circle */
+        .step-number {
+            position: absolute;
+            left: 9px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            z-index: 1;
+        }
+
+        /* Step header */
+        .step-header {
+            background: var(--white);
+            border: 0.5px solid rgba(0,0,0,0.12);
+            border-radius: 12px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .step-header:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .step-header h3 {
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        .step-header .step-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-grey);
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+
+        .step-chevron {
+            font-size: 1.2rem;
+            color: var(--text-grey);
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .step.open .step-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Step content */
+        .step-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .step-content-inner {
+            padding: 1.5rem 1.25rem;
+            background: var(--white);
+            border: 0.5px solid rgba(0,0,0,0.08);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            margin-top: -12px;
+        }
+
+        .step-content-inner p {
+            color: var(--text-grey);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .step-content-inner p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Connection pills */
+        .connects-to {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .connects-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-grey);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .connect-pill {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background: var(--off-white);
+            color: var(--navy);
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        .connect-pill:hover {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            padding: 3rem 0;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--navy);
+        }
+
+        @media (max-width: 600px) {
+            .step { padding-left: 45px; }
+            .tier-label { padding-left: 45px; }
+            .step-number { left: 4px; }
+            .step::before { left: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav scrolled">
+        <a href="../" class="nav-logo">
+            <img src="../images/pwg-logo.png" alt="Family Capital">
+        </a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li class="nav-dropdown">
+                <a href="about.html" class="nav-dropdown-toggle">About Us</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                </ul>
+            </li>
+            <li><a href="what-we-do.html" class="active">What We Do</a></li>
+            <li><a href="people.html">Team</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="eyebrow" style="color: var(--muted-blue);">Our framework</div>
+            <h1>Eight aspects. In order.</h1>
+            <p class="subtitle" style="max-width: 650px; margin: 1rem auto 0; line-height: 1.7;">
+                This isn't a menu — it's a sequence. Each step only makes sense once the one before it is sorted. But they also overlap and interact — you're always considering all eight, even when you're focused on one. Most firms skip straight to step six. We start at one.
+            </p>
+        </div>
+    </div>
+
+    <!-- Hierarchy -->
+    <section class="section">
+        <div class="container">
+            <div class="hierarchy">
+
+                <div class="tier-label">Clear the deck</div>
+
+                <!-- 1. Mortgages -->
+                <div class="step" id="mortgages">
+                    <div class="step-number" style="background: #0C447C;">1</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Mortgages</h3>
+                            <div class="step-subtitle">Why invest at 5% while paying 6% on debt?</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>If someone's paying 6% on a mortgage and you invest their spare cash at 5%, you're going backwards. Paying down the mortgage is a guaranteed, tax-free return. And there's something else — when the mortgage goes, something changes. People make better decisions. They sleep differently. They take smarter risks.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('taxation')">Taxation</button>
+                                <button class="connect-pill" onclick="scrollToStep('investments')">Investments</button>
+                                <button class="connect-pill" onclick="scrollToStep('savings')">Savings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Income Protection -->
+                <div class="step" id="income-protection">
+                    <div class="step-number" style="background: #3C3489;">2</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Income Protection</h3>
+                            <div class="step-subtitle">Your income funds everything else on this list.</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>Your ability to earn is your most valuable asset. If it stops, everything else stops with it — mortgage payments, pension contributions, savings. This is the foundation that makes the rest possible.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('protection')">Protection</button>
+                                <button class="connect-pill" onclick="scrollToStep('pensions')">Pensions</button>
+                                <button class="connect-pill" onclick="scrollToStep('savings')">Savings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Protection -->
+                <div class="step" id="protection">
+                    <div class="step-number" style="background: #085041;">3</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Protection</h3>
+                            <div class="step-subtitle">One event can unwind decades of planning.</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>Life cover, critical illness, key person insurance. Not exciting. But without it, a single event can destroy decades of careful work. And we always put policies in trust — every single time. Why wouldn't you? Without the trust, the proceeds go through probate and potentially into the estate for IHT. With a trust, they go where you want them, when you want them.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('trusts')">Trusts</button>
+                                <button class="connect-pill" onclick="scrollToStep('income-protection')">Income Protection</button>
+                                <button class="connect-pill" onclick="scrollToStep('taxation')">Taxation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tier-label">Build the structure</div>
+
+                <!-- 4. Pensions -->
+                <div class="step" id="pensions">
+                    <div class="step-number" style="background: #633806;">4</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Pensions</h3>
+                            <div class="step-subtitle">The most tax-efficient wrapper — if used properly.</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>Pensions offer unmatched tax relief — but only if structured alongside everything else. Contribution strategy, drawdown planning, death benefits. Get this wrong and you leave money on the table or hit a tax charge you didn't see coming.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('taxation')">Taxation</button>
+                                <button class="connect-pill" onclick="scrollToStep('investments')">Investments</button>
+                                <button class="connect-pill" onclick="scrollToStep('savings')">Savings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Savings -->
+                <div class="step" id="savings">
+                    <div class="step-number" style="background: #712B13;">5</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Savings</h3>
+                            <div class="step-subtitle">Liquidity gives you options.</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>ISAs, cash reserves, emergency funds. The boring stuff that gives you freedom. How much in cash versus invested depends on your whole plan — not a rule of thumb from a weekend supplement.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('investments')">Investments</button>
+                                <button class="connect-pill" onclick="scrollToStep('taxation')">Taxation</button>
+                                <button class="connect-pill" onclick="scrollToStep('pensions')">Pensions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Investments -->
+                <div class="step" id="investments">
+                    <div class="step-number" style="background: #72243E;">6</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Investments</h3>
+                            <div class="step-subtitle">Step six. Not step one.</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>This is where most firms start. We think it should come last — after you know the tax position, the wrapper, the timescale, and the purpose. The portfolio might look balanced overall, but where each asset sits matters enormously. Growth assets in the GIA where you're not crystallising income. Dividend-heavy holdings inside the ISA where income is tax-free. Lower-risk income producers in the pension. Same allocation, completely different tax outcome.</p>
+                            <p>Our DFM runs at 0.1% because the real value is in everything above it.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('taxation')">Taxation</button>
+                                <button class="connect-pill" onclick="scrollToStep('savings')">Savings</button>
+                                <button class="connect-pill" onclick="scrollToStep('pensions')">Pensions</button>
+                                <button class="connect-pill" onclick="scrollToStep('trusts')">Trusts</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tier-label">Keep it together</div>
+
+                <!-- 7. Taxation -->
+                <div class="step" id="taxation">
+                    <div class="step-number" style="background: #27500A;">7</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Taxation</h3>
+                            <div class="step-subtitle">Tax touches every single aspect.</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>Income tax on earnings, CGT on gains, IHT on death, VAT on advice fees. Tax isn't a separate service — it runs through every decision above. If your adviser doesn't understand your full tax position, they're advising blind.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('mortgages')">Mortgages</button>
+                                <button class="connect-pill" onclick="scrollToStep('pensions')">Pensions</button>
+                                <button class="connect-pill" onclick="scrollToStep('investments')">Investments</button>
+                                <button class="connect-pill" onclick="scrollToStep('trusts')">Trusts</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Trusts -->
+                <div class="step" id="trusts">
+                    <div class="step-number" style="background: #444441;">8</div>
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <div>
+                            <h3>Trusts</h3>
+                            <div class="step-subtitle">Move wealth between generations — properly.</div>
+                        </div>
+                        <span class="step-chevron">▾</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-content-inner">
+                            <p>Trusts, family investment companies, discounted gift trusts, absolute trusts. These are the structures that preserve wealth across generations — but only when integrated with everything above. Get the order wrong and you create tax charges, not savings.</p>
+                            <div class="connects-to">
+                                <span class="connects-label">Connects to:</span>
+                                <button class="connect-pill" onclick="scrollToStep('protection')">Protection</button>
+                                <button class="connect-pill" onclick="scrollToStep('taxation')">Taxation</button>
+                                <button class="connect-pill" onclick="scrollToStep('investments')">Investments</button>
+                                <button class="connect-pill" onclick="scrollToStep('pensions')">Pensions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-note">
+                Most firms start at step 6. We start at step 1.
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Worth a conversation?</h2>
+                <div class="divider"></div>
+                <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
+                <a href="contact.html" class="btn" style="margin-top: 2rem;">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
+                    <p>Wealth management for families and entrepreneurs.</p>
+                    <p class="footer-group-link">Part of <a href="https://www.perpetualwealth.co.uk">Perpetual Wealth Group</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="people.html">Team</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://www.wealthportal.co.uk/">Client Login</a></li>
+                        <li><a href="timeline.html">Our Timeline</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-regulatory">
+                <p>Issued by Family Capital Limited (Reg. No. 10457142), which is authorised and regulated by the Financial Conduct Authority.</p>
+                <div class="footer-legal-links">
+                    <a href="important-info.html">Important Information</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="modern-slavery.html">Modern Slavery Statement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function toggleStep(header) {
+            const step = header.parentElement;
+            const content = step.querySelector('.step-content');
+            const isOpen = step.classList.contains('open');
+
+            // Close all others
+            document.querySelectorAll('.step.open').forEach(s => {
+                if (s !== step) {
+                    s.classList.remove('open');
+                    s.querySelector('.step-content').style.maxHeight = '0';
+                }
+            });
+
+            if (isOpen) {
+                step.classList.remove('open');
+                content.style.maxHeight = '0';
+            } else {
+                step.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        function scrollToStep(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Open it
+                setTimeout(() => {
+                    const header = el.querySelector('.step-header');
+                    if (header && !el.classList.contains('open')) {
+                        toggleStep(header);
+                    }
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>

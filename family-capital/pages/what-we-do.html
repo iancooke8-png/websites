@@ -3,12 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="What Family Capital does — holistic financial planning, investment management, and family office services. All one thing.">
+    <meta name="description" content="What Family Capital does — holistic financial planning where investing comes last and everything else comes first.">
     <title>What We Do | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .wwd-hero {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .wwd-hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .wwd-hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .wwd-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0,30,66,0.85) 0%, rgba(0,30,66,0.6) 40%, rgba(0,30,66,0.2) 100%);
+            z-index: 1;
+        }
+
+        .wwd-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: calc(var(--nav-height) + 4rem) 0 4rem;
+            margin-left: 8%;
+        }
+
+        .wwd-hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .wwd-hero-content h1 em {
+            font-style: italic;
+            display: block;
+            color: var(--muted-blue);
+        }
+
+        .wwd-hero-content p {
+            font-size: 1.1rem;
+            color: var(--muted-blue);
+            line-height: 1.7;
+            margin-top: 1.5rem;
+        }
+
+        /* Bar chart */
+        .tax-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2rem;
+            height: 280px;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .tax-bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .tax-bar {
+            width: 80px;
+            border-radius: 6px 6px 0 0;
+            transition: height 1.5s ease;
+            position: relative;
+        }
+
+        .tax-bar-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-grey);
+            text-align: center;
+            max-width: 100px;
+        }
+
+        .tax-bar-value {
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* Eight aspects grid */
+        .aspects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .aspect-card {
+            background: var(--white);
+            border: 0.5px solid rgba(0,0,0,0.12);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .aspect-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .aspect-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.3rem;
+        }
+
+        .aspect-card h3 {
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .aspect-card p {
+            font-size: 0.8rem;
+            color: var(--text-grey);
+        }
+
+        /* Service cards */
+        .service-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 0.5px solid rgba(0,0,0,0.12);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .service-card.featured {
+            border: 2px solid var(--accent);
+        }
+
+        .service-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-price {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .service-note {
+            font-size: 0.8rem;
+            color: var(--text-grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .fee-breakdown {
+            margin-bottom: 1.5rem;
+        }
+
+        .fee-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .fee-row.total {
+            font-weight: 700;
+            color: var(--navy);
+            border-bottom: none;
+        }
+
+        .service-card .body-text {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-grey);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .aspects-grid { grid-template-columns: repeat(2, 1fr); }
+            .service-cards { grid-template-columns: 1fr; }
+            .wwd-hero-content { margin-left: 5%; max-width: 90%; }
+            .wwd-hero-overlay {
+                background: linear-gradient(180deg, rgba(0,30,66,0.8) 0%, rgba(0,30,66,0.5) 100%);
+            }
+            .tax-bars { gap: 1rem; }
+            .tax-bar { width: 60px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -17,7 +267,7 @@
         <a href="../" class="nav-logo">
             <img src="../images/pwg-logo.png" alt="Family Capital">
         </a>
-                <ul class="nav-links">
+        <ul class="nav-links">
             <li><a href="../">Home</a></li>
             <li class="nav-dropdown">
                 <a href="about.html" class="nav-dropdown-toggle">About Us</a>
@@ -27,283 +277,183 @@
                     <li><a href="timeline.html">Timeline</a></li>
                 </ul>
             </li>
-            <li><a href="what-we-do.html">What We Do</a></li>
+            <li><a href="what-we-do.html" class="active">What We Do</a></li>
             <li><a href="people.html">Team</a></li>
             <li><a href="locations.html">Locations</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
-
         <button class="nav-toggle" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <!-- Page Header -->
-    <div class="page-hero" style="background-image: url('../images/offices/King-William-St-London-2.jpg'); background-size: cover; background-position: center top;">
-        <div class="hero-overlay"></div>
-        <div class="page-hero-content">
-            <h1>What We Do</h1>
+    <!-- Hero -->
+    <section class="wwd-hero">
+        <div class="wwd-hero-media">
+            <video autoplay muted loop playsinline poster="../media/hero-poster.jpg">
+                <source src="../media/hero-web.mp4" type="video/mp4">
+            </video>
         </div>
-    </div>
+        <div class="wwd-hero-overlay"></div>
+        <div class="wwd-hero-content">
+            <div class="eyebrow" style="color: var(--muted-blue);">What we do</div>
+            <h1>Investing comes last.<em>Everything else comes first.</em></h1>
+            <p>Tax, structure, protection, pensions — then investment. Not the other way round. That's how every plan starts.</p>
+        </div>
+    </section>
 
-    <!-- Main Content -->
+    <!-- You can't advise in isolation -->
     <section class="section">
         <div class="container">
-            <div class="intro-text reveal">
-                <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); line-height: 1.6; margin-bottom: 2rem;">
-                    We look after your entire financial life.
-                </p>
-                <p>
-                    Most firms carve financial advice into departments — wealth planning here,
-                    investment management there, tax over there. Separate teams, separate
-                    systems, separate conversations. We don't work like that.
-                </p>
-                <p>
-                    At Family Capital, it's all one thing. Your pension, your investments,
-                    your trust, your family investment company, your protection, your tax
-                    planning — it all connects. One team, one platform, one complete picture
-                    of everything you own, owe, and need.
-                </p>
-                <p>
-                    We call it holistic financial planning, but really it's just common sense.
-                    You can't plan someone's retirement without understanding their tax position.
-                    You can't structure a trust without knowing the investment strategy. You can't
-                    manage investments without knowing what they're for. It's all one thing.
-                </p>
+            <div class="two-col">
+                <div class="two-col-text reveal-left">
+                    <div class="eyebrow">The problem</div>
+                    <h2>You can't advise in isolation</h2>
+                    <p>
+                        Investing without planning means losing 45% to income tax or 39.5% on
+                        dividends before your money does anything. Structure it properly and
+                        far more works for you.
+                    </p>
+                    <p>
+                        Most firms sell investment management and bolt planning on as an
+                        afterthought. We do it the other way round.
+                    </p>
+                </div>
+                <div class="reveal-right">
+                    <p style="text-align: center; font-size: 0.85rem; color: var(--text-grey); margin-bottom: 0.5rem;">What you keep from £100k income</p>
+                    <div class="tax-bars" id="tax-chart">
+                        <div class="tax-bar-wrapper">
+                            <div class="tax-bar" style="height: 0; background: #ef4444;" data-height="140">
+                                <span class="tax-bar-value" style="color: #ef4444;">£55k</span>
+                            </div>
+                            <span class="tax-bar-label">No planning</span>
+                        </div>
+                        <div class="tax-bar-wrapper">
+                            <div class="tax-bar" style="height: 0; background: #f59e0b;" data-height="184">
+                                <span class="tax-bar-value" style="color: #f59e0b;">£72k</span>
+                            </div>
+                            <span class="tax-bar-label">Basic planning</span>
+                        </div>
+                        <div class="tax-bar-wrapper">
+                            <div class="tax-bar" style="height: 0; background: #22c55e;" data-height="224">
+                                <span class="tax-bar-value" style="color: #22c55e;">£88k</span>
+                            </div>
+                            <span class="tax-bar-label">Holistic planning</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Cashflow Animation -->
-    <section class="section section-light" style="padding-bottom: 4rem;">
-        <div class="container" style="max-width: 1000px;">
-            <div class="intro-text reveal" style="margin-bottom: 2rem;">
-                <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); line-height: 1.6; margin-bottom: 1rem;">
-                    Life doesn't happen in straight lines. Neither does your money.
-                </p>
-                <p>
-                    This is why we plan holistically — because every milestone affects everything else. We built the cashflow tools that model your entire financial future.
-                </p>
+    <!-- Eight Aspects -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="eyebrow">Our framework</div>
+                <h2>Eight aspects, one plan</h2>
+                <div class="divider"></div>
+                <p>We consider eight connected aspects in every plan. They have a priority order but they all interact — you can't advise on one without the others.</p>
             </div>
 
-            <!-- Legend -->
-            <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 0; font-size: 0.85rem; color: var(--text-grey);">
-                <span><span style="display: inline-block; width: 14px; height: 14px; background: #001e42; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Essential Spending</span>
-                <span><span style="display: inline-block; width: 14px; height: 14px; background: #3b82f6; border-radius: 2px; vertical-align: middle; margin-right: 0.4rem;"></span>Non-Essential Spending</span>
+            <div class="aspects-grid">
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #E6F1FB; color: #0C447C;">⌂</div>
+                    <h3>Mortgages</h3>
+                    <p>Debt before anything else</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #EEEDFE; color: #3C3489;">⏱</div>
+                    <h3>Income Protection</h3>
+                    <p>Replacing earnings</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #E1F5EE; color: #085041;">⛨</div>
+                    <h3>Protection</h3>
+                    <p>Life &amp; critical illness</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #FAEEDA; color: #633806;">⏳</div>
+                    <h3>Pensions</h3>
+                    <p>Accumulation &amp; drawdown</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #FAECE7; color: #712B13;">💰</div>
+                    <h3>Savings</h3>
+                    <p>ISAs &amp; cash</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #FBEAF0; color: #72243E;">📈</div>
+                    <h3>Investments</h3>
+                    <p>Portfolios &amp; DFM</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #EAF3DE; color: #27500A;">📋</div>
+                    <h3>Taxation</h3>
+                    <p>CGT, IHT, income</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon" style="background: #F1EFE8; color: #444441;">👥</div>
+                    <h3>Trusts</h3>
+                    <p>FICs &amp; settlements</p>
+                </div>
             </div>
 
-            <div id="cashflow-chart" style="position: relative; width: 100%;">
-                <canvas id="cf-canvas" width="1000" height="500" style="width: 100%; height: auto;"></canvas>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="eight-aspects.html" class="card-link" style="font-size: 1rem;">Explore how they connect →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- How we work with you -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>How we work with you</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="service-cards">
+                <div class="service-card featured">
+                    <div class="service-tag">Full financial planning</div>
+                    <h3>Families &amp; entrepreneurs</h3>
+                    <div class="service-price">1% per annum</div>
+                    <div class="service-note">No VAT · tiered for larger portfolios</div>
+                    <div class="fee-breakdown">
+                        <div class="fee-row">
+                            <span>Financial planning &amp; advice</span>
+                            <span>0.9%</span>
+                        </div>
+                        <div class="fee-row">
+                            <span>Discretionary investment management</span>
+                            <span>0.1%</span>
+                        </div>
+                        <div class="fee-row total">
+                            <span>Total</span>
+                            <span>1.0%</span>
+                        </div>
+                    </div>
+                    <p class="body-text">All eight aspects. One fee. Planned together, managed together, reviewed together.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-tag">Execution only</div>
+                    <h3>Industry professionals</h3>
+                    <div class="service-price">0.4% per annum</div>
+                    <div class="service-note">For qualified advisers &amp; planners</div>
+                    <p class="body-text">Our platform, our DFM, your decisions. No advice fee — just execution and custody.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <script>
-    (function() {
-        const canvas = document.getElementById('cf-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        const W = 1000, H = 500;
-        const LEFT = 60, RIGHT = 960, TOP = 40, BOTTOM = 420;
-        const chartW = RIGHT - LEFT;
-        const chartH = BOTTOM - TOP;
-
-        // Data: ages 30–90, essential spending, lifestyle spending, income
-        const years = [];
-        for (let a = 30; a <= 90; a++) years.push(a);
-        const numBars = years.length;
-
-        // J-curve spending with inflation, earned income peaks then drops at retirement
-        function getData() {
-            const inflation = 1.02; // 2% annual inflation — gentler J-curve
-
-            return years.map(age => {
-                const yearsIn = age - 30;
-                const inflationFactor = Math.pow(inflation, yearsIn);
-
-                // Base essential spending — mortgage heavy early, drops mid-life, care costs late
-                let essentialBase;
-                if (age < 40) essentialBase = 40;          // mortgage + kids
-                else if (age < 50) essentialBase = 35;      // mortgage reducing
-                else if (age < 60) essentialBase = 28;      // mortgage paid off
-                else if (age < 70) essentialBase = 25;      // basics
-                else essentialBase = 25 + (age - 70) * 0.5; // care costs creep gently
-
-                // School fees
-                if (age >= 40 && age <= 52) essentialBase += 10;
-
-                // Non-essential — grows mid-life, jumps at retirement (travel, hobbies), eases later
-                let lifestyleBase;
-                if (age < 40) lifestyleBase = 8;
-                else if (age < 50) lifestyleBase = 12;
-                else if (age < 60) lifestyleBase = 18;
-                else if (age < 68) lifestyleBase = 30;  // retirement — travel, enjoying life
-                else if (age < 75) lifestyleBase = 25;  // still active
-                else lifestyleBase = 15;                 // slowing down
-
-                // Apply inflation J-curve to both
-                const essential = essentialBase * inflationFactor;
-                const lifestyle = lifestyleBase * inflationFactor;
-
-                // Earned income — rises with inflation through career, drops at retirement
-                let income;
-                if (age < 55) {
-                    income = (50 + (age - 30) * 2.8) * inflationFactor;
-                } else if (age < 65) {
-                    income = (120 + (age - 55) * 0.5) * inflationFactor;
-                } else if (age < 70) {
-                    // Part-time — drops
-                    const peak = (125) * Math.pow(inflation, 35);
-                    income = peak - (age - 65) * (peak * 0.12);
-                } else {
-                    // Pension only — flat and low
-                    income = 30 * Math.pow(inflation, 40);
-                }
-
-                return { age, essential, lifestyle, income };
-            });
-        }
-
-        const data = getData();
-        const maxVal = Math.ceil(Math.max(...data.map(d => Math.max(d.essential + d.lifestyle, d.income))) / 20) * 20 + 20;
-        let animProgress = 0;
-        let started = false;
-
-        function toY(val) {
-            return BOTTOM - (val / maxVal) * chartH;
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, W, H);
-
-            // Axes
-            ctx.strokeStyle = '#e2e8f0';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(LEFT, TOP);
-            ctx.lineTo(LEFT, BOTTOM);
-            ctx.lineTo(RIGHT, BOTTOM);
-            ctx.stroke();
-
-            // Y axis labels
-            ctx.fillStyle = '#94a3b8';
-            ctx.font = '12px Open Sans';
-            ctx.textAlign = 'right';
-            for (let v = 0; v <= maxVal; v += 50) {
-                const y = toY(v);
-                ctx.fillText('£' + v + 'k', LEFT - 8, y + 4);
-                if (v > 0) {
-                    ctx.strokeStyle = '#f1f5f9';
-                    ctx.beginPath();
-                    ctx.moveTo(LEFT, y);
-                    ctx.lineTo(RIGHT, y);
-                    ctx.stroke();
-                }
-            }
-
-            // How many bars to show based on animation
-            const barsToShow = Math.floor(animProgress * numBars);
-            const barWidth = (chartW / numBars) * 0.7;
-            const barGap = (chartW / numBars) * 0.3;
-
-            // Draw bars
-            for (let i = 0; i < barsToShow && i < numBars; i++) {
-                const d = data[i];
-                const x = LEFT + (i / numBars) * chartW + barGap / 2;
-
-                // Essential (bottom)
-                const essH = (d.essential / maxVal) * chartH;
-                ctx.fillStyle = '#001e42';
-                ctx.fillRect(x, BOTTOM - essH, barWidth, essH);
-
-                // Lifestyle (stacked on top)
-                const lifH = (d.lifestyle / maxVal) * chartH;
-                ctx.fillStyle = '#3b82f6';
-                ctx.fillRect(x, BOTTOM - essH - lifH, barWidth, lifH);
-            }
-
-            // X axis labels (every 10 years)
-            ctx.fillStyle = '#94a3b8';
-            ctx.font = '13px Open Sans';
-            ctx.textAlign = 'center';
-            for (let i = 0; i < numBars; i += 10) {
-                const x = LEFT + ((i + 0.5) / numBars) * chartW;
-                ctx.fillText(years[i], x, BOTTOM + 20);
-            }
-            // Last label
-            const lastX = LEFT + ((numBars - 0.5) / numBars) * chartW;
-            ctx.fillText('90', lastX, BOTTOM + 20);
-
-            // Age label
-            ctx.fillText('Age', (LEFT + RIGHT) / 2, BOTTOM + 40);
-
-            // Income line — disabled for now
-            // TODO: add back when data is right
-
-            // Animate
-            if (started && animProgress < 1) {
-                animProgress += 0.015;
-                if (animProgress > 1) animProgress = 1;
-                requestAnimationFrame(draw);
-            }
-        }
-
-        // Start animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && !started) {
-                started = true;
-                animProgress = 0;
-                draw();
-            }
-        }, { threshold: 0.3 });
-
-        observer.observe(canvas);
-        draw(); // Initial empty draw
-    })();
-    </script>
-
-    <!-- Technology -->
-    <section class="section">
+    <!-- CTA -->
+    <section class="section section-dark">
         <div class="container">
-            <div class="intro-text reveal">
-                <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); line-height: 1.6; margin-bottom: 2rem;">
-                    We built the technology that makes this possible.
-                </p>
-                <p>
-                    The Wealth Portal gives you and your adviser the same view — nothing hidden,
-                    nothing siloed. Your pensions, investments, trusts, properties, companies —
-                    all in one place. You can see everything, anytime, from anywhere.
-                </p>
-                <p>
-                    Your adviser isn't spending two hours in traffic to tell you something
-                    you could see on a screen. They're spending that time actually talking to
-                    you, planning with you, and making sure everything is working together.
-                </p>
-                <p>
-                    We built this technology ourselves — not because we're a tech company,
-                    but because nothing else was good enough. Independence matters, and that
-                    means controlling the tools we use to look after your money.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Difference -->
-    <section class="section">
-        <div class="container">
-            <div class="intro-text reveal">
-                <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); line-height: 1.6; margin-bottom: 2rem;">
-                    Other firms sell you a product and move on. We sit beside you for decades.
-                </p>
-                <p>
-                    We've looked after some of our families for over thirty years. We've seen
-                    their children grow up, their businesses succeed, their plans evolve. We
-                    don't do one-off transactions — we build relationships that last.
-                </p>
-                <p>
-                    If that sounds like what you're looking for, we'd love to hear from you.
-                </p>
-                <a href="contact.html" class="btn btn-dark" style="margin-top: 1.5rem;">Get in Touch</a>
+            <div class="cta-section reveal">
+                <h2>Worth a conversation?</h2>
+                <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
+                <a href="contact.html" class="btn">Get in Touch</a>
             </div>
         </div>
     </section>
@@ -332,6 +482,7 @@
                     <ul>
                         <li><a href="https://www.wealthportal.co.uk/">Client Login</a></li>
                         <li><a href="timeline.html">Our Timeline</a></li>
+                        <li><a href="eight-aspects.html">Eight Aspects</a></li>
                     </ul>
                 </div>
             </div>
@@ -347,5 +498,20 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+        // Animate tax bars on scroll
+        const taxChart = document.getElementById('tax-chart');
+        if (taxChart) {
+            const taxObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    taxChart.querySelectorAll('.tax-bar').forEach(bar => {
+                        bar.style.height = bar.dataset.height + 'px';
+                    });
+                    taxObserver.unobserve(taxChart);
+                }
+            }, { threshold: 0.3 });
+            taxObserver.observe(taxChart);
+        }
+    </script>
 </body>
 </html>
