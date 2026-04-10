@@ -12,12 +12,13 @@
     const prevName = page.dataset.prevName || '';
     const nextName = page.dataset.nextName || '';
 
-    // Create arrow elements
+    // Create arrow elements — just chevrons, no text
     if (prevUrl) {
         const left = document.createElement('a');
         left.href = prevUrl;
         left.className = 'aspect-arrow aspect-arrow-left';
-        left.innerHTML = '<span class="aspect-arrow-icon">‹</span><span class="aspect-arrow-label">' + prevName + '</span>';
+        left.title = prevName;
+        left.innerHTML = '‹';
         document.body.appendChild(left);
     }
 
@@ -25,7 +26,8 @@
         const right = document.createElement('a');
         right.href = nextUrl;
         right.className = 'aspect-arrow aspect-arrow-right';
-        right.innerHTML = '<span class="aspect-arrow-label">' + nextName + '</span><span class="aspect-arrow-icon">›</span>';
+        right.title = nextName;
+        right.innerHTML = '›';
         document.body.appendChild(right);
     }
 
@@ -63,46 +65,25 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 0.8rem;
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: #001e42;
             text-decoration: none;
             opacity: 0;
             transition: opacity 0.3s ease;
-            background: rgba(0, 30, 66, 0.06);
-            border-radius: 8px;
-        }
-        .aspect-arrow:hover {
-            opacity: 1;
-            background: rgba(0, 30, 66, 0.1);
-        }
-        .aspect-arrow-left { left: 1rem; }
-        .aspect-arrow-right { right: 1rem; }
-        .aspect-arrow-icon {
-            font-size: 2rem;
-            color: var(--navy, #001e42);
-            font-weight: 300;
+            padding: 1rem 0.6rem;
             line-height: 1;
         }
-        .aspect-arrow-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--navy, #001e42);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            writing-mode: vertical-lr;
-            text-orientation: mixed;
-            transform: rotate(180deg);
+        .aspect-arrow:hover {
+            opacity: 0.6;
         }
-        .aspect-arrow-right .aspect-arrow-label {
-            transform: rotate(0deg);
-        }
+        .aspect-arrow-left { left: 0.5rem; }
+        .aspect-arrow-right { right: 0.5rem; }
         body:hover .aspect-arrow {
-            opacity: 0.4;
+            opacity: 0.15;
         }
         body:hover .aspect-arrow:hover {
-            opacity: 1;
+            opacity: 0.6;
         }
         @media (max-width: 768px) {
             .aspect-arrow { display: none; }
