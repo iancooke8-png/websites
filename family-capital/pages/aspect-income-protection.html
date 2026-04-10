@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Income Protection — Your income funds everything else on this list.">
+    <meta name="description" content="Income Protection — Your biggest asset isn't what you own, it's what you earn.">
     <title>Income Protection | Eight Aspects | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,53 +13,110 @@
     <script src="../vendor/fa/light.min.js"></script>
     <script src="../vendor/fa/solid.min.js"></script>
     <style>
-        .aspect-hero {
-            background: var(--navy);
-            padding: calc(var(--nav-height) + 4rem) 0 4rem;
-            color: var(--white);
+        :root {
+            --navy: #001e42;
+            --accent: #3b82f6;
+            --white: #ffffff;
+            --off-white: #f3f4f6;
+            --text-grey: #64748b;
+            --border-light: #e2e8f0;
         }
-        .aspect-step {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--muted-blue);
-            margin-bottom: 0.5rem;
+
+        /* CARDS */
+        .cards-section {
+            padding: 4rem 0;
+            background: var(--off-white);
         }
-        .aspect-tier {
-            font-size: 0.8rem;
-            color: var(--muted-blue);
+        .cards-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .aspect-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .aspect-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        .card-icon {
+            margin: 0 0 1rem 0;
+            padding: 0;
+            line-height: 1;
+        }
+        .card-icon i,
+        .card-icon svg {
+            font-size: 2rem;
+            color: var(--accent) !important;
+            fill: var(--accent) !important;
+            display: block;
+            width: 2rem;
+            height: 2rem;
+        }
+        .card-bold {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .card-copy {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-grey);
             margin-bottom: 1rem;
         }
-        .aspect-icon-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        .card-copy:last-child {
+            margin-bottom: 0;
         }
-        .aspect-hero h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 0.5rem;
+
+        /* CALLOUT BOX */
+        .callout-box {
+            background: #fef9e7;
+            border-left: 4px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
         }
-        .aspect-hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--muted-blue);
-            font-style: italic;
+        .callout-box p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #92400e;
+            margin: 0;
         }
-        .aspect-content {
-            max-width: 750px;
-            margin: 0 auto;
+
+        /* WHAT WE LOOK AT LIST */
+        .look-at-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 1.5rem;
         }
-        .aspect-content p {
-            font-size: 1.1rem;
-            line-height: 1.9;
+        .look-at-list li {
+            font-size: 0.95rem;
             color: var(--text-grey);
-            margin-bottom: 1.5rem;
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
         }
+        .look-at-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* FULL ASPECTS GRID */
         .aspects-connect-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -71,15 +128,15 @@
             text-align: center;
             padding: 1.2rem 0.8rem;
             border-radius: 10px;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+            background: var(--white);
+            border: 1px solid var(--border-light);
             text-decoration: none;
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
         .aspect-mini-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-color: #3b82f6;
+            border-color: var(--accent);
         }
         .aspect-mini-card.current {
             opacity: 0.3;
@@ -97,29 +154,113 @@
             font-size: 1rem;
         }
         .aspect-mini-card h4 {
+            font-family: var(--font-body);
             font-size: 0.8rem;
             font-weight: 600;
-            color: #001e42;
+            color: var(--navy);
             margin: 0;
         }
         .aspect-mini-card .mini-desc {
             font-size: 0.7rem;
-            color: #64748b;
+            color: var(--text-grey);
             margin: 0.2rem 0 0;
         }
+
+        /* SUMMARY */
+        .summary-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+        .summary-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+        }
+        .summary-box .card-bold {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy {
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy:last-child {
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        /* PREV/NEXT NAV */
+        .prev-next {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 2.5rem 0;
+        }
+        .prev-next a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .prev-next a:hover {
+            color: var(--navy);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--navy);
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .cta-btn:hover {
+            background: #2563eb;
+        }
+
+        /* MOBILE */
         @media (max-width: 768px) {
+            section [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
             .aspects-connect-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .aspect-card {
+                padding: 1.75rem;
+            }
+            .prev-next {
+                padding: 2rem 1rem;
+            }
+            .summary-box {
+                padding: 2rem 1.5rem;
+            }
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .back-link:hover { color: var(--navy); }
     </style>
 </head>
 <body>
@@ -151,26 +292,87 @@
         <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </nav>
 
-    <div class="aspect-hero">
+    <!-- HERO — Split layout -->
+    <section style="padding: calc(var(--nav-height) + 3rem) 0 3rem;">
         <div class="container">
-            <div class="aspect-step">Step 2</div>
-            <div class="aspect-tier">Clear the deck</div>
-            <div class="aspect-icon-large" style="background: #EEEDFE; color: #3C3489;">&#9201;</div>
-            <h1>Income Protection</h1>
-            <p class="subtitle">Your income funds everything else on this list.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <span style="display: inline-block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: var(--text-light); margin-bottom: 1.2rem;">Step 2 of 8 &middot; Clear the deck</span>
+                    <div style="margin-bottom: 1.2rem;">
+                        <i class="fa-light fa-clock" style="font-size: 2.5rem; color: var(--accent);"></i>
+                    </div>
+                    <h1 style="font-size: clamp(2.2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 0.3rem;">Income Protection</h1>
+                    <p style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-bottom: 1.8rem;">(your biggest asset isn't what you own &mdash; it's what you earn)</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 1.5rem;">Your income funds everything else on this list. Where it comes from, how secure it is, and what happens if it stops &mdash; that's what we consider here.</p>
+                </div>
+                <div style="border-radius: 12px; overflow: hidden; height: 100%; min-height: 400px; position: relative;">
+                    <img src="../images/income-protection.jpg" alt="Income Protection" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(1.02);">
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <section class="section">
+    <!-- STACKED CARDS -->
+    <section class="cards-section">
         <div class="container">
-            <div class="aspect-content">
-                <p>Your ability to earn is your most valuable asset. If it stops, everything else stops with it — mortgage payments, pension contributions, savings.</p>
+            <div class="cards-wrapper">
 
-                <p>This is the foundation that makes the rest possible.</p>
+                <!-- CARD 1: THE QUESTION -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-circle-question"></i></div>
+                    <p class="card-bold">If you couldn't work tomorrow, what happens?</p>
+                    <p class="card-copy">It's a simple question that most people haven't properly answered. Does your employer pay you? For how long? If you're self-employed, there's probably nothing at all. Understanding this is the starting point &mdash; not the end.</p>
+                </div>
 
-                <div class="connects-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
-                    <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #001e42; margin-bottom: 0.5rem;">How this connects to everything else</p>
-                    <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1rem;">Every decision here affects the rest of your plan.</p>
+                <!-- CARD 2: IT'S NOT JUST A POLICY -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-file-shield"></i></div>
+                    <p class="card-bold">Income protection isn't just about insurance.</p>
+                    <p class="card-copy">Yes, there are policies &mdash; and sometimes they're exactly the right answer. But income protection in the broader sense means understanding everything that contributes to your financial security. Earned income, investment income, rental income, workplace benefits, your partner's income. The full picture.</p>
+                    <p class="card-copy">For most of our clients, their investments already provide enough to live on. They're financially free. But they didn't get there by accident &mdash; and they didn't get there by ignoring this question.</p>
+                </div>
+
+                <!-- CARD 3: WORKPLACE -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-building"></i></div>
+                    <p class="card-bold">Have you joined your employer's scheme?</p>
+
+                    <div class="callout-box">
+                        <p>Many employers offer permanent health insurance as a benefit. If yours does, join it. It's usually free or heavily subsidised &mdash; and it's one of the easiest decisions you'll ever make.</p>
+                    </div>
+
+                    <p class="card-copy">We also look at how long your employer would continue to pay you if you were off sick. Three months? Six? A year? The gap between that and your actual needs is what matters.</p>
+                </div>
+
+                <!-- CARD 4: FINANCIAL FREEDOM -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-dove"></i></div>
+                    <p class="card-bold">The goal is to not need any of this.</p>
+                    <p class="card-copy">Financial freedom means your income from investments, pensions, and other sources covers your needs &mdash; permanently. At that point, income protection becomes less about protecting yourself and more about what you do with the surplus.</p>
+                    <p class="card-copy">Which connects directly to gifting, tax planning, and how you pass wealth on. Everything links together.</p>
+                </div>
+
+                <!-- CARD 5: WHAT WE ACTUALLY LOOK AT -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-list-check"></i></div>
+                    <p class="card-bold">What we consider:</p>
+                    <ul class="look-at-list">
+                        <li>Where your income comes from and how secure it is</li>
+                        <li>What your essential spending actually looks like</li>
+                        <li>How long you could manage without earned income</li>
+                        <li>Whether your workplace offers any protection</li>
+                        <li>Whether a policy would fill a genuine gap</li>
+                        <li>How this connects to your savings, investments, and long-term plan</li>
+                    </ul>
+                    <p class="card-copy">Usually it's a straightforward conversation. But it's one that needs having.</p>
+                </div>
+
+                <!-- CARD 6: HOW THIS CONNECTS -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-diagram-project"></i></div>
+                    <p class="card-bold">How this fits into your wider plan</p>
+                    <p class="card-copy">Income touches everything. What you earn determines what you can save, invest, protect, and ultimately pass on.</p>
+
                     <div class="aspects-connect-grid">
                         <a href="aspect-mortgages.html" class="aspect-mini-card">
                             <div class="aspect-mini-icon" style="background: #E6F1FB; color: #0C447C;">&#8962;</div>
@@ -208,22 +410,40 @@
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light);"><a href="aspect-mortgages.html" class="back-link">&larr; Mortgages <a href="eight-aspects.html" class="back-link">&larr; Back to Eight Aspects</a> Debt</a><a href="aspect-protection.html" class="back-link">Next: Protection &rarr;</a></div>
             </div>
         </div>
     </section>
 
-    <section class="section section-dark">
+    <!-- SUMMARY -->
+    <section class="summary-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Worth a conversation?</h2>
-                <div class="divider"></div>
-                <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
-                <a href="contact.html" class="btn" style="margin-top: 2rem;">Get in Touch</a>
+            <div class="summary-box">
+                <p class="card-bold">We don't sell income protection policies.</p>
+                <p class="card-copy">We work out whether you need one &mdash; and if you don't, we move on.</p>
             </div>
         </div>
     </section>
 
+    <!-- PREV/NEXT -->
+    <section style="background: var(--off-white);">
+        <div class="container">
+            <div class="prev-next">
+                <a href="aspect-mortgages.html">&larr; Mortgages</a>
+                <a href="aspect-protection.html">Next: Protection &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Worth a conversation?</h2>
+            <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
@@ -260,6 +480,7 @@
             </div>
         </div>
     </footer>
+
     <script src="../js/main.js"></script>
 </body>
 </html>
