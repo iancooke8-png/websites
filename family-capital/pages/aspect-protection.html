@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Protection — Life cover, critical illness, key person insurance. Because one event can unwind decades of planning.">
+    <meta name="description" content="Protection — Life cover, critical illness, income protection. One event can undo decades of careful planning.">
     <title>Protection | Eight Aspects | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,77 +22,230 @@
             --border-light: #e2e8f0;
         }
 
-        /* CARDS */
-        .cards-section {
+        /* INTRO SECTION */
+        .intro-section {
+            padding: 3.5rem 0;
+            background: var(--white);
+        }
+        .intro-inner {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .intro-bold {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+        .intro-copy {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text-grey);
+        }
+
+        /* PROTECTION PORTFOLIO GRID */
+        .portfolio-section {
             padding: 4rem 0;
             background: var(--off-white);
         }
-        .cards-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        .portfolio-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 0.5rem;
         }
-        .aspect-card {
+        .portfolio-subtitle {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            margin-bottom: 2.5rem;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .portfolio-tile {
             background: var(--white);
+            border: 1px solid var(--border-light);
             border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-            border-left: 4px solid var(--accent);
+            padding: 2rem 1.5rem;
+            text-align: center;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .aspect-card:hover {
+        .portfolio-tile:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
         }
-        .card-icon {
-            margin: 0 0 1rem 0;
+        .tile-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.1rem;
+            font-size: 1.4rem;
+        }
+        .tile-icon-personal { background: #eff6ff; color: #1d4ed8; }
+        .tile-icon-business { background: #f0fdf4; color: #166534; }
+        .portfolio-tile h3 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+        }
+        .portfolio-tile p {
+            font-size: 0.88rem;
+            line-height: 1.65;
+            color: var(--text-grey);
+            margin: 0;
+        }
+        .tile-row-label {
+            grid-column: 1 / -1;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-grey);
+            padding: 0.5rem 0 0;
+        }
+
+        /* TRUST CALLOUT */
+        .trust-section {
+            padding: 4rem 0;
+            background: #eff6ff;
+        }
+        .trust-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .trust-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        .trust-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 1.9rem);
+            color: var(--navy);
+            margin-bottom: 1.25rem;
+            line-height: 1.4;
+        }
+        .trust-copy {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #334155;
+            margin-bottom: 1.25rem;
+        }
+        .trust-copy:last-of-type {
+            margin-bottom: 1.5rem;
+        }
+        .trust-note {
+            display: inline-block;
+            font-size: 0.88rem;
+            color: var(--text-grey);
+            font-style: italic;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.25rem;
+            margin-top: 0.5rem;
+            max-width: 560px;
+        }
+
+        /* TWO COLUMN COMPARISON */
+        .comparison-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+        .comparison-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .comparison-col {
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        .comparison-col-personal {
+            background: #fafbff;
+            border: 1px solid #dde4f0;
+        }
+        .comparison-col-business {
+            background: #f6fdf9;
+            border: 1px solid #d4eadf;
+        }
+        .comparison-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 1.25rem;
+        }
+        .comparison-col ul {
+            list-style: none;
             padding: 0;
-            line-height: 1;
+            margin: 0;
         }
-        .card-icon i,
-        .card-icon svg {
-            font-size: 2rem;
-            color: var(--accent) !important;
-            fill: var(--accent) !important;
-            display: block;
-            width: 2rem;
-            height: 2rem;
+        .comparison-col li {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+            padding: 0.45rem 0 0.45rem 1.5rem;
+            position: relative;
         }
-        .card-bold {
+        .comparison-col li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .comparison-col-personal li::before {
+            background: var(--accent);
+        }
+        .comparison-col-business li::before {
+            background: #22c55e;
+        }
+
+        /* CONNECTION GRID */
+        .connect-section {
+            padding: 4rem 0;
+            background: var(--off-white);
+        }
+        .connect-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .connect-inner .card-bold {
             font-family: 'Playfair Display', serif;
             font-size: 1.2rem;
             color: var(--navy);
-            margin-bottom: 1rem;
-            line-height: 1.5;
+            margin-bottom: 0.75rem;
         }
-        .card-copy {
+        .connect-inner .card-copy {
             font-size: 1rem;
             line-height: 1.8;
             color: var(--text-grey);
-            margin-bottom: 1rem;
-        }
-        .card-copy:last-child {
             margin-bottom: 0;
         }
-
-        /* CALLOUT BOX — light blue wash */
-        .callout-box {
-            background: #eff6ff;
-            border-left: 4px solid var(--accent);
-            border-radius: 8px;
-            padding: 1.5rem 1.75rem;
-            margin: 1.5rem 0;
-        }
-        .callout-box p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #1e3a5f;
-            margin: 0;
-        }
-
-        /* FULL ASPECTS GRID */
         .aspects-connect-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -156,10 +309,16 @@
             border-radius: 12px;
         }
         .summary-box .card-bold {
+            font-family: 'Playfair Display', serif;
             font-size: 1.15rem;
+            color: var(--navy);
             margin-bottom: 0.75rem;
+            line-height: 1.5;
         }
         .summary-box .card-copy {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-grey);
             margin-bottom: 0.75rem;
         }
         .summary-box .card-copy:last-child {
@@ -224,17 +383,23 @@
                 grid-template-columns: 1fr !important;
                 gap: 2rem !important;
             }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
             .aspects-connect-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .aspect-card {
-                padding: 1.75rem;
             }
             .prev-next {
                 padding: 2rem 1rem;
             }
             .summary-box {
                 padding: 2rem 1.5rem;
+            }
+            .trust-inner {
+                padding: 0 1rem;
             }
         }
     </style>
@@ -278,109 +443,174 @@
                         <i class="fa-light fa-shield-halved" style="font-size: 2.5rem; color: var(--accent);"></i>
                     </div>
                     <h1 style="font-size: clamp(2.2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 0.3rem;">Protection</h1>
-                    <p style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-bottom: 1.8rem;">(because one event can unwind decades of planning)</p>
-                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 1.5rem;">Life cover, critical illness, key person insurance. Not the most exciting conversation &mdash; but without it, a single event can destroy decades of careful work.</p>
+                    <p style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-bottom: 1.8rem;">(one event can change everything)</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7;">Not the most exciting conversation we'll have. But without it, a single event can undo decades of careful planning.</p>
                 </div>
                 <div style="border-radius: 12px; overflow: hidden; height: 100%; min-height: 400px; position: relative;">
-                    <img src="../images/oak-protection.jpg" alt="Protection" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(1.02);">
+                    <img src="../images/oak-protection.jpg" alt="Oak tree" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(1.02);">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- STACKED CARDS -->
-    <section class="cards-section">
+    <!-- SECTION 1: INTRO -->
+    <section class="intro-section">
         <div class="container">
-            <div class="cards-wrapper">
+            <div class="intro-inner">
+                <p class="intro-bold">We don't sell protection. We work out what's actually needed.</p>
+                <p class="intro-copy">Most firms either ignore protection entirely or try to sell you everything. We take a different view &mdash; we assess what's genuinely required, structure it properly, and move on. For many of our clients, the answer is very little. For others, it's the most important thing we do.</p>
+            </div>
+        </div>
+    </section>
 
-                <!-- CARD 1: WHY IT MATTERS -->
-                <div class="aspect-card">
-                    <div class="card-icon"><i class="fa-light fa-heart-pulse"></i></div>
-                    <p class="card-bold">Critical illness is our biggest claim area.</p>
-                    <p class="card-copy">It's not something people like to think about. But serious illness doesn't wait until your finances are in order. Critical illness cover provides a lump sum when you need it most &mdash; and for families, it's not optional. It's essential.</p>
-                    <p class="card-copy">And when it pays out, it needs to go to the right place. Which is why every policy we arrange goes into trust.</p>
-                </div>
+    <!-- SECTION 2: PROTECTION PORTFOLIO GRID -->
+    <section class="portfolio-section">
+        <div class="container">
+            <h2>What does a protection portfolio look like?</h2>
+            <p class="portfolio-subtitle">Six areas we assess. Not everyone needs all of them.</p>
 
-                <!-- CARD 2: TRUSTS — call-out style, light blue wash -->
-                <div class="aspect-card" style="background: #eff6ff; border-left-width: 5px;">
-                    <div class="card-icon"><i class="fa-light fa-file-signature"></i></div>
-                    <p class="card-bold">Every policy in trust. Every single time.</p>
-                    <div class="callout-box">
-                        <p>Without a trust, life cover proceeds go through probate &mdash; potentially into the estate, potentially subject to inheritance tax. With a trust, they go exactly where you want them, when you want them. There's no reason not to do this. We do it as standard.</p>
+            <div class="portfolio-grid">
+                <!-- Row label: Personal -->
+                <p class="tile-row-label">Personal</p>
+
+                <div class="portfolio-tile">
+                    <div class="tile-icon tile-icon-personal">
+                        <i class="fa-light fa-heart"></i>
                     </div>
+                    <h3>Life Cover</h3>
+                    <p>Pays out on death. Always written in trust.</p>
                 </div>
 
-                <!-- CARD 3: COVERING DEBT -->
-                <div class="aspect-card">
-                    <div class="card-icon"><i class="fa-light fa-house-circle-check"></i></div>
-                    <p class="card-bold">Protection and borrowing go hand in hand.</p>
-                    <p class="card-copy">If you have a mortgage, the debt doesn't disappear when you do. Life cover and critical illness cover linked to your borrowing means your family isn't left with the burden. This connects directly to Step 1 &mdash; mortgages.</p>
-                </div>
-
-                <!-- CARD 4: RELEVANT LIFE -->
-                <div class="aspect-card">
-                    <div class="card-icon"><i class="fa-light fa-building-columns"></i></div>
-                    <p class="card-bold">Relevant Life &mdash; tax-efficient cover through your business.</p>
-                    <p class="card-copy">If you're a business owner, your company can pay for your personal life cover and get tax relief on the premiums. It's called a Relevant Life policy. The company pays, gets corporation tax relief, and you get cover without it being a benefit in kind. It's one of the most efficient ways to arrange protection &mdash; and it's often overlooked.</p>
-                </div>
-
-                <!-- CARD 5: GIFT INTER VIVOS -->
-                <div class="aspect-card">
-                    <div class="card-icon"><i class="fa-light fa-gift"></i></div>
-                    <p class="card-bold">Made a large gift? You might need cover for seven years.</p>
-                    <p class="card-copy">When you make a significant gift &mdash; to family, into a trust, or to reduce your estate &mdash; there's a potential inheritance tax liability that tapers over seven years. A Gift Inter Vivos policy covers that liability while it exists. It's a decreasing term policy that matches the taper. Simple, effective, and often forgotten.</p>
-                </div>
-
-                <!-- CARD 6: BUSINESS PROTECTION -->
-                <div class="aspect-card">
-                    <div class="card-icon"><i class="fa-light fa-briefcase"></i></div>
-                    <p class="card-bold">What happens to the business if a key person dies?</p>
-                    <p class="card-copy">Share purchase agreements, key person cover, partnership protection. If a business partner dies, who buys their share? How does the business survive the loss of a key individual? These aren't hypothetical questions &mdash; they need answers and policies in place before they're needed.</p>
-                </div>
-
-                <!-- CARD 7: HOW THIS CONNECTS -->
-                <div class="aspect-card">
-                    <div class="card-icon"><i class="fa-light fa-diagram-project"></i></div>
-                    <p class="card-bold">How this fits into your wider plan</p>
-                    <p class="card-copy">Protection doesn't exist in isolation &mdash; it connects to your borrowing, your trusts, your tax planning, and your family's future.</p>
-
-                    <div class="aspects-connect-grid">
-                        <a href="aspect-mortgages.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #E6F1FB; color: #0C447C;">&#8962;</div>
-                            <h4>Mortgages</h4>
-                        </a>
-                        <a href="aspect-income-protection.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #EEEDFE; color: #3C3489;">&#9207;</div>
-                            <h4>Income Protection</h4>
-                        </a>
-                        <div class="aspect-mini-card current">
-                            <div class="aspect-mini-icon" style="background: #E1F5EE; color: #085041;">&#9960;</div>
-                            <h4>Protection</h4>
-                            <p class="mini-desc">You are here</p>
-                        </div>
-                        <a href="aspect-pensions.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #FAEEDA; color: #633806;">&#9203;</div>
-                            <h4>Pensions</h4>
-                        </a>
-                        <a href="aspect-savings.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #FAECE7; color: #712B13;">&#128176;</div>
-                            <h4>Savings</h4>
-                        </a>
-                        <a href="aspect-investments.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #FBEAF0; color: #72243E;">&#128200;</div>
-                            <h4>Investments</h4>
-                        </a>
-                        <a href="aspect-taxation.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #EAF3DE; color: #27500A;">&#128203;</div>
-                            <h4>Taxation</h4>
-                        </a>
-                        <a href="aspect-trusts.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #F1EFE8; color: #444441;">&#128101;</div>
-                            <h4>Trusts</h4>
-                        </a>
+                <div class="portfolio-tile">
+                    <div class="tile-icon tile-icon-personal">
+                        <i class="fa-light fa-heart-pulse"></i>
                     </div>
+                    <h3>Critical Illness</h3>
+                    <p>Lump sum on diagnosis. Our biggest claim area.</p>
                 </div>
 
+                <div class="portfolio-tile">
+                    <div class="tile-icon tile-icon-personal">
+                        <i class="fa-light fa-clock"></i>
+                    </div>
+                    <h3>Income Protection</h3>
+                    <p>Replaces earnings if you can't work. Links to Step 2.</p>
+                </div>
+
+                <!-- Row label: Business & Specialist -->
+                <p class="tile-row-label">Business &amp; Specialist</p>
+
+                <div class="portfolio-tile">
+                    <div class="tile-icon tile-icon-business">
+                        <i class="fa-light fa-building-columns"></i>
+                    </div>
+                    <h3>Relevant Life</h3>
+                    <p>Company pays, gets tax relief. You get cover. No benefit in kind.</p>
+                </div>
+
+                <div class="portfolio-tile">
+                    <div class="tile-icon tile-icon-business">
+                        <i class="fa-light fa-briefcase"></i>
+                    </div>
+                    <h3>Business Protection</h3>
+                    <p>Key person, share purchase, partnership. What happens if someone can't continue?</p>
+                </div>
+
+                <div class="portfolio-tile">
+                    <div class="tile-icon tile-icon-business">
+                        <i class="fa-light fa-gift"></i>
+                    </div>
+                    <h3>Gift Inter Vivos</h3>
+                    <p>Covers the IHT liability on large gifts during the seven-year taper.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE TRUST POINT -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-inner">
+                <div class="trust-icon">
+                    <i class="fa-light fa-file-signature"></i>
+                </div>
+                <h2 class="trust-headline">Life cover goes into trust. Every time.</h2>
+                <p class="trust-copy">Without a trust, life cover proceeds go through probate. They may end up in the estate. They may be subject to inheritance tax. With a trust, they go directly to the people you intended, when you intended.</p>
+                <p class="trust-copy">We do this as standard. There is no good reason not to.</p>
+                <p class="trust-note">This applies to life cover. Critical illness pays out to the policyholder directly &mdash; it does not go into trust.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PERSONAL vs BUSINESS -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2>Two sides of the same conversation</h2>
+            <div class="comparison-grid">
+                <div class="comparison-col comparison-col-personal">
+                    <h3>For you and your family</h3>
+                    <ul>
+                        <li>Life cover linked to mortgage and other debts</li>
+                        <li>Critical illness &mdash; particularly important for families with dependents</li>
+                        <li>Income protection &mdash; covered in Step 2, but connects here</li>
+                        <li>Whole of life for inheritance tax planning</li>
+                    </ul>
+                </div>
+                <div class="comparison-col comparison-col-business">
+                    <h3>For your business</h3>
+                    <ul>
+                        <li>Relevant Life &mdash; tax-efficient personal cover through your company</li>
+                        <li>Key person cover &mdash; what happens if a critical individual is lost</li>
+                        <li>Share purchase and cross-option agreements &mdash; who buys the shares?</li>
+                        <li>Partnership protection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CONNECTION GRID -->
+    <section class="connect-section">
+        <div class="container">
+            <div class="connect-inner">
+                <p class="card-bold">How this fits into your wider plan</p>
+                <p class="card-copy">Protection connects directly to borrowing, trusts, tax, and your family's future.</p>
+
+                <div class="aspects-connect-grid">
+                    <a href="aspect-mortgages.html" class="aspect-mini-card">
+                        <div class="aspect-mini-icon" style="background: #E6F1FB; color: #0C447C;">&#8962;</div>
+                        <h4>Mortgages</h4>
+                    </a>
+                    <a href="aspect-income-protection.html" class="aspect-mini-card">
+                        <div class="aspect-mini-icon" style="background: #EEEDFE; color: #3C3489;">&#9207;</div>
+                        <h4>Income Protection</h4>
+                    </a>
+                    <div class="aspect-mini-card current">
+                        <div class="aspect-mini-icon" style="background: #E1F5EE; color: #085041;">&#9960;</div>
+                        <h4>Protection</h4>
+                        <p class="mini-desc">You are here</p>
+                    </div>
+                    <a href="aspect-pensions.html" class="aspect-mini-card">
+                        <div class="aspect-mini-icon" style="background: #FAEEDA; color: #633806;">&#9203;</div>
+                        <h4>Pensions</h4>
+                    </a>
+                    <a href="aspect-savings.html" class="aspect-mini-card">
+                        <div class="aspect-mini-icon" style="background: #FAECE7; color: #712B13;">&#128176;</div>
+                        <h4>Savings</h4>
+                    </a>
+                    <a href="aspect-investments.html" class="aspect-mini-card">
+                        <div class="aspect-mini-icon" style="background: #FBEAF0; color: #72243E;">&#128200;</div>
+                        <h4>Investments</h4>
+                    </a>
+                    <a href="aspect-taxation.html" class="aspect-mini-card">
+                        <div class="aspect-mini-icon" style="background: #EAF3DE; color: #27500A;">&#128203;</div>
+                        <h4>Taxation</h4>
+                    </a>
+                    <a href="aspect-trusts.html" class="aspect-mini-card">
+                        <div class="aspect-mini-icon" style="background: #F1EFE8; color: #444441;">&#128101;</div>
+                        <h4>Trusts</h4>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -389,8 +619,8 @@
     <section class="summary-section">
         <div class="container">
             <div class="summary-box">
-                <p class="card-bold">We don't sell protection policies.</p>
-                <p class="card-copy">We work out what you actually need &mdash; and make sure it's structured properly.</p>
+                <p class="card-bold">We don't sell policies. We work out what you need.</p>
+                <p class="card-copy">And if you don't need anything &mdash; we'll tell you that too.</p>
             </div>
         </div>
     </section>
@@ -410,7 +640,7 @@
         <div class="container">
             <h2>Worth a conversation?</h2>
             <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
-            <a href="contact.html" class="cta-btn">Get in Touch &rarr;</a>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
         </div>
     </section>
 
