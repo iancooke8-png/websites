@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Investments — Step six. Not step one.">
+    <meta name="description" content="Investments — Step six of eight. The portfolio is the last decision, not the first.">
     <title>Investments | Eight Aspects | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,53 +13,89 @@
     <script src="../vendor/fa/light.min.js"></script>
     <script src="../vendor/fa/solid.min.js"></script>
     <style>
-        .aspect-hero {
-            background: var(--navy);
-            padding: calc(var(--nav-height) + 4rem) 0 4rem;
-            color: var(--white);
+        :root {
+            --navy: #001e42;
+            --accent: #3b82f6;
+            --white: #ffffff;
+            --off-white: #f3f4f6;
+            --text-grey: #64748b;
+            --border-light: #e2e8f0;
         }
-        .aspect-step {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--muted-blue);
-            margin-bottom: 0.5rem;
+
+        /* CARDS */
+        .cards-section {
+            padding: 4rem 0;
+            background: var(--off-white);
         }
-        .aspect-tier {
-            font-size: 0.8rem;
-            color: var(--muted-blue);
+        .cards-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .aspect-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .aspect-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        .card-icon {
+            margin: 0 0 1rem 0;
+            padding: 0;
+            line-height: 1;
+        }
+        .card-icon i,
+        .card-icon svg {
+            font-size: 2rem;
+            color: var(--accent) !important;
+            fill: var(--accent) !important;
+            display: block;
+            width: 2rem;
+            height: 2rem;
+        }
+        .card-bold {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .card-copy {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-grey);
             margin-bottom: 1rem;
         }
-        .aspect-icon-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        .card-copy:last-child {
+            margin-bottom: 0;
         }
-        .aspect-hero h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 0.5rem;
+
+        /* CALLOUT BOX — light blue wash */
+        .callout-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
         }
-        .aspect-hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--muted-blue);
-            font-style: italic;
+        .callout-box p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #1e40af;
+            margin: 0 0 1rem;
         }
-        .aspect-content {
-            max-width: 750px;
-            margin: 0 auto;
+        .callout-box p:last-child {
+            margin-bottom: 0;
         }
-        .aspect-content p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: var(--text-grey);
-            margin-bottom: 1.5rem;
-        }
+
+        /* FULL ASPECTS GRID */
         .aspects-connect-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -71,15 +107,15 @@
             text-align: center;
             padding: 1.2rem 0.8rem;
             border-radius: 10px;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+            background: var(--white);
+            border: 1px solid var(--border-light);
             text-decoration: none;
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
         .aspect-mini-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-color: #3b82f6;
+            border-color: var(--accent);
         }
         .aspect-mini-card.current {
             opacity: 0.3;
@@ -97,29 +133,113 @@
             font-size: 1rem;
         }
         .aspect-mini-card h4 {
+            font-family: var(--font-body);
             font-size: 0.8rem;
             font-weight: 600;
-            color: #001e42;
+            color: var(--navy);
             margin: 0;
         }
         .aspect-mini-card .mini-desc {
             font-size: 0.7rem;
-            color: #64748b;
+            color: var(--text-grey);
             margin: 0.2rem 0 0;
         }
+
+        /* SUMMARY */
+        .summary-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+        .summary-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+        }
+        .summary-box .card-bold {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy {
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy:last-child {
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        /* PREV/NEXT NAV */
+        .prev-next {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 2.5rem 0;
+        }
+        .prev-next a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .prev-next a:hover {
+            color: var(--navy);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--navy);
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .cta-btn:hover {
+            background: #2563eb;
+        }
+
+        /* MOBILE */
         @media (max-width: 768px) {
+            section [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
             .aspects-connect-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .aspect-card {
+                padding: 1.75rem;
+            }
+            .prev-next {
+                padding: 2rem 1rem;
+            }
+            .summary-box {
+                padding: 2rem 1.5rem;
+            }
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .back-link:hover { color: var(--navy); }
     </style>
 </head>
 <body data-aspect="true" data-prev="aspect-savings.html" data-prev-name="Savings" data-next="aspect-taxation.html" data-next-name="Taxation">
@@ -151,10 +271,189 @@
         <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </nav>
 
-    <div class="aspect-hero">
+    <!-- HERO — Split layout -->
+    <section style="padding: calc(var(--nav-height) + 3rem) 0 3rem;">
         <div class="container">
-            <div class="aspect-step">Step 6</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <span style="display: inline-block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: var(--text-light); margin-bottom: 1.2rem;">Step 6 of 8 &middot; Build the structure</span>
+                    <div style="margin-bottom: 0.6rem;">
+                        <i class="fa-light fa-chart-line" style="font-size: 2.5rem; color: var(--accent);"></i>
+                    </div>
+                    <h1 style="font-size: clamp(2.2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 0.3rem;">Investments</h1>
+                    <p style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-bottom: 1.5rem;">(step six &mdash; not step one)</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 1.5rem;">This is where most firms start. We think it should come sixth &mdash; after you know the tax position, the wrapper, the timescale, and the purpose.</p>
+                </div>
+                <div style="border-radius: 12px; overflow: hidden; height: 100%; min-height: 400px; position: relative;">
+                    <img src="../images/timeline-header.jpg" alt="Investments" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(1.02);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STACKED CARDS -->
+    <section class="cards-section">
+        <div class="container">
+            <div class="cards-wrapper">
+
+                <!-- CARD 1: WHY STEP SIX -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-arrow-down-1-9"></i></div>
+                    <p class="card-bold">The portfolio is the last decision, not the first.</p>
+                    <p class="card-copy">By the time we get here, we already know your debt position, your income needs, your protection, your pension structure, and your cash reserves. The investment decision sits on top of all of that &mdash; not the other way round.</p>
+                    <p class="card-copy">Most firms lead with investment management because that's where the fees are. We lead with planning because that's where the value is.</p>
+                </div>
+
+                <!-- CARD 2: WHERE IT SITS MATTERS — callout box, light blue wash -->
+                <div class="aspect-card" style="background: #eff6ff; border-left-width: 5px;">
+                    <div class="card-icon"><i class="fa-light fa-boxes-stacked"></i></div>
+                    <p class="card-bold">The same portfolio in different wrappers produces completely different outcomes.</p>
+
+                    <div class="callout-box">
+                        <p>Growth assets in the GIA where you're not crystallising income. Dividend-heavy holdings inside the ISA where income is tax-free. Lower-risk income producers in the pension where withdrawals are taxed. Same overall allocation. Completely different tax outcome.</p>
+                    </div>
+
+                    <p class="card-copy">This is why we consider all eight aspects together. The investment is easy. Knowing where to put it is the hard part.</p>
+                </div>
+
+                <!-- CARD 3: OUR DFM -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-sliders"></i></div>
+                    <p class="card-bold">Discretionary fund management at 0.1%.</p>
+                    <p class="card-copy">Our DFM runs at 0.1% because the real value is in everything above it &mdash; the planning, the structure, the tax efficiency. The portfolio management is important, but it's not where we charge the premium.</p>
+                    <p class="card-copy">We use a quantitative, evidence-based approach. No star fund managers, no short-term trading, no market timing. Just disciplined, diversified, long-term investing.</p>
+                </div>
+
+                <!-- CARD 4: RISK -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-gauge"></i></div>
+                    <p class="card-bold">Risk means different things in different wrappers.</p>
+                    <p class="card-copy">A 60/40 portfolio in a pension (where you won't touch it for 20 years) is very different from a 60/40 portfolio in a GIA (where you might need it next year). Same allocation, completely different risk profile. Context matters more than numbers.</p>
+                </div>
+
+                <!-- CARD 5: WHAT WE DON'T DO -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-ban"></i></div>
+                    <p class="card-bold">No star managers. No timing the market. No churning.</p>
+                    <p class="card-copy">We don't chase performance. We don't switch funds every quarter. We don't try to predict what markets will do next week. We build portfolios that are structured to compound over decades &mdash; and then we leave them alone, reviewing and rebalancing when the evidence says we should.</p>
+                </div>
+
+                <!-- CARD 6: SUSTAINABLE INVESTING -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-leaf"></i></div>
+                    <p class="card-bold">If it matters to you, it matters to us.</p>
+                    <p class="card-copy">ESG, sustainable investing, ethical screens &mdash; we can accommodate any preference. But we won't pretend it doesn't affect returns. We'll show you the trade-offs honestly and let you decide.</p>
+                </div>
+
+                <!-- CARD 7: CONNECTION GRID -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-diagram-project"></i></div>
+                    <p class="card-bold">How this fits into your wider plan</p>
+                    <p class="card-copy">Investment decisions are shaped by everything that comes before them &mdash; and they feed directly into your tax planning and trust structures.</p>
+
+                    <div class="aspects-connect-grid">
+                        <a href="aspect-mortgages.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #E6F1FB; color: #0C447C;">&#8962;</div>
+                            <h4>Mortgages</h4>
+                        </a>
+                        <a href="aspect-income-protection.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #EEEDFE; color: #3C3489;">&#9207;</div>
+                            <h4>Income Protection</h4>
+                        </a>
+                        <a href="aspect-protection.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #E1F5EE; color: #085041;">&#9928;</div>
+                            <h4>Protection</h4>
+                        </a>
+                        <a href="aspect-pensions.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FAEEDA; color: #633806;">&#9203;</div>
+                            <h4>Pensions</h4>
+                        </a>
+                        <a href="aspect-savings.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FAECE7; color: #712B13;">&#128176;</div>
+                            <h4>Savings</h4>
+                        </a>
+                        <div class="aspect-mini-card current">
+                            <div class="aspect-mini-icon" style="background: #FBEAF0; color: #72243E;">&#128200;</div>
+                            <h4>Investments</h4>
+                            <p class="mini-desc">You are here</p>
+                        </div>
+                        <a href="aspect-taxation.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #EAF3DE; color: #27500A;">&#128203;</div>
+                            <h4>Taxation</h4>
+                        </a>
+                        <a href="aspect-trusts.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #F1EFE8; color: #444441;">&#128101;</div>
+                            <h4>Trusts</h4>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="summary-section">
+        <div class="container">
+            <div class="summary-box">
+                <p class="card-bold">Investments are step six for a reason.</p>
+                <p class="card-copy">Get the structure right first. The portfolio takes care of itself.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREV/NEXT -->
+    <section style="background: var(--off-white);">
+        <div class="container">
+            <div class="prev-next">
+                <a href="aspect-savings.html">&larr; Savings</a>
+                <a href="aspect-taxation.html">Next: Taxation &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Worth a conversation?</h2>
+            <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
+            <a href="contact.html" class="cta-btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+                        <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
+                    <p>Wealth management for families and entrepreneurs.</p>
+                    <p class="footer-group-link">Part of <a href="https://www.perpetualwealth.co.uk">Perpetual Wealth Group</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="people.html">Team</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://www.wealthportal.co.uk/">Client Login</a></li>
+                        <li><a href="timeline.html">Our Timeline</a></li>
+                        <li><a href="eight-aspects.html">Eight Aspects</a></li>
+                        <li><a href="industry-professionals.html">Industry Professionals</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                    </ul>
+                </div>
+            </div></div>
     </footer>
+
     <script src="../js/main.js"></script>
     <script src="../js/aspect-nav.js"></script>
 </body>
