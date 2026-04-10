@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../vendor/fa/fontawesome.min.js"></script>
+    <script src="../vendor/fa/light.min.js"></script>
+    <script src="../vendor/fa/solid.min.js"></script>
     <style>
         .aspect-hero {
             background: var(--navy);
@@ -57,37 +60,57 @@
             color: var(--text-grey);
             margin-bottom: 1.5rem;
         }
-        .connects-section {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-light);
+        .aspects-connect-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
-        .connects-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-grey);
-            margin-bottom: 1rem;
-        }
-        .connects-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .connect-pill {
-            display: inline-block;
-            font-size: 0.85rem;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            background: var(--off-white);
-            color: var(--navy);
+        .aspect-mini-card {
+            display: block;
+            text-align: center;
+            padding: 1.2rem 0.8rem;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
             text-decoration: none;
-            transition: background 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
-        .connect-pill:hover {
-            background: var(--accent-light);
-            color: var(--accent);
+        .aspect-mini-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #3b82f6;
+        }
+        .aspect-mini-card.current {
+            opacity: 0.3;
+            pointer-events: none;
+            border-style: dashed;
+        }
+        .aspect-mini-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.6rem;
+            font-size: 1rem;
+        }
+        .aspect-mini-card h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #001e42;
+            margin: 0;
+        }
+        .aspect-mini-card .mini-desc {
+            font-size: 0.7rem;
+            color: #64748b;
+            margin: 0.2rem 0 0;
+        }
+        @media (max-width: 768px) {
+            .aspects-connect-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         .back-link {
             display: inline-block;
@@ -145,12 +168,43 @@
 
                 <p>This is the foundation that makes the rest possible.</p>
 
-                <div class="connects-section">
-                    <div class="connects-label">This connects to</div>
-                    <div class="connects-pills">
-                        <a href="aspect-protection.html" class="connect-pill">Protection</a>
-                        <a href="aspect-pensions.html" class="connect-pill">Pensions</a>
-                        <a href="aspect-savings.html" class="connect-pill">Savings</a>
+                <div class="connects-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
+                    <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #001e42; margin-bottom: 0.5rem;">How this connects to everything else</p>
+                    <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1rem;">Every decision here affects the rest of your plan.</p>
+                    <div class="aspects-connect-grid">
+                        <a href="aspect-mortgages.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #E6F1FB; color: #0C447C;">&#8962;</div>
+                            <h4>Mortgages</h4>
+                        </a>
+                        <div class="aspect-mini-card current">
+                            <div class="aspect-mini-icon" style="background: #EEEDFE; color: #3C3489;">&#9201;</div>
+                            <h4>Income Protection</h4>
+                            <p class="mini-desc">You are here</p>
+                        </div>
+                        <a href="aspect-protection.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #E1F5EE; color: #085041;">&#9832;</div>
+                            <h4>Protection</h4>
+                        </a>
+                        <a href="aspect-pensions.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FAEEDA; color: #633806;">&#9203;</div>
+                            <h4>Pensions</h4>
+                        </a>
+                        <a href="aspect-savings.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FAECE7; color: #712B13;">&#128176;</div>
+                            <h4>Savings</h4>
+                        </a>
+                        <a href="aspect-investments.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FBEAF0; color: #72243E;">&#128200;</div>
+                            <h4>Investments</h4>
+                        </a>
+                        <a href="aspect-taxation.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #EAF3DE; color: #27500A;">&#128203;</div>
+                            <h4>Taxation</h4>
+                        </a>
+                        <a href="aspect-trusts.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #F1EFE8; color: #444441;">&#128101;</div>
+                            <h4>Trusts</h4>
+                        </a>
                     </div>
                 </div>
 
