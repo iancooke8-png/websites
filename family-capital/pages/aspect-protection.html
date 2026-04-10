@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Protection — One event can unwind decades of planning.">
+    <meta name="description" content="Protection — Life cover, critical illness, key person insurance. Because one event can unwind decades of planning.">
     <title>Protection | Eight Aspects | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,53 +13,86 @@
     <script src="../vendor/fa/light.min.js"></script>
     <script src="../vendor/fa/solid.min.js"></script>
     <style>
-        .aspect-hero {
-            background: var(--navy);
-            padding: calc(var(--nav-height) + 4rem) 0 4rem;
-            color: var(--white);
+        :root {
+            --navy: #001e42;
+            --accent: #3b82f6;
+            --white: #ffffff;
+            --off-white: #f3f4f6;
+            --text-grey: #64748b;
+            --border-light: #e2e8f0;
         }
-        .aspect-step {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--muted-blue);
-            margin-bottom: 0.5rem;
+
+        /* CARDS */
+        .cards-section {
+            padding: 4rem 0;
+            background: var(--off-white);
         }
-        .aspect-tier {
-            font-size: 0.8rem;
-            color: var(--muted-blue);
+        .cards-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .aspect-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .aspect-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        .card-icon {
+            margin: 0 0 1rem 0;
+            padding: 0;
+            line-height: 1;
+        }
+        .card-icon i,
+        .card-icon svg {
+            font-size: 2rem;
+            color: var(--accent) !important;
+            fill: var(--accent) !important;
+            display: block;
+            width: 2rem;
+            height: 2rem;
+        }
+        .card-bold {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .card-copy {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-grey);
             margin-bottom: 1rem;
         }
-        .aspect-icon-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        .card-copy:last-child {
+            margin-bottom: 0;
         }
-        .aspect-hero h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 0.5rem;
+
+        /* CALLOUT BOX — light blue wash */
+        .callout-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
         }
-        .aspect-hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--muted-blue);
-            font-style: italic;
+        .callout-box p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #1e3a5f;
+            margin: 0;
         }
-        .aspect-content {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-        .aspect-content p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: var(--text-grey);
-            margin-bottom: 1.5rem;
-        }
+
+        /* FULL ASPECTS GRID */
         .aspects-connect-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -71,15 +104,15 @@
             text-align: center;
             padding: 1.2rem 0.8rem;
             border-radius: 10px;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+            background: var(--white);
+            border: 1px solid var(--border-light);
             text-decoration: none;
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
         .aspect-mini-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-color: #3b82f6;
+            border-color: var(--accent);
         }
         .aspect-mini-card.current {
             opacity: 0.3;
@@ -97,29 +130,113 @@
             font-size: 1rem;
         }
         .aspect-mini-card h4 {
+            font-family: var(--font-body);
             font-size: 0.8rem;
             font-weight: 600;
-            color: #001e42;
+            color: var(--navy);
             margin: 0;
         }
         .aspect-mini-card .mini-desc {
             font-size: 0.7rem;
-            color: #64748b;
+            color: var(--text-grey);
             margin: 0.2rem 0 0;
         }
+
+        /* SUMMARY */
+        .summary-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+        .summary-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+        }
+        .summary-box .card-bold {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy {
+            margin-bottom: 0.75rem;
+        }
+        .summary-box .card-copy:last-child {
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        /* PREV/NEXT NAV */
+        .prev-next {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 2.5rem 0;
+        }
+        .prev-next a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .prev-next a:hover {
+            color: var(--navy);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--navy);
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .cta-btn:hover {
+            background: #2563eb;
+        }
+
+        /* MOBILE */
         @media (max-width: 768px) {
+            section [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
             .aspects-connect-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .aspect-card {
+                padding: 1.75rem;
+            }
+            .prev-next {
+                padding: 2rem 1rem;
+            }
+            .summary-box {
+                padding: 2rem 1.5rem;
+            }
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .back-link:hover { color: var(--navy); }
     </style>
 </head>
 <body>
@@ -151,37 +268,93 @@
         <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </nav>
 
-    <div class="aspect-hero">
+    <!-- HERO — Split layout -->
+    <section style="padding: calc(var(--nav-height) + 3rem) 0 3rem;">
         <div class="container">
-            <div class="aspect-step">Step 3</div>
-            <div class="aspect-tier">Clear the deck</div>
-            <div class="aspect-icon-large" style="background: #E1F5EE; color: #085041;">&#9832;</div>
-            <h1>Protection</h1>
-            <p class="subtitle">One event can unwind decades of planning.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <span style="display: inline-block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: var(--text-light); margin-bottom: 1.2rem;">Step 3 of 8 &middot; Clear the deck</span>
+                    <div style="margin-bottom: 1.2rem;">
+                        <i class="fa-light fa-shield-halved" style="font-size: 2.5rem; color: var(--accent);"></i>
+                    </div>
+                    <h1 style="font-size: clamp(2.2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 0.3rem;">Protection</h1>
+                    <p style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-bottom: 1.8rem;">(because one event can unwind decades of planning)</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 1.5rem;">Life cover, critical illness, key person insurance. Not the most exciting conversation &mdash; but without it, a single event can destroy decades of careful work.</p>
+                </div>
+                <div style="border-radius: 12px; overflow: hidden; height: 100%; min-height: 400px; position: relative;">
+                    <img src="../images/oak-protection.jpg" alt="Protection" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(1.02);">
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <section class="section">
+    <!-- STACKED CARDS -->
+    <section class="cards-section">
         <div class="container">
-            <div class="aspect-content">
-                <p>Life cover, critical illness, key person insurance. Not exciting. But without it, a single event can destroy decades of careful work.</p>
+            <div class="cards-wrapper">
 
-                <p>And we always put policies in trust — every single time. Why wouldn't you? Without the trust, the proceeds go through probate and potentially into the estate for IHT. With a trust, they go where you want them, when you want them.</p>
+                <!-- CARD 1: WHY IT MATTERS -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-heart-pulse"></i></div>
+                    <p class="card-bold">Critical illness is our biggest claim area.</p>
+                    <p class="card-copy">It's not something people like to think about. But serious illness doesn't wait until your finances are in order. Critical illness cover provides a lump sum when you need it most &mdash; and for families, it's not optional. It's essential.</p>
+                    <p class="card-copy">And when it pays out, it needs to go to the right place. Which is why every policy we arrange goes into trust.</p>
+                </div>
 
-                <div class="connects-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
-                    <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #001e42; margin-bottom: 0.5rem;">How this connects to everything else</p>
-                    <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1rem;">Every decision here affects the rest of your plan.</p>
+                <!-- CARD 2: TRUSTS — call-out style, light blue wash -->
+                <div class="aspect-card" style="background: #eff6ff; border-left-width: 5px;">
+                    <div class="card-icon"><i class="fa-light fa-file-signature"></i></div>
+                    <p class="card-bold">Every policy in trust. Every single time.</p>
+                    <div class="callout-box">
+                        <p>Without a trust, life cover proceeds go through probate &mdash; potentially into the estate, potentially subject to inheritance tax. With a trust, they go exactly where you want them, when you want them. There's no reason not to do this. We do it as standard.</p>
+                    </div>
+                </div>
+
+                <!-- CARD 3: COVERING DEBT -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-house-circle-check"></i></div>
+                    <p class="card-bold">Protection and borrowing go hand in hand.</p>
+                    <p class="card-copy">If you have a mortgage, the debt doesn't disappear when you do. Life cover and critical illness cover linked to your borrowing means your family isn't left with the burden. This connects directly to Step 1 &mdash; mortgages.</p>
+                </div>
+
+                <!-- CARD 4: RELEVANT LIFE -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-building-columns"></i></div>
+                    <p class="card-bold">Relevant Life &mdash; tax-efficient cover through your business.</p>
+                    <p class="card-copy">If you're a business owner, your company can pay for your personal life cover and get tax relief on the premiums. It's called a Relevant Life policy. The company pays, gets corporation tax relief, and you get cover without it being a benefit in kind. It's one of the most efficient ways to arrange protection &mdash; and it's often overlooked.</p>
+                </div>
+
+                <!-- CARD 5: GIFT INTER VIVOS -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-gift"></i></div>
+                    <p class="card-bold">Made a large gift? You might need cover for seven years.</p>
+                    <p class="card-copy">When you make a significant gift &mdash; to family, into a trust, or to reduce your estate &mdash; there's a potential inheritance tax liability that tapers over seven years. A Gift Inter Vivos policy covers that liability while it exists. It's a decreasing term policy that matches the taper. Simple, effective, and often forgotten.</p>
+                </div>
+
+                <!-- CARD 6: BUSINESS PROTECTION -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-briefcase"></i></div>
+                    <p class="card-bold">What happens to the business if a key person dies?</p>
+                    <p class="card-copy">Share purchase agreements, key person cover, partnership protection. If a business partner dies, who buys their share? How does the business survive the loss of a key individual? These aren't hypothetical questions &mdash; they need answers and policies in place before they're needed.</p>
+                </div>
+
+                <!-- CARD 7: HOW THIS CONNECTS -->
+                <div class="aspect-card">
+                    <div class="card-icon"><i class="fa-light fa-diagram-project"></i></div>
+                    <p class="card-bold">How this fits into your wider plan</p>
+                    <p class="card-copy">Protection doesn't exist in isolation &mdash; it connects to your borrowing, your trusts, your tax planning, and your family's future.</p>
+
                     <div class="aspects-connect-grid">
                         <a href="aspect-mortgages.html" class="aspect-mini-card">
                             <div class="aspect-mini-icon" style="background: #E6F1FB; color: #0C447C;">&#8962;</div>
                             <h4>Mortgages</h4>
                         </a>
                         <a href="aspect-income-protection.html" class="aspect-mini-card">
-                            <div class="aspect-mini-icon" style="background: #EEEDFE; color: #3C3489;">&#9201;</div>
+                            <div class="aspect-mini-icon" style="background: #EEEDFE; color: #3C3489;">&#9207;</div>
                             <h4>Income Protection</h4>
                         </a>
                         <div class="aspect-mini-card current">
-                            <div class="aspect-mini-icon" style="background: #E1F5EE; color: #085041;">&#9832;</div>
+                            <div class="aspect-mini-icon" style="background: #E1F5EE; color: #085041;">&#9960;</div>
                             <h4>Protection</h4>
                             <p class="mini-desc">You are here</p>
                         </div>
@@ -208,22 +381,40 @@
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light);"><a href="aspect-income-protection.html" class="back-link">&larr; Income Protection</a><a href="aspect-pensions.html" class="back-link">Next: Pensions &rarr;</a></div>
             </div>
         </div>
     </section>
 
-    <section class="section section-dark">
+    <!-- SUMMARY -->
+    <section class="summary-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Worth a conversation?</h2>
-                <div class="divider"></div>
-                <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
-                <a href="contact.html" class="btn" style="margin-top: 2rem;">Get in Touch</a>
+            <div class="summary-box">
+                <p class="card-bold">We don't sell protection policies.</p>
+                <p class="card-copy">We work out what you actually need &mdash; and make sure it's structured properly.</p>
             </div>
         </div>
     </section>
 
+    <!-- PREV/NEXT -->
+    <section style="background: var(--off-white);">
+        <div class="container">
+            <div class="prev-next">
+                <a href="aspect-income-protection.html">&larr; Income Protection</a>
+                <a href="aspect-pensions.html">Next: Pensions &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Worth a conversation?</h2>
+            <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
+            <a href="contact.html" class="cta-btn">Get in Touch &rarr;</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
                         <div class="footer-content">
@@ -255,6 +446,7 @@
                 </div>
             </div></div>
     </footer>
+
     <script src="../js/main.js"></script>
 </body>
 </html>
