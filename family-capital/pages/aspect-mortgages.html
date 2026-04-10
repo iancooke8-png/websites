@@ -294,7 +294,57 @@
             border-left-color: var(--navy);
         }
 
-        /* CONNECTION GRID */
+        /* FULL ASPECTS GRID */
+        .aspects-connect-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .aspect-mini-card {
+            display: block;
+            text-align: center;
+            padding: 1.2rem 0.8rem;
+            border-radius: 10px;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .aspect-mini-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+        .aspect-mini-card.current {
+            opacity: 0.3;
+            pointer-events: none;
+            border-style: dashed;
+        }
+        .aspect-mini-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.6rem;
+            font-size: 1rem;
+        }
+        .aspect-mini-card h4 {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 0;
+        }
+        .aspect-mini-card .mini-desc {
+            font-size: 0.7rem;
+            color: var(--text-grey);
+            margin: 0.2rem 0 0;
+        }
+
+        /* OLD CONNECTION GRID (keep for now) */
         .connect-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -415,6 +465,9 @@
             .hero-illustration svg {
                 width: 200px;
                 height: 170px;
+            }
+            .aspects-connect-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             .debt-split {
                 grid-template-columns: 1fr;
@@ -584,25 +637,43 @@
                 <div class="aspect-card">
                     <div class="card-icon"><i class="fa-light fa-diagram-project"></i></div>
                     <p class="card-bold">Debt isn't a separate conversation. It drives everything.</p>
-                    <div class="connect-grid">
-                        <a href="aspect-investments.html" class="connect-card">
-                            <div class="connect-card-title">Investments</div>
-                            <div class="connect-card-desc">whether you repay or invest</div>
+                    <p class="card-copy">Every decision here affects the rest of your plan. This is why we deal with it first.</p>
+
+                    <div class="aspects-connect-grid">
+                        <div class="aspect-mini-card current">
+                            <div class="aspect-mini-icon" style="background: #E6F1FB; color: #0C447C;">⌂</div>
+                            <h4>Mortgages</h4>
+                            <p class="mini-desc">You are here</p>
+                        </div>
+                        <a href="aspect-income-protection.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #EEEDFE; color: #3C3489;">⏱</div>
+                            <h4>Income Protection</h4>
                         </a>
-                        <a href="aspect-taxation.html" class="connect-card">
-                            <div class="connect-card-title">Taxation</div>
-                            <div class="connect-card-desc">how repayments and withdrawals are treated</div>
+                        <a href="aspect-protection.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #E1F5EE; color: #085041;">⛨</div>
+                            <h4>Protection</h4>
                         </a>
-                        <a href="aspect-protection.html" class="connect-card">
-                            <div class="connect-card-title">Protection</div>
-                            <div class="connect-card-desc">what happens if income stops</div>
+                        <a href="aspect-pensions.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FAEEDA; color: #633806;">⏳</div>
+                            <h4>Pensions</h4>
                         </a>
-                        <a href="aspect-pensions.html" class="connect-card">
-                            <div class="connect-card-title">Pensions</div>
-                            <div class="connect-card-desc">affordability and long-term planning</div>
+                        <a href="aspect-savings.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FAECE7; color: #712B13;">💰</div>
+                            <h4>Savings</h4>
+                        </a>
+                        <a href="aspect-investments.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #FBEAF0; color: #72243E;">📈</div>
+                            <h4>Investments</h4>
+                        </a>
+                        <a href="aspect-taxation.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #EAF3DE; color: #27500A;">📋</div>
+                            <h4>Taxation</h4>
+                        </a>
+                        <a href="aspect-trusts.html" class="aspect-mini-card">
+                            <div class="aspect-mini-icon" style="background: #F1EFE8; color: #444441;">👥</div>
+                            <h4>Trusts</h4>
                         </a>
                     </div>
-                    <p class="card-copy" style="margin-top: 1.25rem;">This is why we deal with it first.</p>
                 </div>
 
             </div>
