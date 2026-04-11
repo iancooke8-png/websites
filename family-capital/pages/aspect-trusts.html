@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trusts — Move wealth between generations, properly. Family investment companies, settlements, and trust management.">
-    <title>Trusts | Eight Aspects | Family Capital</title>
+    <meta name="description" content="Trusts & Estate Planning — The final piece, and the one that ties everything together. Family investment companies, wills, powers of attorney, gifting strategies.">
+    <title>Trusts & Estate Planning | Eight Aspects | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -77,10 +77,10 @@
             margin-bottom: 0;
         }
 
-        /* CALLOUT BOX — light blue wash */
+        /* CALLOUT BOX — amber */
         .callout-box {
-            background: #eff6ff;
-            border-left: 4px solid var(--accent);
+            background: #fef9e7;
+            border-left: 4px solid #f59e0b;
             border-radius: 8px;
             padding: 1.5rem 1.75rem;
             margin: 1.5rem 0;
@@ -88,11 +88,35 @@
         .callout-box p {
             font-size: 1rem;
             line-height: 1.7;
-            color: #1e40af;
+            color: #92400e;
             margin: 0;
         }
         .callout-box p + p {
             margin-top: 0.75rem;
+        }
+
+        /* WHAT WE LOOK AT LIST */
+        .look-at-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 1.5rem;
+        }
+        .look-at-list li {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+        }
+        .look-at-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
         }
 
         /* FULL ASPECTS GRID */
@@ -280,12 +304,12 @@
                     <div style="margin-bottom: 0.6rem;">
                         <i class="fa-light fa-users" style="font-size: 2.5rem; color: var(--accent);"></i>
                     </div>
-                    <h1 style="font-size: clamp(2.2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 0.3rem;">Trusts</h1>
-                    <p style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-bottom: 1.5rem;">(move wealth between generations &mdash; properly)</p>
-                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 1.5rem;">Trusts, family investment companies, settlements. These are the structures that preserve wealth across generations &mdash; but only when integrated with everything else.</p>
+                    <h1 style="font-size: clamp(2.2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 0.3rem;">Trusts &amp; Estate Planning</h1>
+                    <p style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-bottom: 1.5rem;">(the final piece &mdash; and the one that ties everything together)</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 1.5rem;">Trusts, family investment companies, wills, powers of attorney, gifting strategies. This is where long-term planning meets legacy.</p>
                 </div>
                 <div style="border-radius: 12px; overflow: hidden; height: 100%; min-height: 400px; position: relative;">
-                    <img src="../images/timeline-header.jpg" alt="Intergenerational wealth" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(1.02);">
+                    <img src="../images/timeline-header.jpg" alt="Estate planning" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(1.02);">
                 </div>
             </div>
         </div>
@@ -299,12 +323,12 @@
                 <!-- CARD 1: WHY LAST -->
                 <div class="aspect-card">
                     <div class="card-icon"><i class="fa-light fa-layer-group"></i></div>
-                    <p class="card-bold">Trusts are the final step because they depend on everything before them.</p>
-                    <p class="card-copy">You can't set up a trust without understanding the tax position. You can't fund it without understanding the investment strategy. You can't protect it without the right cover in place. That's why this is step eight &mdash; not because it's least important, but because it only works when everything else is in order.</p>
+                    <p class="card-bold">This is step eight because it depends on everything before it.</p>
+                    <p class="card-copy">You can't set up a trust without understanding the tax position. You can't fund it without understanding the investment strategy. You can't protect it without the right cover in place. That's why this comes last &mdash; not because it's least important, but because it only works when everything else is in order.</p>
                 </div>
 
-                <!-- CARD 2: FAMILY INVESTMENT COMPANIES (call-out, light blue wash) -->
-                <div class="aspect-card" style="background: #eff6ff; border-left-color: var(--accent); border-left-width: 5px;">
+                <!-- CARD 2: FAMILY INVESTMENT COMPANIES (white card with amber callout) -->
+                <div class="aspect-card">
                     <div class="card-icon"><i class="fa-light fa-building"></i></div>
                     <p class="card-bold">Family Investment Companies are one of the most powerful planning tools available.</p>
                     <div class="callout-box">
@@ -313,39 +337,57 @@
                     <p class="card-copy">We've been setting these up for years. The structure, the articles of association, the share classes &mdash; it all matters. Get it wrong and you create problems, not solutions.</p>
                 </div>
 
-                <!-- CARD 3: BARE TRUSTS & ABSOLUTE TRUSTS -->
+                <!-- CARD 3: ESTATE PLANNING ESSENTIALS (blue wash, NO callout) -->
+                <div class="aspect-card" style="background: #f0f5ff; border-left-color: var(--accent); border-left-width: 5px;">
+                    <div class="card-icon"><i class="fa-light fa-scroll"></i></div>
+                    <p class="card-bold">The basics that too many people overlook.</p>
+                    <p class="card-copy">We encourage every client to have these in place:</p>
+                    <ul class="look-at-list">
+                        <li>A current, properly drafted will</li>
+                        <li>Lasting Power of Attorney &mdash; both health &amp; welfare and property &amp; finances</li>
+                        <li>Expression of wish forms for pension death benefits</li>
+                        <li>A clear understanding of who gets what, when, and how</li>
+                    </ul>
+                    <p class="card-copy">These aren't complicated. But without them, your family faces unnecessary delay, cost, and stress at the worst possible time.</p>
+                </div>
+
+                <!-- CARD 4: GIFTING -->
                 <div class="aspect-card">
                     <div class="card-icon"><i class="fa-light fa-hand-holding-heart"></i></div>
-                    <p class="card-bold">Simple trusts for straightforward situations.</p>
-                    <p class="card-copy">Not everything needs a complex structure. A bare trust for a grandchild's investment, an absolute trust for a life policy &mdash; sometimes the simplest option is the right one. We always start with what you're trying to achieve, not with the most complicated structure we can find.</p>
+                    <p class="card-bold">Gifts from regular income &mdash; the IHT exemption most people miss.</p>
+                    <p class="card-copy">If you can demonstrate that gifts come from surplus income &mdash; and don't affect your standard of living &mdash; they're immediately exempt from inheritance tax. No seven-year wait. No taper relief. Just gone.</p>
+                    <p class="card-copy">We construct portfolios specifically to produce the right kind of regular income for this purpose. Direct equity holdings that generate consistent dividends, structured to support a documented gifting strategy. It's where investment management and estate planning meet &mdash; and it's a perfect example of why we consider all eight aspects together.</p>
                 </div>
 
-                <!-- CARD 4: DISCRETIONARY TRUSTS -->
+                <!-- CARD 5: TRUST TYPES -->
                 <div class="aspect-card">
-                    <div class="card-icon"><i class="fa-light fa-scale-balanced"></i></div>
-                    <p class="card-bold">Flexibility comes at a cost &mdash; but sometimes it's worth it.</p>
-                    <p class="card-copy">Discretionary trusts give trustees the power to decide who benefits and when. They're more complex, there are periodic and exit charges, and they require ongoing management. But for families where circumstances change &mdash; and they always do &mdash; the flexibility can be invaluable.</p>
+                    <div class="card-icon"><i class="fa-light fa-sitemap"></i></div>
+                    <p class="card-bold">Different trusts for different purposes.</p>
+                    <p class="card-copy">Bare trusts for grandchildren's investments. Absolute trusts for life policies. Discretionary trusts when flexibility matters. Discounted gift trusts for estate planning. Each has different tax treatment, different costs, and different levels of complexity. We start with what you're trying to achieve &mdash; not with the most complicated structure we can find.</p>
                 </div>
 
-                <!-- CARD 5: TRUST MANAGEMENT -->
+                <!-- CARD 6: TRUST MANAGEMENT (white card with amber callout) -->
                 <div class="aspect-card">
                     <div class="card-icon"><i class="fa-light fa-gear"></i></div>
                     <p class="card-bold">Setting up a trust is the easy part. Managing it is where the value lies.</p>
-                    <p class="card-copy">Trusts need investment management, tax returns, trustee meetings, distributions, record-keeping. We build the technology that manages all of this &mdash; it's what our platform was designed for. Trustees get full visibility, full reporting, and full compliance support.</p>
+                    <p class="card-copy">Trusts need investment management, tax returns, trustee meetings, distributions, record-keeping.</p>
+                    <div class="callout-box">
+                        <p>We built the technology that manages all of this. It's what our platform was designed for. Trustees get full visibility, full reporting, and full compliance support.</p>
+                    </div>
                 </div>
 
-                <!-- CARD 6: EXISTING TRUSTS -->
+                <!-- CARD 7: EXISTING TRUSTS -->
                 <div class="aspect-card">
                     <div class="card-icon"><i class="fa-light fa-folder-open"></i></div>
                     <p class="card-bold">Already have trusts? We'll review them.</p>
                     <p class="card-copy">Many of our clients come to us with trusts already in place &mdash; sometimes set up years ago by a different adviser. We review the structure, the investments, the tax position, and whether the trust still achieves what it was designed to do. Sometimes it does. Sometimes it needs updating. Either way, we'll tell you.</p>
                 </div>
 
-                <!-- CARD 7: HOW THIS CONNECTS -->
+                <!-- CARD 8: HOW THIS CONNECTS -->
                 <div class="aspect-card">
                     <div class="card-icon"><i class="fa-light fa-diagram-project"></i></div>
                     <p class="card-bold">How this connects to your wider plan</p>
-                    <p class="card-copy">Trusts are the final piece &mdash; but they connect back to protection, taxation, investments, and the very first step: understanding what you owe and what you own.</p>
+                    <p class="card-copy">Estate planning is the final piece &mdash; but it connects back to protection, taxation, investments, and the very first step.</p>
 
                     <div class="aspects-connect-grid">
                         <a href="aspect-mortgages.html" class="aspect-mini-card">
@@ -392,7 +434,7 @@
     <section class="summary-section">
         <div class="container">
             <div class="summary-box">
-                <p class="card-bold">Trusts are step eight. The final piece.</p>
+                <p class="card-bold">Trusts &amp; estate planning is step eight. The final piece.</p>
                 <p class="card-copy">Everything before this builds towards it.</p>
                 <p class="card-copy">Everything after this is about maintaining it.</p>
             </div>
