@@ -3,12 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Family Capital for industry professionals — execution only, our platform, our DFM, your decisions.">
+    <meta name="description" content="Family Capital for industry professionals — execution only, our platform, our DFM, your decisions. 0.4% per annum.">
     <title>Industry Professionals | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Split Hero */
+        .split-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0, 24, 54, 0.25);
+            z-index: 1;
+        }
+
+        .split-hero-content {
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 4rem 3rem 8%;
+        }
+
+        .split-hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        .split-hero-content h1 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .split-hero-content h1 em {
+            display: block;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 0.85em;
+        }
+
+        .split-hero-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--muted-blue);
+            margin-top: 1.5rem;
+            max-width: 480px;
+        }
+
+        .split-hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .split-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Proposition cards */
+        .prop-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .prop-card {
+            padding: 2rem 1.5rem;
+            border-left: 3px solid var(--accent);
+            background: var(--white);
+        }
+
+        .prop-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+        }
+
+        .prop-card p {
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+        }
+
+        /* Rate section */
+        .rate-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .rate-number {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .rate-label {
+            font-size: 1.1rem;
+            color: var(--text-grey);
+            margin-bottom: 2rem;
+        }
+
+        .rate-includes {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .rate-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .rate-tick {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Narrative */
+        .ip-narrative {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .ip-narrative p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #334155;
+            margin-bottom: 1.2rem;
+        }
+
+        .ip-narrative p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CTA */
+        .ip-cta {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ip-cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .ip-cta p {
+            color: var(--text-grey);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .split-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .split-hero-content {
+                padding: calc(var(--nav-height) + 3rem) 2rem 3rem;
+            }
+
+            .split-hero-image {
+                height: 300px;
+            }
+
+            .prop-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .prop-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rate-includes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="site-nav scrolled">
@@ -38,48 +231,132 @@
         <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </nav>
 
-    <div class="page-header">
-        <div class="container">
-            <h1>Industry Professionals</h1>
-            <p class="subtitle">Our platform, our DFM, your decisions.</p>
+    <!-- Split Hero -->
+    <section class="split-hero">
+        <div class="split-hero-content">
+            <div class="split-hero-eyebrow">Industry Professionals</div>
+            <h1>For people who don't need regulated advice.<em>A structure for your wealth.</em></h1>
+            <p>If you're a chartered financial planner or qualified fund manager, you already have strong views on what to do with your money. What you need is a proper home for it — institutional custody, discretionary fund management, and the technology to keep your whole family's financial affairs in one place. Without the hoopla.</p>
         </div>
-    </div>
+        <div class="split-hero-image">
+            <img src="../images/industry-sailing.jpg" alt="Industry Professionals">
+        </div>
+    </section>
 
+    <!-- What you get -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What's included</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="prop-grid">
+                <div class="prop-card reveal">
+                    <h3>Platform & custody</h3>
+                    <p>Institutional-grade custody through SEI and Seccl. Your own accounts, your own portal, fully regulated and properly segregated.</p>
+                </div>
+                <div class="prop-card reveal">
+                    <h3>Discretionary management</h3>
+                    <p>Access to our model portfolios and DFM service. Use them, adapt them, or run your own — the choice is yours.</p>
+                </div>
+                <div class="prop-card reveal">
+                    <h3>Wealth Portal</h3>
+                    <p>The same digital experience our advised clients use. Your entire financial picture — investments, property, cashflow — in one secure place.</p>
+                </div>
+                <div class="prop-card reveal">
+                    <h3>Information, not advice</h3>
+                    <p>We provide information to allow you to make informed decisions. You're qualified — you don't need advice, and that means none of the regulatory cost that comes with it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The rate -->
     <section class="section">
         <div class="container">
-            <div class="intro-text">
-                <p>
-                    If you're a qualified adviser, planner, or fund manager, you don't need
-                    our advice — you need our infrastructure. The Industry Peers programme gives
-                    you access to our platform, our discretionary fund management, and the
-                    Family Wealth Portal, without an advice fee.
-                </p>
-                <p>
-                    0.4% per annum. Execution and custody. No VAT. No nonsense.
-                </p>
-                <p>
-                    Whether you're managing your own portfolio, winding down a practice, or
-                    just want institutional-grade custody with someone who understands the
-                    industry — we're here.
-                </p>
+            <div class="rate-section reveal">
+                <div class="rate-number">0.4%</div>
+                <div class="rate-label">per annum — that's it</div>
+                <div class="rate-includes">
+                    <div class="rate-item"><span class="rate-tick">&#10003;</span> Platform & custody</div>
+                    <div class="rate-item"><span class="rate-tick">&#10003;</span> Discretionary management</div>
+                    <div class="rate-item"><span class="rate-tick">&#10003;</span> Wealth Portal access</div>
+                    <div class="rate-item"><span class="rate-tick">&#10003;</span> No VAT</div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Ad hoc advice -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="ip-narrative reveal">
+                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem;">When advice is required</h2>
+                <p>Certain transactions — an offshore bond, for example — legally require advice from an authorised firm. For those situations, we can provide regulated advice on a simple hourly rate, on an ad hoc basis. No ongoing commitment, no retainer. Just the regulated element, when regulation demands it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selling your practice -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Selling your financial planning business?</h2>
+                <div class="divider"></div>
+                <p style="max-width: 680px; margin: 0 auto;">If you're thinking about selling, you need to be talking to someone who's been through it — not just advised on it.</p>
+            </div>
+
+            <div class="prop-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 2rem;">
+                <div class="prop-card reveal" style="text-align: center; border-left: none; border-top: 3px solid var(--accent);">
+                    <div style="font-size: 2rem; color: var(--accent); margin-bottom: 0.8rem;">&#9201;</div>
+                    <h3>Start early</h3>
+                    <p>The best outcomes come from planning at least twelve months before a sale. Structure, tax, valuation — there's a lot to get right before you go to market.</p>
+                </div>
+                <div class="prop-card reveal" style="text-align: center; border-left: none; border-top: 3px solid var(--accent);">
+                    <div style="font-size: 2rem; color: var(--accent); margin-bottom: 0.8rem;">&#127968;</div>
+                    <h3>Structure the proceeds</h3>
+                    <p>Family investment companies, pension contributions, capital gains planning, offshore structures if you're relocating. We help you keep more of what you've built.</p>
+                </div>
+                <div class="prop-card reveal" style="text-align: center; border-left: none; border-top: 3px solid var(--accent);">
+                    <div style="font-size: 2rem; color: var(--accent); margin-bottom: 0.8rem;">&#10003;</div>
+                    <h3>Been there, done it</h3>
+                    <p>We have direct experience of selling financial planning businesses with client banks of over a hundred million. We know what buyers look for, what trips deals up, and how to get the best result.</p>
+                </div>
+            </div>
+
+            <div class="ip-narrative reveal" style="margin-top: 2.5rem;">
+                <p>Selling a practice is one of the biggest financial decisions you'll make. Most advisers spend years building their business and then rush the exit. We've been on both sides — building, selling, and advising other professionals through the process. Whether you need help structuring the proceeds, planning for life after the sale, or just want an honest conversation about what your business is actually worth, there's no one better placed to have that conversation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who this is for -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="ip-narrative reveal">
+                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem;">Built for people like us</h2>
+                <p>Many of the people who use this service are fellow chartered financial planners, fund managers, and industry professionals we've known for years. Friends, colleagues, people we trust and who trust us.</p>
+                <p>The way it works is straightforward. We provide information — about our models, about markets, about how we're positioning portfolios — and you make your own decisions. We can have the conversations, share the thinking, discuss the rationale. What we don't do is give advice, because you don't need it. And because there's no advice, the regulatory cost is a fraction of what it would otherwise be — significantly lower PI insurance, minimal FCA levies, and none of the labour-intensive compliance that comes with a full advice relationship. No suitability letters, no file reviews. That's why the rate is what it is.</p>
+                <p>Over 15% of our clients are industry professionals who use this service. Whether you're managing your own portfolio, winding down a practice, or just want institutional-grade custody with people who understand the industry — we'd enjoy the conversation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
     <section class="section section-dark">
         <div class="container">
-            <div class="section-header">
-                <h2>Worth a conversation?</h2>
-                <div class="divider"></div>
-                <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
-                <a href="contact.html" class="btn" style="margin-top: 2rem;">Get in Touch</a>
+            <div class="ip-cta reveal">
+                <h2>Get in touch</h2>
+                <p>If any of this sounds relevant, we'd be happy to have a chat.</p>
+                <a href="contact.html" class="btn">Get in Touch</a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-                        <div class="footer-content">
+            <div class="footer-content">
                 <div class="footer-brand">
                     <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
                     <p>Wealth management for families and entrepreneurs.</p>
@@ -106,7 +383,8 @@
                         <li><a href="technology.html">Technology</a></li>
                     </ul>
                 </div>
-            </div></div>
+            </div>
+        </div>
     </footer>
     <script src="../js/main.js"></script>
 </body>

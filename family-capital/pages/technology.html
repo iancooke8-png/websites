@@ -3,14 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Family Capital technology — the Wealth Portal, our investment platform, and the systems we built ourselves.">
+    <meta name="description" content="Family Capital technology — built in-house, always connected, your entire financial life in one place.">
     <title>Technology | Family Capital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Dark hero */
+        .tech-hero {
+            background: #0a0f1a;
+            padding: 7rem 0 5rem;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Starry background layer */
+        .bg-stars {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bg-stars::before,
+        .bg-stars::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        /* Small stars */
+        .bg-stars::before {
+            background-image:
+                radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 200px 50px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 220px 150px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 300px 20px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 350px 100px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 400px 60px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 450px 180px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 500px 30px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 550px 120px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 600px 80px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 650px 200px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 700px 50px, rgba(255,255,255,0.5), transparent);
+            background-size: 800px 300px;
+            animation: starTwinkle 4s ease-in-out infinite;
+        }
+
+        /* Larger stars */
+        .bg-stars::after {
+            background-image:
+                radial-gradient(2px 2px at 100px 50px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 250px 120px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(2px 2px at 550px 180px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(2px 2px at 700px 40px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1.5px 1.5px at 180px 200px, rgba(200,220,255,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 480px 30px, rgba(200,220,255,0.7), transparent),
+                radial-gradient(1.5px 1.5px at 620px 140px, rgba(255,240,200,0.6), transparent);
+            background-size: 800px 300px;
+            animation: starTwinkle 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .tech-hero .container,
+        .phone-showcase .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-hero h1 em {
+            display: block;
+            color: var(--accent);
+            font-style: italic;
+            font-size: 0.8em;
+        }
+
+        .tech-hero-sub {
+            font-size: 1.1rem;
+            color: #8899b0;
+            max-width: 600px;
+            margin: 1.5rem auto 3rem;
+            line-height: 1.7;
+        }
+
+        .tech-hero-screenshot {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .tech-hero-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Section title */
+        .tech-section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .tech-section-title .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .tech-section-title h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+        }
+
+        .tech-section-title p {
+            color: var(--text-grey);
+            font-size: 1.05rem;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Feature grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-top: 3px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+        }
+
+        /* Phone showcase */
+        .phone-showcase {
+            background: #0a0f1a;
+            padding: 4rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .phone-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .phone-frame {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-8px);
+        }
+
+        .phone-frame img {
+            width: 100%;
+            display: block;
+        }
+
+        .phone-label {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #6b7fa0;
+        }
+
+        /* Split section */
+        .tech-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .tech-split-reverse {
+            direction: rtl;
+        }
+
+        .tech-split-reverse > * {
+            direction: ltr;
+        }
+
+        .tech-split-text h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .tech-split-text p {
+            font-size: 1.05rem;
+            color: #334155;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-split-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tech-split-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-split-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .stat-item h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: #8899b0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* CTA */
+        .tech-cta {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tech-cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .tech-cta p {
+            color: var(--text-grey);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .phone-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+            .tech-split, .tech-split-reverse { grid-template-columns: 1fr; direction: ltr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .phone-grid { grid-template-columns: 1fr; max-width: 260px; }
+            .stats-bar { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Navigation -->
     <nav class="site-nav scrolled">
         <a href="../" class="nav-logo"><img src="../images/pwg-logo.png" alt="Family Capital"></a>
         <ul class="nav-links">
@@ -38,56 +362,195 @@
         <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     </nav>
 
-    <div class="page-header">
+    <!-- Hero — dark with desktop screenshot -->
+    <section class="tech-hero">
+        <div class="bg-stars"></div>
         <div class="container">
-            <h1>Technology</h1>
-            <p class="subtitle">We built it ourselves. Because nothing else was good enough.</p>
+            <h1>Your entire financial life.<em>One place. Always on.</em></h1>
+            <p class="tech-hero-sub">We've been building our own technology since 2004. Three platforms, built and sold to some of the UK's largest financial institutions. We don't license our technology — every feature is designed exclusively for our clients.</p>
+            <div class="tech-hero-screenshot reveal">
+                <img src="../images/tech/lifeplan-desktop.webp" alt="Wealth Portal — Lifeplan view showing wealth projection across decades">
+            </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Stats -->
+    <section style="background: var(--navy); padding: 1rem 0;">
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <h3>20+</h3>
+                    <p>Years building</p>
+                </div>
+                <div class="stat-item">
+                    <h3>3</h3>
+                    <p>Platforms built</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Always connected</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Built in-house</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Always connected -->
     <section class="section">
         <div class="container">
-            <div class="intro-text">
-                <p>
-                    We've always built our own technology. Three platforms over thirty-three
-                    years. Not because we're a tech company — because we couldn't find
-                    anything that worked the way we needed it to.
-                </p>
-                <p>
-                    The Wealth Portal gives clients and advisers the same view — pensions,
-                    investments, trusts, properties, companies, all in one place. Real-time,
-                    secure, accessible from anywhere.
-                </p>
-                <p>
-                    Our investment platform runs on Seccl — a modern, API-first custodian.
-                    We built our own layer on top for compliance, document scanning, transfer
-                    monitoring, and audit trails. The things that matter when you're managing
-                    real money for real families.
-                </p>
-                <p>
-                    And behind it all, our compliance and reporting systems automate the
-                    things that used to take weeks. Not because automation is clever — because
-                    it means our advisers spend their time talking to clients, not filling in
-                    forms.
-                </p>
+            <div class="tech-section-title reveal">
+                <div class="eyebrow">Always connected</div>
+                <h2>We don't do annual reviews. We do constant ones.</h2>
+                <p>Most firms see their clients once a year. We're connected all the time — monitoring, adjusting, and available whenever you need us.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#9889;</div>
+                    <h3>Real-time monitoring</h3>
+                    <p>If your portfolio drifts outside its risk tolerance, we see it immediately. If tax legislation changes, we can assess the impact across every client instantly. We don't wait for the end of the year to spot something that matters now.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#128274;</div>
+                    <h3>Secure messaging</h3>
+                    <p>We don't use email for client communications — it's not secure enough. Everything goes through our encrypted messaging system, built into the portal and the mobile app. Safer, faster, and everything in one place.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#128200;</div>
+                    <h3>Dynamic suitability</h3>
+                    <p>At least once a year we formally check that your investments are still suitable — but in practice, we're reviewing dynamically throughout the year. Changes in your life, the markets, or legislation are picked up in real time, not at your next appointment.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Mobile showcase -->
+    <section class="phone-showcase">
+        <div class="bg-stars"></div>
+        <div class="container">
+            <div class="tech-section-title" style="margin-bottom: 2.5rem;">
+                <div class="eyebrow" style="color: #6b7fa0;">Mobile</div>
+                <h2 style="color: var(--white);">Everything. In your pocket.</h2>
+                <p style="color: #8899b0;">Your net worth, your properties, your investments, your chattels — all accessible from your phone. Not a cut-down version. The real thing.</p>
+            </div>
+            <div class="phone-grid">
+                <div>
+                    <div class="phone-frame reveal">
+                        <img src="../images/tech/mobile-home.png" alt="Mobile app — net worth and asset overview">
+                    </div>
+                    <div class="phone-label">Net worth</div>
+                </div>
+                <div>
+                    <div class="phone-frame reveal">
+                        <img src="../images/tech/mobile-property.png" alt="Mobile app — property portfolio with photos and valuations">
+                    </div>
+                    <div class="phone-label">Property</div>
+                </div>
+                <div>
+                    <div class="phone-frame reveal">
+                        <img src="../images/tech/mobile-chattels.png" alt="Mobile app — chattels including yacht, cars, contents">
+                    </div>
+                    <div class="phone-label">Chattels</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estate planning -->
+    <section class="section">
+        <div class="container">
+            <div class="tech-split reveal">
+                <div class="tech-split-text">
+                    <h2>Estate planning, simplified.</h2>
+                    <p>Total estate value, nil-rate bands, gifts in the seven-year window, projected inheritance tax — all calculated automatically and kept up to date as your circumstances change.</p>
+                    <p>Your will, lasting powers of attorney, and trust documents are tracked with status alerts. If your will is five years old, the system flags it. If an LPA needs renewing, you'll know.</p>
+                    <p>This isn't a spreadsheet someone updates once a year. It's a living picture of your estate, always current, always accessible.</p>
+                </div>
+                <div class="tech-split-image">
+                    <img src="../images/tech/estate-planning-desktop.png" alt="Estate planning dashboard showing IHT projections, wills, and LPAs">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Everything in one place -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="tech-section-title reveal">
+                <div class="eyebrow">The full picture</div>
+                <h2>Not just investments. Everything.</h2>
+                <p>Most platforms show you a portfolio. Ours shows you your entire financial life.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#127968;</div>
+                    <h3>Property</h3>
+                    <p>Every property you own, with photos, valuations, and ownership details. Residential, commercial, overseas — all in one view.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#9973;</div>
+                    <h3>Chattels</h3>
+                    <p>Cars, boats, art, jewellery, house contents. The things that matter to you, tracked and valued alongside everything else.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#128179;</div>
+                    <h3>Open banking</h3>
+                    <p>Link your bank accounts and see your spending in real time. Spot duplicate subscriptions, track expenditure, and understand your cashflow without downloading statements.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#128196;</div>
+                    <h3>DocBox</h3>
+                    <p>Encrypted document storage for wills, powers of attorney, trust deeds, and anything else you need to keep safe. Assign documents to properties, people, or plans.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#128176;</div>
+                    <h3>Self-service top-ups</h3>
+                    <p>Top up your plans directly through the portal — instantly, without waiting for anyone. Because we're connected to our institutional platforms via API, the cost of implementation drops to almost nothing.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">&#127974;</div>
+                    <h3>Institutional platforms</h3>
+                    <p>We use SEI and Seccl as our institutional custody platforms — both connected directly to the Wealth Portal. Alongside the retail platforms our clients already use, this gives us the depth and flexibility to manage wealth properly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Built in-house -->
+    <section class="section">
+        <div class="container">
+            <div class="tech-section-title reveal">
+                <div class="eyebrow">Built, not bought</div>
+                <h2>This technology isn't available to anyone else.</h2>
+            </div>
+            <div style="max-width: 740px; margin: 0 auto;" class="reveal">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #334155; margin-bottom: 1.2rem;">Every line of code behind Family Capital was written in-house by our own development team. We don't license it, we don't sell it, and we won't make it available to other firms. It exists for one reason: to give our clients the best possible experience.</p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #334155; margin-bottom: 1.2rem;">That means every feature is designed around what our clients actually need — not what a mass-market software company thinks wealth managers want. When we see a better way to do something, we build it. When a client suggests an improvement, it happens.</p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #334155;">Over twenty years of building technology for financial services has taught us one thing: the firms that control their own technology control their own destiny. We'll never be held back by someone else's roadmap.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client login CTA -->
     <section class="section section-dark">
         <div class="container">
-            <div class="section-header">
-                <h2>Worth a conversation?</h2>
-                <div class="divider"></div>
-                <p>No pitch. No jargon. Just a chat about whether we're the right fit.</p>
-                <a href="contact.html" class="btn" style="margin-top: 2rem;">Get in Touch</a>
+            <div class="tech-cta reveal">
+                <h2>Already a client?</h2>
+                <p>Log in to the Wealth Portal to see your entire financial life in one place.</p>
+                <a href="https://www.wealthportal.co.uk/" class="btn" style="margin-bottom: 1rem;">Client Login</a>
+                <p style="font-size: 0.85rem; color: #6b7fa0; margin-top: 1rem;">Not a client yet? <a href="contact.html" style="color: var(--accent); text-decoration: none;">Get in touch</a> — we'd love to show you around.</p>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-                        <div class="footer-content">
+            <div class="footer-content">
                 <div class="footer-brand">
                     <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
                     <p>Wealth management for families and entrepreneurs.</p>
@@ -114,7 +577,8 @@
                         <li><a href="technology.html">Technology</a></li>
                     </ul>
                 </div>
-            </div></div>
+            </div>
+        </div>
     </footer>
     <script src="../js/main.js"></script>
 </body>

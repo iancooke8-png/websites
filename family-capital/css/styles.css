@@ -287,9 +287,9 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(0, 23, 46, 0.2) 0%,
-        rgba(0, 23, 46, 0.35) 40%,
-        rgba(0, 23, 46, 0.6) 100%
+        rgba(0, 23, 46, 0.0) 0%,
+        rgba(0, 23, 46, 0.15) 40%,
+        rgba(0, 23, 46, 0.45) 100%
     );
     z-index: 1;
 }
@@ -325,6 +325,57 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 1s ease 0.9s forwards;
+}
+
+.hero-btn-frost {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+    color: var(--white) !important;
+    padding: 1rem 2.8rem !important;
+    font-size: 0.9rem !important;
+}
+
+.hero-btn-frost:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    transform: translateY(-2px);
+}
+
+.hero-app-links {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.1s forwards;
+    z-index: 2;
+}
+
+.hero-app-links a {
+    display: block;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+}
+
+.hero-app-links a:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.hero-app-links img {
+    height: 40px;
+    width: auto;
+}
+
+/* Google Play badge has built-in padding so needs to be larger to match visually */
+.hero-app-links a:last-child img {
+    height: 58px;
+    margin: -9px 0;
 }
 
 
@@ -925,7 +976,7 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
 .pullup-wrapper {
     position: relative;
     z-index: 3;
-    margin-top: -6rem;
+    margin-top: 0;
     background: var(--navy);
 }
 

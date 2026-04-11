@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team member profile — Family Capital">
+    <title>Team | Family Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Breadcrumb */
+        .bio-breadcrumb {
+            padding: 1.2rem 0 0;
+            font-size: 0.85rem;
+            color: var(--text-grey);
+        }
+
+        .bio-breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .bio-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .bio-breadcrumb span {
+            margin: 0 0.4rem;
+            opacity: 0.5;
+        }
+
+        /* Hero — two column */
+        .bio-hero {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 3rem;
+            align-items: start;
+            padding: 2rem 0 3rem;
+        }
+
+        .bio-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+        }
+
+        .bio-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .bio-details {
+            padding-top: 1rem;
+        }
+
+        .bio-details h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .bio-title {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-grey);
+            margin-bottom: 0.6rem;
+        }
+
+        .bio-location {
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            margin-bottom: 1.2rem;
+        }
+
+        .bio-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            transition: color 0.2s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .bio-linkedin:hover {
+            color: var(--accent-hover);
+        }
+
+        .bio-linkedin svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Summary (in hero) */
+        .bio-summary {
+            margin-top: 1.5rem;
+        }
+
+        .bio-summary p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #334155;
+            margin-bottom: 0.8rem;
+        }
+
+        .bio-summary p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Experience (full-width below hero) */
+        .bio-experience {
+            padding: 2rem 0 3rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .bio-experience-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-experience p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #334155;
+            margin-bottom: 1.2rem;
+        }
+
+        .bio-experience p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CTA (fallback when no contact section) */
+        .bio-cta {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .bio-cta .btn {
+            color: var(--navy);
+            border-color: var(--navy);
+        }
+
+        .bio-cta .btn:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Contact section */
+        .bio-contact {
+            background: var(--off-white);
+            padding: 3.5rem 0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .bio-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .bio-contact-office h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1.2rem;
+        }
+
+        .bio-contact-office p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #334155;
+            margin-bottom: 0.6rem;
+        }
+
+        .bio-contact-office a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .bio-contact-office a:hover {
+            text-decoration: underline;
+        }
+
+        .bio-contact-form h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1.2rem;
+        }
+
+        .bio-form-group {
+            margin-bottom: 1rem;
+        }
+
+        .bio-form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-grey);
+            margin-bottom: 0.3rem;
+        }
+
+        .bio-form-group input,
+        .bio-form-group textarea {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            border: 1px solid #d1d5db;
+            background: var(--white);
+            color: #1e293b;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .bio-form-group input:focus,
+        .bio-form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .bio-form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .bio-form-submit {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: var(--navy);
+            color: var(--white);
+            border: 1px solid var(--navy);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .bio-form-submit:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .bio-contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Not found state */
+        .bio-not-found {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .bio-not-found h1 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .bio-not-found p {
+            color: var(--text-grey);
+            margin-bottom: 2rem;
+        }
+
+        .bio-not-found a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .bio-not-found a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bio-hero {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .bio-photo {
+                max-width: 320px;
+            }
+
+            .bio-details {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav scrolled">
+        <a href="../" class="nav-logo">
+            <img src="../images/pwg-logo.png" alt="Family Capital">
+        </a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li class="nav-dropdown">
+                <a href="about.html" class="nav-dropdown-toggle">About Us</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                </ul>
+            </li>
+            <li class="nav-dropdown">
+                <a href="what-we-do.html" class="nav-dropdown-toggle">What We Do</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="what-we-do.html">Holistic Financial Planning</a></li>
+                    <li><a href="industry-professionals.html">Industry Professionals</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                </ul>
+            </li>
+            <li><a href="people.html">Team</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Bio Content (populated by JS) -->
+    <section class="section" id="bio-content" style="display: none; padding-top: 6rem;">
+        <div class="container">
+            <div class="bio-breadcrumb">
+                <a href="people.html">&larr; Back to Team</a>
+                <span>&middot;</span>
+                <span id="breadcrumb-name"></span>
+            </div>
+            <div class="bio-hero">
+                <div class="bio-photo">
+                    <img id="bio-photo" src="" alt="">
+                </div>
+                <div class="bio-details">
+                    <h1 id="bio-name"></h1>
+                    <div class="bio-title" id="bio-title"></div>
+                    <div class="bio-location" id="bio-location"></div>
+                    <a id="bio-linkedin" class="bio-linkedin" href="" target="_blank" rel="noopener" style="display: none;">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+
+                    <div class="bio-summary" id="bio-summary"></div>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="bio-experience" id="bio-experience-section" style="display: none;">
+                <h2 class="bio-experience-title" id="bio-experience-title"></h2>
+                <div id="bio-experience"></div>
+            </div>
+
+            <!-- CTA (shown when no contact section) -->
+            <div class="bio-cta" id="bio-cta">
+                <a href="contact.html" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section (shown when person has office data) -->
+    <section class="bio-contact" id="bio-contact" style="display: none;">
+        <div class="container">
+            <div class="bio-contact-grid">
+                <div class="bio-contact-office">
+                    <h2 id="bio-contact-heading">Get in Touch</h2>
+                    <p id="bio-office-name" style="font-weight: 600;"></p>
+                    <p id="bio-office-address"></p>
+                    <p id="bio-office-phone"></p>
+                    <p id="bio-office-email"></p>
+                </div>
+                <div class="bio-contact-form">
+                    <h2>Send a Message</h2>
+                    <form id="bio-enquiry-form">
+                        <input type="hidden" id="bio-form-adviser" name="adviser" value="">
+                        <div class="bio-form-group">
+                            <label for="bio-form-name">Name</label>
+                            <input type="text" id="bio-form-name" name="name" required>
+                        </div>
+                        <div class="bio-form-group">
+                            <label for="bio-form-email">Email</label>
+                            <input type="email" id="bio-form-email" name="email" required>
+                        </div>
+                        <div class="bio-form-group">
+                            <label for="bio-form-phone">Phone</label>
+                            <input type="tel" id="bio-form-phone" name="phone">
+                        </div>
+                        <div class="bio-form-group">
+                            <label for="bio-form-message">Message</label>
+                            <textarea id="bio-form-message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="bio-form-submit">Send Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Not Found State -->
+    <section id="bio-not-found" style="display: none; padding-top: 6rem;">
+        <div class="container">
+            <div class="bio-not-found">
+                <h1>Profile coming soon</h1>
+                <p>We're still putting this one together.</p>
+                <a href="people.html">&larr; Back to the team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
+                    <p>Wealth management for families and entrepreneurs.</p>
+                    <p class="footer-group-link">Part of <a href="https://www.perpetualwealth.co.uk">Perpetual Wealth Group</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="people.html">Team</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://www.wealthportal.co.uk/">Client Login</a></li>
+                        <li><a href="timeline.html">Our Timeline</a></li>
+                        <li><a href="eight-aspects.html">Eight Aspects</a></li>
+                        <li><a href="industry-professionals.html">Industry Professionals</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/people-data.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('person');
+
+            const person = slug ? PEOPLE.find(p => p.slug === slug) : null;
+
+            if (!person) {
+                document.getElementById('bio-not-found').style.display = 'block';
+                return;
+            }
+
+            // Update page title and meta
+            document.title = person.name + ' | Family Capital';
+            document.querySelector('meta[name="description"]').content = person.name + ' — ' + person.role + ' at Family Capital.';
+
+            // Breadcrumb
+            document.getElementById('breadcrumb-name').textContent = person.name;
+
+            // Photo
+            const photo = document.getElementById('bio-photo');
+            photo.src = person.photo;
+            photo.alt = person.name;
+
+            // Details
+            document.getElementById('bio-name').textContent = person.name;
+            document.getElementById('bio-title').textContent = person.role;
+            document.getElementById('bio-location').textContent = person.location;
+
+            // LinkedIn
+            if (person.linkedin) {
+                const link = document.getElementById('bio-linkedin');
+                link.href = person.linkedin;
+                link.style.display = 'inline-flex';
+            }
+
+            // Summary
+            if (person.summary) {
+                const summaryEl = document.getElementById('bio-summary');
+                const paras = Array.isArray(person.summary) ? person.summary : [person.summary];
+                paras.forEach(text => {
+                    const p = document.createElement('p');
+                    p.textContent = text;
+                    summaryEl.appendChild(p);
+                });
+            }
+
+            // Experience
+            if (person.experience && person.experience.length) {
+                document.getElementById('bio-experience-section').style.display = 'block';
+                const firstName = person.name.split(' ')[0];
+                document.getElementById('bio-experience-title').textContent = 'Background';
+                const container = document.getElementById('bio-experience');
+                person.experience.forEach(para => {
+                    const p = document.createElement('p');
+                    p.textContent = para;
+                    container.appendChild(p);
+                });
+            }
+
+            // Contact section (if person has office data)
+            if (person.office) {
+                const firstName = person.name.split(' ')[0];
+                document.getElementById('bio-contact-heading').textContent = 'Get in Touch with ' + firstName;
+                document.getElementById('bio-office-name').textContent = person.office.name;
+                document.getElementById('bio-office-address').innerHTML = person.office.address.replace(/\n/g, '<br>');
+                document.getElementById('bio-office-phone').textContent = person.office.phone;
+                const emailEl = document.getElementById('bio-office-email');
+                emailEl.innerHTML = '<a href="mailto:' + person.office.email + '">' + person.office.email + '</a>';
+                document.getElementById('bio-form-adviser').value = person.slug;
+                document.getElementById('bio-contact').style.display = 'block';
+                // Hide the generic CTA
+                document.getElementById('bio-cta').style.display = 'none';
+            }
+
+            // Show content
+            document.getElementById('bio-content').style.display = 'block';
+        })();
+    </script>
+</body>
+</html>
