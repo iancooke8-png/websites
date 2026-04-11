@@ -936,7 +936,6 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
     padding: 2rem 3.5rem;
     border-radius: 14px 14px 0 0;
     text-align: center;
-    white-space: nowrap;
 }
 
 .pullup-tab p {
@@ -1439,6 +1438,15 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem 1rem;
     }
+
+    /* Force any inline grid to single column on mobile */
+    [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    [style*="grid-template-columns: repeat(2"] {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1451,7 +1459,7 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
     }
 
     .cards-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 
     .cards-three {
