@@ -442,36 +442,86 @@
                 <div class="divider"></div>
             </div>
 
-            <div class="service-cards">
-                <div class="service-card featured">
+            <div style="max-width: 760px; margin: 0 auto 3rem;" class="reveal">
+                <p style="font-size: 1.1rem; color: #334155; line-height: 1.8; text-align: center;">As your financial planner, we have a straightforward obligation: the value we provide should exceed what we charge. If it doesn't, you shouldn't be using us. Everything we do — the planning, the technology, the investment management — is designed to make sure the answer to that question is never in doubt.</p>
+            </div>
+
+            <div class="service-cards" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Full planning -->
+                <div class="service-card featured reveal">
                     <div class="service-tag">Full financial planning</div>
                     <h3>Families &amp; entrepreneurs</h3>
-                    <div class="service-price">1% per annum</div>
-                    <div class="service-note">No VAT · tiered for larger portfolios</div>
-                    <div class="fee-breakdown">
-                        <div class="fee-row">
-                            <span>Financial planning &amp; advice</span>
-                            <span>0.9%</span>
-                        </div>
-                        <div class="fee-row">
-                            <span>Discretionary investment management</span>
-                            <span>0.1%</span>
-                        </div>
-                        <div class="fee-row total">
-                            <span>Total</span>
-                            <span>1.0%</span>
-                        </div>
-                    </div>
-                    <p class="body-text">All eight aspects. One fee. Planned together, managed together, reviewed together.</p>
+                    <div class="service-price">up to 1%</div>
+                    <div class="service-note">per annum · no VAT · tiered for larger portfolios</div>
+                    <p class="body-text">Holistic planning across all eight aspects. Investment advice. Tax wrapper structuring. Cashflow modelling. Estate planning. The Wealth Portal and mobile app. Continuous dynamic reviewing. Institutional fund pricing — up to 50% cheaper than retail.</p>
                 </div>
 
-                <div class="service-card">
+                <!-- What's included at 0% -->
+                <div class="service-card reveal">
+                    <div class="service-tag">Included — no extra charge</div>
+                    <h3>Part of the service</h3>
+                    <div class="service-price">0%</div>
+                    <div class="service-note">already covered</div>
+                    <p class="body-text">Advice on your workplace pension and existing schemes. National savings. Fixed interest. Fund selection guidance on schemes we don't manage. It's all part of the holistic picture.</p>
+                </div>
+
+                <!-- Industry professionals -->
+                <div class="service-card reveal">
                     <div class="service-tag">Execution only</div>
                     <h3>Industry professionals</h3>
-                    <div class="service-price">0.4% per annum</div>
-                    <div class="service-note">For qualified advisers &amp; planners</div>
-                    <p class="body-text">Our platform, our DFM, your decisions. No advice fee — just execution and custody.</p>
+                    <div class="service-price">0.4%</div>
+                    <div class="service-note">per annum · <a href="industry-professionals.html" style="color: var(--accent); text-decoration: none;">learn more</a></div>
+                    <p class="body-text">Our platforms, our DFM, your decisions. For qualified advisers and planners who don't need regulated advice — just somewhere to put it.</p>
                 </div>
+            </div>
+
+            <!-- Cash rates -->
+            <div style="margin-top: 2.5rem;" class="reveal">
+                <p style="text-align: center; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 1.2rem;">Instant access cash rates — no platform fees, no margin from us</p>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto;">
+                    <div style="text-align: center; padding: 1.5rem 1rem; background: var(--white); border: 1px solid var(--border-light); border-radius: 8px;">
+                        <svg style="width:32px;height:20px;margin-bottom:0.4rem;border-radius:2px;" viewBox="0 0 60 30"><clipPath id="t"><rect width="60" height="30"/></clipPath><g clip-path="url(#t)"><path d="M0 0v30h60V0z" fill="#00247d"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#cf142b" stroke-width="4" clip-path="url(#t)"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#cf142b" stroke-width="6"/></g></svg>
+                        <div style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--navy);">3.00%</div>
+                        <div style="font-size: 0.75rem; color: var(--text-grey); margin-top: 0.3rem;">GBP &middot; Seccl</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem 1rem; background: var(--white); border: 1px solid var(--border-light); border-radius: 8px;">
+                        <svg style="width:32px;height:20px;margin-bottom:0.4rem;border-radius:2px;" viewBox="0 0 60 30"><clipPath id="t2"><rect width="60" height="30"/></clipPath><g clip-path="url(#t2)"><path d="M0 0v30h60V0z" fill="#00247d"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#cf142b" stroke-width="4" clip-path="url(#t2)"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#cf142b" stroke-width="6"/></g></svg>
+                        <div style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--navy);">2.98%</div>
+                        <div style="font-size: 0.75rem; color: var(--text-grey); margin-top: 0.3rem;">GBP &middot; SEI</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem 1rem; background: var(--white); border: 1px solid var(--border-light); border-radius: 8px;">
+                        <svg style="width:32px;height:20px;margin-bottom:0.4rem;border-radius:2px;" viewBox="0 0 60 30"><rect width="60" height="30" fill="#fff"/><rect width="60" height="4" y="0" fill="#b22234"/><rect width="60" height="4" y="4.6" fill="#b22234"/><rect width="60" height="4" y="9.2" fill="#b22234"/><rect width="60" height="4" y="13.8" fill="#b22234"/><rect width="60" height="4" y="18.4" fill="#b22234"/><rect width="60" height="4" y="23" fill="#b22234"/><rect width="60" height="4" y="27.6" fill="#b22234"/><rect width="24" height="16.15" fill="#3c3b6e"/></svg>
+                        <div style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--navy);">2.60%</div>
+                        <div style="font-size: 0.75rem; color: var(--text-grey); margin-top: 0.3rem;">USD &middot; SEI</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem 1rem; background: var(--white); border: 1px solid var(--border-light); border-radius: 8px;">
+                        <svg style="width:32px;height:20px;margin-bottom:0.4rem;border-radius:2px;" viewBox="0 0 60 40"><rect width="60" height="40" fill="#003399"/><g fill="#FFCC00" transform="translate(30,20)"><circle cx="0" cy="-12" r="1.8"/><circle cx="6" cy="-10.4" r="1.8"/><circle cx="10.4" cy="-6" r="1.8"/><circle cx="12" cy="0" r="1.8"/><circle cx="10.4" cy="6" r="1.8"/><circle cx="6" cy="10.4" r="1.8"/><circle cx="0" cy="12" r="1.8"/><circle cx="-6" cy="10.4" r="1.8"/><circle cx="-10.4" cy="6" r="1.8"/><circle cx="-12" cy="0" r="1.8"/><circle cx="-10.4" cy="-6" r="1.8"/><circle cx="-6" cy="-10.4" r="1.8"/></g></svg>
+                        <div style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--navy);">0.50%</div>
+                        <div style="font-size: 0.75rem; color: var(--text-grey); margin-top: 0.3rem;">EUR &middot; SEI</div>
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 0.8rem; color: #94a3b8; margin-top: 0.8rem;">Available to existing clients</p>
+            </div>
+
+            <!-- Value narrative -->
+            <div style="margin-top: 3rem;" class="reveal">
+                <div style="background: var(--off-white); border-radius: 12px; padding: 3rem 4rem; max-width: 960px; margin: 0 auto;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.2rem; text-align: center;">All planned together. Managed together. Constantly reviewed together.</h3>
+                    <p style="font-size: 1.05rem; color: #334155; line-height: 1.8; margin-bottom: 1rem;">Our portfolios have been independently constructed since 2008. The combination of institutional pricing, proper tax structuring, and genuinely holistic planning often means the value of what we save clients far exceeds the fee itself.</p>
+                    <p style="font-size: 1.05rem; color: #334155; line-height: 1.8; margin: 0;">There are no exit fees and no barriers to leaving. You're free to move your assets to another adviser at any time. We don't need to lock anyone in.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimers -->
+    <section style="padding: 2rem 0; border-top: 1px solid var(--border-light);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: #94a3b8; line-height: 1.7;">
+                <p style="margin-bottom: 0.5rem;">Where an external discretionary fund manager is used on your behalf, their fees will apply in addition to ours. In these cases, we discount our own fee accordingly. Where discretionary management is provided through our group company, Perpetual Wealth Solutions, alongside one of our institutional platform partners, total investment management fees are capped at 0.1% per annum. Institutional fund pricing is only available on our institutional platforms — retail platforms such as Aviva, abrdn, and AJ Bell carry standard fund charges which are typically higher.</p>
+                <p style="margin-bottom: 0.5rem;">Cash rates are variable and set by the platform's banking partner. Rates shown are correct at the time of publication and may change without notice.</p>
+                <p style="margin-bottom: 0.5rem;">Past performance is not a reliable indicator of future results. The value of investments and the income from them can go down as well as up, and you may get back less than you invest.</p>
+                <p>Family Capital is a trading name of Family Capital Ltd, which is authorised and regulated by the Financial Conduct Authority. Tax treatment depends on individual circumstances and may be subject to change in the future.</p>
             </div>
         </div>
     </section>
