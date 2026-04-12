@@ -357,15 +357,51 @@
 
     <script src="../js/main.js"></script>
     <script>
-        // Show selected file names
-        document.getElementById('file-upload').addEventListener('change', function() {
-            const list = document.getElementById('file-list');
-            if (this.files.length) {
-                list.textContent = Array.from(this.files).map(f => f.name).join(', ');
-            } else {
-                list.textContent = '';
+        (function() {
+            const uploadArea = document.querySelector('.upload-area');
+            const fileInput = document.getElementById('file-upload');
+            const fileList = document.getElementById('file-list');
+
+            function updateFileList() {
+                if (fileInput.files.length) {
+                    fileList.innerHTML = Array.from(fileInput.files).map(f =>
+                        '<span style="display:inline-block;padding:0.2rem 0.6rem;background:#f1f5f9;border-radius:4px;margin:0.2rem 0.3rem 0.2rem 0;font-size:0.8rem;">' + f.name + '</span>'
+                    ).join('');
+                } else {
+                    fileList.innerHTML = '';
+                }
             }
-        });
+
+            // Click to upload
+            fileInput.addEventListener('change', updateFileList);
+
+            // Drag and drop
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.style.borderColor = '#3b82f6';
+                this.style.background = 'rgba(59, 130, 246, 0.05)';
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.style.borderColor = '#d1d5db';
+                this.style.background = '';
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.style.borderColor = '#d1d5db';
+                this.style.background = '';
+
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    updateFileList();
+                }
+            });
+        })();
     </script>
 </body>
 </html>
