@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How Family Capital protects your data — our approach to cyber security, encryption, and keeping your information safe.">
+    <title>Cyber Security | Family Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../vendor/fa/fontawesome.min.js"></script>
+    <script src="../vendor/fa/light.min.js"></script>
+    <script src="../vendor/fa/solid.min.js"></script>
+    <style>
+        .security-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .security-card {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-top: 3px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .security-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .security-card-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .security-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+        }
+
+        .security-card p {
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+        }
+
+        .security-narrative {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .security-narrative p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #334155;
+            margin-bottom: 1.2rem;
+        }
+
+        .callout-blue {
+            background: #f0f5ff;
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            margin: 2rem 0;
+        }
+
+        .callout-blue p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #1e40af;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .security-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav scrolled">
+        <a href="../" class="nav-logo"><img src="../images/pwg-logo.png" alt="Family Capital"></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li class="nav-dropdown">
+                <a href="about.html" class="nav-dropdown-toggle">About Us</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                </ul>
+            </li>
+            <li class="nav-dropdown">
+                <a href="what-we-do.html" class="nav-dropdown-toggle">What We Do</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="what-we-do.html">Holistic Financial Planning</a></li>
+                    <li><a href="industry-professionals.html">Industry Professionals</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                </ul>
+            </li>
+            <li><a href="people.html">Team</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- Header -->
+    <section class="page-header" style="background: var(--off-white); color: var(--navy);">
+        <div class="container">
+            <h1 style="color: var(--navy);">Cyber Security</h1>
+            <p class="subtitle" style="color: var(--text-grey);">How we protect your data — and how you can help.</p>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section">
+        <div class="container">
+            <div class="security-narrative reveal">
+                <p>Your financial data is some of the most sensitive information you have. We take its protection seriously — not as a box-ticking exercise, but as a core part of how we run the business.</p>
+                <p>We have a dedicated head of cyber security on the team, holding a Master's degree in Cyber Security and Forensic Information Technology. Our systems are designed, built, and tested in-house — which means we understand every layer of how your data is stored, accessed, and protected.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security cards -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>How we protect your data</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="security-cards">
+                <div class="security-card reveal">
+                    <div class="security-card-icon"><i class="fa-light fa-server"></i></div>
+                    <h3>UK data centres</h3>
+                    <p>All client data is held in Microsoft Azure's UK South data centre. Your information stays in the UK, hosted on infrastructure that meets the highest international security standards.</p>
+                </div>
+
+                <div class="security-card reveal">
+                    <div class="security-card-icon"><i class="fa-light fa-lock"></i></div>
+                    <h3>Encryption</h3>
+                    <p>Data is encrypted at rest and in transit. All connections use TLS encryption, and our databases use Azure SQL's built-in encryption to protect your information even if the underlying storage were somehow compromised.</p>
+                </div>
+
+                <div class="security-card reveal">
+                    <div class="security-card-icon"><i class="fa-light fa-shield-halved"></i></div>
+                    <h3>Server-side architecture</h3>
+                    <p>Our applications are built using server-side technology, not client-side JavaScript frameworks. This means your data is processed on our secure servers — not held in your browser or on your device where it could be more vulnerable.</p>
+                </div>
+
+                <div class="security-card reveal">
+                    <div class="security-card-icon"><i class="fa-light fa-fingerprint"></i></div>
+                    <h3>Authentication &amp; biometrics</h3>
+                    <p>We support multi-factor authentication on the Wealth Portal and biometric login — Face ID and fingerprint — on our mobile app. We're strong supporters of Apple's approach to device security and biometrics. We strongly encourage every client to enable MFA — it's one of the most effective protections against unauthorised access.</p>
+                </div>
+
+                <div class="security-card reveal">
+                    <div class="security-card-icon"><i class="fa-light fa-user-lock"></i></div>
+                    <h3>Role-based access</h3>
+                    <p>Not everyone in the firm can see everything. Access to client data is controlled on a role-by-role basis — people only see what they need to see for their job. This limits exposure and ensures your information is treated with the care it deserves.</p>
+                </div>
+
+                <div class="security-card reveal">
+                    <div class="security-card-icon"><i class="fa-light fa-clock"></i></div>
+                    <h3>Temporary document access</h3>
+                    <p>When you share sensitive documents with us — passports, identity documents, statements — the access links are only available for minutes, not hours. Documents are stored in Azure's encrypted storage and links expire automatically. Nothing sits on an open URL.</p>
+                </div>
+
+                <div class="security-card reveal">
+                    <div class="security-card-icon"><i class="fa-light fa-vial"></i></div>
+                    <h3>Penetration testing</h3>
+                    <p>We run penetration testing as part of our development process — after every major release, our systems are tested for vulnerabilities in a dedicated staging environment before anything goes live.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secure messaging -->
+    <section class="section">
+        <div class="container">
+            <div class="security-narrative reveal">
+                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem;">Secure messaging — and why we don't use email</h2>
+                <p>One of the biggest risks we've seen in the financial services industry is email getting hacked. Phishing attacks, compromised inboxes, intercepted messages — email was never designed to be secure, and yet most firms still use it as their primary communication channel with clients.</p>
+                <p>We took a different approach. The Wealth Portal and our mobile app include encrypted secure messaging. It's how we communicate with clients — and it's how we encourage you to communicate with us. If you send us an email, we'll typically respond through secure messaging instead.</p>
+
+                <div class="callout-blue">
+                    <p>We don't force anyone to use it — but we do recommend it. Your financial information is too important to be sitting in an email inbox alongside marketing newsletters and spam.</p>
+                </div>
+
+                <p>This is also why the mobile app matters. With secure messaging on your phone, you can reach us instantly — and everything stays encrypted, end to end.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI and data -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="security-narrative reveal">
+                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem;">AI and your data</h2>
+                <p>We use artificial intelligence to help improve our services — from report writing to compliance checks. But we have clear policies on how AI is used in relation to client data.</p>
+                <p>Client databases and sensitive personal information are not fed through AI systems. Where we use AI, it's applied to processes and workflows, not to your personal data directly. We have a dedicated AI specialist on the team with a Master's degree in Artificial Intelligence, and our approach is evidence-based and ethics-led.</p>
+                <p>We believe AI should make things better for clients — but never at the expense of their privacy or security.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What you can do -->
+    <section class="section">
+        <div class="container">
+            <div class="security-narrative reveal">
+                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem;">What you can do</h2>
+                <p>Security is a partnership. We do everything we can on our side — but some of the most effective protections are in your hands.</p>
+
+                <div class="security-cards" style="grid-template-columns: repeat(2, 1fr); margin-top: 1.5rem;">
+                    <div class="security-card reveal">
+                        <div class="security-card-icon"><i class="fa-light fa-mobile-screen"></i></div>
+                        <h3>Enable multi-factor authentication</h3>
+                        <p>If you haven't already, switch it on. It takes 30 seconds and it's one of the single most effective things you can do to protect your accounts — not just with us, but everywhere.</p>
+                    </div>
+                    <div class="security-card reveal">
+                        <div class="security-card-icon"><i class="fa-light fa-message-lines"></i></div>
+                        <h3>Use secure messaging</h3>
+                        <p>Send us documents, questions, and sensitive information through the Wealth Portal or mobile app — not email. It's encrypted and it's there for a reason.</p>
+                    </div>
+                    <div class="security-card reveal">
+                        <div class="security-card-icon"><i class="fa-light fa-envelope-circle-check"></i></div>
+                        <h3>Be cautious with email</h3>
+                        <p>We will never ask you for passwords, login details, or bank information by email. If you receive anything that looks like it's from us asking for this, it isn't. Contact us directly.</p>
+                    </div>
+                    <div class="security-card reveal">
+                        <div class="security-card-icon"><i class="fa-light fa-key"></i></div>
+                        <h3>Keep your devices secure</h3>
+                        <p>Use strong passwords, keep your phone and computer updated, and don't share login credentials. The best security in the world can't protect you if someone else has your password.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-dark">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;" class="reveal">
+                <h2>Questions about security?</h2>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 2rem;">If you have any concerns about how your data is protected, we're happy to talk through our approach in detail.</p>
+                <a href="contact.html" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
+                    <p>Wealth management for families and entrepreneurs.</p>
+                    <p class="footer-group-link">Part of <a href="https://www.perpetualwealth.co.uk">Perpetual Wealth Group</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="people.html">Team</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://www.wealthportal.co.uk/">Client Login</a></li>
+                        <li><a href="timeline.html">Our Timeline</a></li>
+                        <li><a href="eight-aspects.html">Eight Aspects</a></li>
+                        <li><a href="industry-professionals.html">Industry Professionals</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                    </ul>
+                </div>
+                <div class="footer-regulatory">
+                    <p>
+                        Issued by Family Capital Limited (<a href="https://find-and-update.company-information.service.gov.uk/company/10457142" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Company No. 10457142</a>, FCA Ref. 765457), which is authorised and regulated by the <a href="https://register.fca.org.uk/s/firm?id=001b000003ZclGNAAZ" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Financial Conduct Authority</a>.
+                    </p>
+                    <div class="footer-legal-links">
+                        <a href="important-info.html">Important Information</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="modern-slavery.html">Modern Slavery Statement</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>
