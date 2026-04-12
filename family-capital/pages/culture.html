@@ -52,11 +52,12 @@
     </nav>
 
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Culture: The Heart of Our Success</h1>
-            <p class="subtitle">No Compromise — Constant and Never-Ending Improvement</p>
+    <!-- Page Header with network animation -->
+    <section class="page-header" style="background: var(--off-white); color: var(--navy); position: relative; overflow: hidden;">
+        <canvas id="cultureNetwork" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;"></canvas>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1 style="color: var(--navy);">Culture</h1>
+            <p class="subtitle" style="color: var(--text-grey);">How we work. Why it matters.</p>
         </div>
     </section>
 
@@ -68,20 +69,17 @@
                 <div class="two-col-text reveal-left">
                     <h2>What Sets Us Apart</h2>
                     <p>
-                        At Family Capital, we would say that culture is the foundation of our
-                        excellence in financial services — who wouldn't? But we genuinely live
-                        by it. Guided by our mission of 'No Compromise,' we embrace CANI —
-                        Constant and Never-Ending Improvement. This commitment ensures we place
-                        our clients at the centre of everything we do.
+                        What genuinely makes Family Capital different is that we've built an ecosystem — the people, the technology, the platforms, the advice — all designed to work together in harmony.
                     </p>
                     <p>
-                        Sure, everyone talks about culture, but we invite you to explore what
-                        truly makes a difference at Family Capital. Our approach, aligned with
-                        the FCA Consumer Duty's four outcomes, is grounded in the 5 Ps.
+                        We want one place where everything connects. When you log in, you see your entire financial life — not several different places to go. We built our own technology to make that possible, and because we own it, we're constantly improving it. It evolves every day.
+                    </p>
+                    <p>
+                        That commitment to continuous improvement isn't a slogan. It's just what happens when you care enough to build something yourself.
                     </p>
                 </div>
                 <div class="two-col-image reveal-right">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Team collaboration at Family Capital">
+                    <img src="../images/modern-culture.jpg" alt="An interconnected ecosystem — technology and growth working together">
                 </div>
             </div>
         </div>
@@ -92,99 +90,68 @@
     <section class="section section-light">
         <div class="container">
             <div class="section-header reveal">
-                <h2>The 5 Ps: Our Secret Sauce</h2>
+                <h2>The 5 Ps</h2>
                 <div class="divider"></div>
-                <p>The principles that guide every decision we make</p>
+                <p>Five principles that shape everything we do</p>
             </div>
 
             <div style="max-width: 800px; margin: 0 auto;">
                 <div class="accordion-item reveal">
                     <button class="accordion-trigger">
-                        <span>People: Expertise and Integrity</span>
+                        <span>People</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            Our greatest asset is our people. We recruit and develop professionals
-                            who combine deep technical expertise with genuine integrity. Every
-                            member of our team is committed to ongoing professional development,
-                            holding themselves to the highest standards of competence and ethical
-                            conduct. We believe that exceptional client outcomes start with
-                            exceptional people — individuals who care deeply about the families
-                            they serve and who bring both intellect and empathy to every
-                            relationship.
+                            The people you work with matter more than any product or platform. Our advisers are chartered, qualified discretionary fund managers, and many have been working with their clients for decades. But qualifications are just the starting point. What we really look for is a mindset — people who get a genuine buzz from improving things, who see something and think "how can I make this better for our clients?" That incremental drive to improve, shared across the whole team, is how you end up with systems and service that genuinely work. We're supported by specialists in cyber security, AI, compliance, operations, and lending — sharp minds who care about getting things right, not just getting things done.
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item reveal">
                     <button class="accordion-trigger">
-                        <span>Process: Precision and Efficiency</span>
+                        <span>Process</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            We have built robust, repeatable processes that ensure nothing falls
-                            through the cracks. From onboarding to ongoing reviews, every stage
-                            of the client journey is underpinned by clear procedures, quality
-                            checks, and continuous refinement. Our digital-first infrastructure
-                            enables us to operate with precision and speed, freeing our advisers
-                            to focus on what matters most — understanding and serving our clients.
-                            Process isn't bureaucracy; it's the backbone of consistency.
+                            Everything we do runs through one connected ecosystem. There's no collection of different systems to log into, no forms to fill in, no waiting around. If a client wants to draw their pension income, it happens immediately. If a transfer needs monitoring, the system handles it. Compliance checks, document management, suitability reviews — all automated, all connected. That's not about removing the human element, it's about freeing it up. When the process works properly, our advisers spend their time doing the thing that actually matters — talking to clients. And because everything feeds into everything else, nothing gets missed. That consistency is how every client gets the same standard of care, every time.
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item reveal">
                     <button class="accordion-trigger">
-                        <span>Philosophy: Client-Centric Approach</span>
+                        <span>Philosophy</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            Our philosophy is simple: the client comes first, always. Every
-                            recommendation, every strategy, every conversation is shaped by what
-                            is genuinely in the client's best interest. We don't sell products —
-                            we craft solutions. This client-centric mindset is embedded in our
-                            culture and reinforced through our alignment with the FCA's Consumer
-                            Duty outcomes, ensuring that fair value, clear communication, and
-                            appropriate support are at the heart of everything we do.
+                            We plan first and invest last. Everything starts with understanding someone's life, not their portfolio. Tax, structure, protection, pensions — the investment decision is the last one we make, not the first. We explain things clearly, we don't use jargon, and we make sure clients genuinely understand the advice they're receiving and why. If something doesn't make sense, we haven't done our job properly.
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item reveal">
                     <button class="accordion-trigger">
-                        <span>Performance: Consistent Excellence</span>
+                        <span>Performance</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            We measure ourselves not by short-term wins but by long-term,
-                            consistent performance. Our investment strategies are built for
-                            durability, designed to weather market cycles while delivering
-                            meaningful growth over time. We set clear benchmarks, report
-                            transparently, and hold ourselves accountable to the outcomes we
-                            promise. Performance at Family Capital isn't just about returns — it's
-                            about delivering on every aspect of the client experience, every time.
+                            Our portfolios are independently constructed — always have been, since we first built them in 2008. We don't use in-house funds, we don't follow a house view dictated by a product provider, and we don't compromise on what goes in. Every holding is there on merit. That independence has been central to our investment approach from the start, and the long-term performance reflects it. We're comfortable benchmarking ourselves against any discretionary management service in the UK — and we'd encourage prospective clients to do exactly that. We report transparently, benchmark honestly, and review dynamically throughout the year. Performance isn't just about returns — it's about fair value, clear reporting, and the confidence that comes from knowing someone is genuinely paying attention.
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item reveal">
                     <button class="accordion-trigger">
-                        <span>Partnerships: Strategic Alliances</span>
+                        <span>Partnerships</span>
                         <span class="icon">+</span>
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            No firm is an island. We cultivate strategic partnerships with leading
-                            investment managers, custodians, and technology providers to ensure our
-                            clients have access to the best solutions available. These alliances
-                            extend our capabilities and allow us to offer institutional-quality
-                            services with a personal touch. Whether it's specialist tax advice,
-                            estate planning, or access to alternative investments, our network of
-                            trusted partners ensures we can meet even the most complex client needs.
+                            Independence isn't about having five hundred platforms to choose from. It's about picking the right ones and integrating them properly. We work with two institutional custody platforms — SEI and Seccl — both connected directly into our technology. That's a deliberate choice. When everything runs through one ecosystem, the service is better, the data is cleaner, and things actually work the way they should. It also means we can negotiate institutional pricing on the funds we use — in some cases up to 50% cheaper than standard retail pricing. Those savings go straight to our clients. Where we need specialist expertise we can't provide in-house, we work with trusted partners — but the core of what we do runs on our own infrastructure, and that's how we keep control of the client experience.
                         </div>
                     </div>
                 </div>
@@ -227,5 +194,81 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+    (function() {
+        const canvas = document.getElementById('cultureNetwork');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let W, H;
+
+        function resize() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            W = rect.width;
+            H = rect.height;
+            canvas.width = W * window.devicePixelRatio;
+            canvas.height = H * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Nodes
+        const nodeCount = 40;
+        const nodes = [];
+        for (let i = 0; i < nodeCount; i++) {
+            nodes.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                r: 1.5 + Math.random() * 1.5
+            });
+        }
+
+        const maxDist = 120;
+
+        function animate() {
+            ctx.clearRect(0, 0, W, H);
+
+            // Update positions
+            nodes.forEach(n => {
+                n.x += n.vx;
+                n.y += n.vy;
+                if (n.x < 0 || n.x > W) n.vx *= -1;
+                if (n.y < 0 || n.y > H) n.vy *= -1;
+            });
+
+            // Draw connections
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < maxDist) {
+                        const alpha = (1 - dist / maxDist) * 0.12;
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = `rgba(0, 30, 66, ${alpha})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Draw nodes
+            nodes.forEach(n => {
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.2)';
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    })();
+    </script>
 </body>
 </html>
