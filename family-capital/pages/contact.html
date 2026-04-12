@@ -556,8 +556,14 @@
                 }
             });
 
-            // Submit animation
+            // Submit — update redirect URL with file count, then animate
             form.addEventListener('submit', function() {
+                const nextField = form.querySelector('input[name="_next"]');
+                if (nextField && allFiles.files.length > 0) {
+                    const url = new URL(nextField.value);
+                    url.searchParams.set('files', allFiles.files.length);
+                    nextField.value = url.toString();
+                }
                 submitBtn.classList.add('sending');
                 submitBtn.textContent = 'Sending...';
             });

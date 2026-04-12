@@ -222,7 +222,7 @@
 
             <!-- Message -->
             <div class="thanks-content">
-                <h1>Message sent</h1>
+                <h1 id="thanks-title">Message sent</h1>
                 <p id="thanks-message">Thank you for getting in touch. We'll be in contact shortly.</p>
                 <a href="../" class="thanks-btn">Back to Family Capital</a>
             </div>
@@ -266,6 +266,14 @@
         (function() {
             const params = new URLSearchParams(window.location.search);
             const adviser = params.get('adviser');
+            const files = params.get('files');
+
+            // Title — acknowledge attachments
+            if (files && parseInt(files) > 0) {
+                document.getElementById('thanks-title').textContent = 'Message sent. Attachments received.';
+            }
+
+            // Message — personalise for adviser
             if (adviser) {
                 const names = {
                     'ian-cooke': 'Ian',
