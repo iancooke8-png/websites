@@ -105,6 +105,12 @@
             background: rgba(59, 130, 246, 0.03);
         }
 
+        .upload-area.drag-over {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+            transform: scale(1.01);
+        }
+
         .upload-area p {
             font-size: 0.9rem;
             color: var(--text-grey);
@@ -118,6 +124,67 @@
 
         .upload-area input[type="file"] {
             display: none;
+        }
+
+        .upload-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            opacity: 0.4;
+        }
+
+        /* File chips */
+        .file-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.7rem;
+            background: #f1f5f9;
+            border-radius: 6px;
+            margin: 0.2rem 0.3rem 0.2rem 0;
+            font-size: 0.8rem;
+            color: #334155;
+            animation: chipIn 0.3s ease;
+        }
+
+        .file-chip-icon {
+            font-size: 0.9rem;
+        }
+
+        @keyframes chipIn {
+            from { opacity: 0; transform: translateY(5px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Submit animation */
+        .form-submit {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit.sending {
+            pointer-events: none;
+            background: var(--accent);
+            border-color: var(--accent);
+            padding-left: 3rem;
+        }
+
+        .form-submit.sending::before {
+            content: '';
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            margin-top: -8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         .form-submit {
@@ -287,9 +354,10 @@
 
                         <div class="form-upload">
                             <label>Attachments</label>
-                            <div class="upload-area" onclick="document.getElementById('file-upload').click();">
+                            <div class="upload-area" id="upload-area" onclick="document.getElementById('file-upload').click();">
+                                <div class="upload-icon">&#128206;</div>
                                 <p>Drop files here or click to upload</p>
-                                <span>PDF, spreadsheets, scans — up to 10MB</span>
+                                <span>PDF, spreadsheets, scans, images</span>
                                 <input type="file" id="file-upload" name="attachments" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png">
                             </div>
                             <div id="file-list" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-grey);"></div>
@@ -358,14 +426,29 @@
     <script src="../js/main.js"></script>
     <script>
         (function() {
-            const uploadArea = document.querySelector('.upload-area');
+            const uploadArea = document.getElementById('upload-area');
             const fileInput = document.getElementById('file-upload');
             const fileList = document.getElementById('file-list');
+            const form = document.querySelector('form');
+            const submitBtn = document.querySelector('.form-submit');
+
+            // File type icons
+            function getFileIcon(name) {
+                const ext = name.split('.').pop().toLowerCase();
+                if (['pdf'].includes(ext)) return '&#128196;';
+                if (['doc', 'docx'].includes(ext)) return '&#128209;';
+                if (['xls', 'xlsx', 'csv'].includes(ext)) return '&#128202;';
+                if (['jpg', 'jpeg', 'png', 'gif'].includes(ext)) return '&#128247;';
+                return '&#128206;';
+            }
 
             function updateFileList() {
                 if (fileInput.files.length) {
-                    fileList.innerHTML = Array.from(fileInput.files).map(f =>
-                        '<span style="display:inline-block;padding:0.2rem 0.6rem;background:#f1f5f9;border-radius:4px;margin:0.2rem 0.3rem 0.2rem 0;font-size:0.8rem;">' + f.name + '</span>'
+                    fileList.innerHTML = Array.from(fileInput.files).map((f, i) =>
+                        '<span class="file-chip" style="animation-delay:' + (i * 0.1) + 's">' +
+                        '<span class="file-chip-icon">' + getFileIcon(f.name) + '</span>' +
+                        f.name +
+                        '</span>'
                     ).join('');
                 } else {
                     fileList.innerHTML = '';
@@ -379,27 +462,29 @@
             uploadArea.addEventListener('dragover', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.style.borderColor = '#3b82f6';
-                this.style.background = 'rgba(59, 130, 246, 0.05)';
+                this.classList.add('drag-over');
             });
 
             uploadArea.addEventListener('dragleave', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.style.borderColor = '#d1d5db';
-                this.style.background = '';
+                this.classList.remove('drag-over');
             });
 
             uploadArea.addEventListener('drop', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.style.borderColor = '#d1d5db';
-                this.style.background = '';
-
+                this.classList.remove('drag-over');
                 if (e.dataTransfer.files.length) {
                     fileInput.files = e.dataTransfer.files;
                     updateFileList();
                 }
+            });
+
+            // Submit animation
+            form.addEventListener('submit', function() {
+                submitBtn.classList.add('sending');
+                submitBtn.textContent = 'Sending...';
             });
         })();
     </script>
