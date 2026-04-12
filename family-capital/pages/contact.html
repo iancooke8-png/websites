@@ -375,12 +375,14 @@
                         <div class="form-upload">
                             <label>Attachments</label>
                             <div class="upload-area" id="upload-area" onclick="document.getElementById('file-upload').click();">
-                                <div class="upload-icon">&#128206;</div>
-                                <p>Drop files here or click to upload</p>
-                                <span>PDF, spreadsheets, scans, images</span>
+                                <div id="upload-prompt">
+                                    <div class="upload-icon">&#128206;</div>
+                                    <p>Drop files here or click to upload</p>
+                                    <span>PDF, spreadsheets, scans, images</span>
+                                </div>
+                                <div id="file-list" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;"></div>
                                 <input type="file" id="file-upload" name="attachments" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png">
                             </div>
-                            <div id="file-list" style="margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
                         </div>
 
                         <button type="submit" class="form-submit">Send Message</button>
@@ -451,6 +453,7 @@
             const fileList = document.getElementById('file-list');
             const form = document.querySelector('form');
             const submitBtn = document.querySelector('.form-submit');
+            const allFiles = new DataTransfer();
 
             // File type icons
             function getFileIcon(name) {
@@ -469,9 +472,14 @@
 
             function updateFileList() {
                 fileList.innerHTML = '';
-                if (!fileInput.files.length) return;
+                const prompt = document.getElementById('upload-prompt');
+                if (!allFiles.files.length) {
+                    prompt.style.display = '';
+                    return;
+                }
+                prompt.style.display = 'none';
 
-                Array.from(fileInput.files).forEach((f, i) => {
+                Array.from(allFiles.files).forEach((f, i) => {
                     const chip = document.createElement('div');
                     chip.className = 'file-chip';
                     chip.style.animationDelay = (i * 0.08) + 's';
@@ -499,8 +507,23 @@
                 });
             }
 
+            function addFiles(newFiles) {
+                Array.from(newFiles).forEach(f => allFiles.items.add(f));
+                fileInput.files = allFiles.files;
+                updateFileList();
+            }
+
             // Click to upload
-            fileInput.addEventListener('change', updateFileList);
+            fileInput.addEventListener('change', function() {
+                // When clicking, add to accumulated files
+                const newDt = new DataTransfer();
+                Array.from(allFiles.files).forEach(f => newDt.items.add(f));
+                Array.from(this.files).forEach(f => newDt.items.add(f));
+                allFiles.items.clear();
+                Array.from(newDt.files).forEach(f => allFiles.items.add(f));
+                fileInput.files = allFiles.files;
+                updateFileList();
+            });
 
             // Drag and drop
             uploadArea.addEventListener('dragover', function(e) {
@@ -520,8 +543,7 @@
                 e.stopPropagation();
                 this.classList.remove('drag-over');
                 if (e.dataTransfer.files.length) {
-                    fileInput.files = e.dataTransfer.files;
-                    updateFileList();
+                    addFiles(e.dataTransfer.files);
                 }
             });
 
