@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for getting in touch with Family Capital.">
+    <title>Thank You | Family Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .thanks-section {
+            padding-top: calc(var(--nav-height) + 4rem);
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thanks-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 1.5s forwards;
+        }
+
+        .thanks-content h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .thanks-content p {
+            font-size: 1.1rem;
+            color: var(--text-grey);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .thanks-content a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Paper dart */
+        .dart-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .paper-dart {
+            position: absolute;
+            left: -60px;
+            bottom: 100px;
+            animation: dartFly 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes dartFly {
+            0% {
+                opacity: 1;
+                left: -60px;
+                bottom: 100px;
+                transform: rotate(15deg) scale(0.8);
+            }
+            40% {
+                opacity: 1;
+                left: 80px;
+                bottom: 160px;
+                transform: rotate(-5deg) scale(1);
+            }
+            70% {
+                opacity: 1;
+                left: 140px;
+                bottom: 130px;
+                transform: rotate(5deg) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                left: 90px;
+                bottom: 80px;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        /* Trail dots */
+        .dart-trail {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0;
+        }
+
+        .trail-1 { left: 20px; bottom: 120px; animation: trailFade 0.5s ease 0.5s forwards; }
+        .trail-2 { left: 40px; bottom: 135px; animation: trailFade 0.5s ease 0.6s forwards; }
+        .trail-3 { left: 55px; bottom: 145px; animation: trailFade 0.5s ease 0.7s forwards; }
+        .trail-4 { left: 70px; bottom: 152px; animation: trailFade 0.5s ease 0.8s forwards; }
+        .trail-5 { left: 85px; bottom: 155px; animation: trailFade 0.5s ease 0.9s forwards; }
+
+        @keyframes trailFade {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        /* Tick that appears at the end */
+        .tick-circle {
+            position: absolute;
+            left: 75px;
+            bottom: 65px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0;
+            transform: scale(0);
+            animation: tickPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s forwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tick-circle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @keyframes tickPop {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav scrolled">
+        <a href="../" class="nav-logo"><img src="../images/pwg-logo.png" alt="Family Capital"></a>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li class="nav-dropdown">
+                <a href="about.html" class="nav-dropdown-toggle">About Us</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                </ul>
+            </li>
+            <li class="nav-dropdown">
+                <a href="what-we-do.html" class="nav-dropdown-toggle">What We Do</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="what-we-do.html">Holistic Financial Planning</a></li>
+                    <li><a href="industry-professionals.html">Industry Professionals</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                </ul>
+            </li>
+            <li><a href="people.html">Team</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </nav>
+
+    <section class="thanks-section">
+        <div class="container">
+            <!-- Paper dart animation -->
+            <div class="dart-container">
+                <svg class="paper-dart" width="50" height="40" viewBox="0 0 50 40">
+                    <polygon points="0,20 50,0 35,20 50,40" fill="var(--navy)" opacity="0.8"/>
+                    <polygon points="0,20 35,20 50,0" fill="var(--accent)" opacity="0.6"/>
+                </svg>
+                <div class="dart-trail trail-1"></div>
+                <div class="dart-trail trail-2"></div>
+                <div class="dart-trail trail-3"></div>
+                <div class="dart-trail trail-4"></div>
+                <div class="dart-trail trail-5"></div>
+                <div class="tick-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Message -->
+            <div class="thanks-content">
+                <h1>Message sent</h1>
+                <p id="thanks-message">Thank you for getting in touch. We'll be in contact shortly.</p>
+                <a href="../">&larr; Back to Family Capital</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/pwg-logo.png" alt="Family Capital" style="height: 40px;">
+                    <p>Wealth management for families and entrepreneurs.</p>
+                    <p class="footer-group-link">Part of <a href="https://www.perpetualwealth.co.uk">Perpetual Wealth Group</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="people.html">Team</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://www.wealthportal.co.uk/">Client Login</a></li>
+                        <li><a href="timeline.html">Our Timeline</a></li>
+                        <li><a href="eight-aspects.html">Eight Aspects</a></li>
+                        <li><a href="industry-professionals.html">Industry Professionals</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script>
+        // Personalise message if coming from a specific adviser's page
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const adviser = params.get('adviser');
+            if (adviser) {
+                const names = {
+                    'ian-cooke': 'Ian',
+                    'claire-stones': 'Claire',
+                    'simon-andrews': 'Simon',
+                    'george-boyd-jones': 'George',
+                    'sam-shah': 'Sam',
+                    'james-wallace': 'James',
+                    'brian-potter': 'Brian',
+                    'richard-martin': 'Richard',
+                    'mandy-mugridge': 'Mandy'
+                };
+                const name = names[adviser];
+                if (name) {
+                    document.getElementById('thanks-message').textContent =
+                        'Thank you for getting in touch. ' + name + ' will be in contact with you shortly.';
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

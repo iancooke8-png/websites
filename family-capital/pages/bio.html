@@ -400,7 +400,7 @@
                 </div>
                 <div class="bio-contact-form">
                     <h2>Send a Message</h2>
-                    <form id="bio-enquiry-form">
+                    <form id="bio-enquiry-form" action="https://formspree.io/f/xnjlajjq" method="POST" enctype="multipart/form-data">
                         <input type="hidden" id="bio-form-adviser" name="adviser" value="">
                         <div class="bio-form-group">
                             <label for="bio-form-name">Name</label>
@@ -542,6 +542,12 @@
                 const emailEl = document.getElementById('bio-office-email');
                 emailEl.innerHTML = '<a href="mailto:' + person.office.email + '">' + person.office.email + '</a>';
                 document.getElementById('bio-form-adviser').value = person.slug;
+                // Add redirect with adviser name
+                const nextInput = document.createElement('input');
+                nextInput.type = 'hidden';
+                nextInput.name = '_next';
+                nextInput.value = 'https://familycapital.co.uk/pages/thanks.html?adviser=' + person.slug;
+                document.getElementById('bio-enquiry-form').appendChild(nextInput);
                 document.getElementById('bio-contact').style.display = 'block';
                 // Hide the generic CTA
                 document.getElementById('bio-cta').style.display = 'none';
