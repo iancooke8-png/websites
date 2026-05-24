@@ -320,8 +320,7 @@ const PEOPLE = [
             'Shikha runs the finance function at Family Capital — payroll, supplier payments, and the firm\'s commercial relationships with the providers we hold agencies with as an independent firm. That second piece is bigger than it sounds: genuine independence means a long list of agencies across investments, protection, pensions, and lending — and Shikha keeps every one of those relationships clean and current.'
         ],
         experience: [
-            'She came to Family Capital from senior finance roles at major UK banks, working on the custody platform side — the institutional plumbing behind asset servicing and settlement. That background is unusual in a wealth management firm of our size, and it shows in how tidily the back office runs.',
-            'Shikha is based at the London office and works principally from home.'
+            'She came to Family Capital from senior finance roles at major UK banks, working on the custody platform side — the institutional plumbing behind asset servicing and settlement. That background is unusual in a wealth management firm of our size, and it shows in how tidily the back office runs.'
         ]
     },
     {
