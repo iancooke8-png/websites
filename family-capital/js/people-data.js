@@ -323,5 +323,115 @@ const PEOPLE = [
             'She came to Family Capital from senior finance roles at major UK banks, working on the custody platform side — the institutional plumbing behind asset servicing and settlement. That background is unusual in a wealth management firm of our size, and it shows in how tidily the back office runs.',
             'Shikha is based at the London office and works principally from home.'
         ]
+    },
+    {
+        slug: 'ken-rayner',
+        name: 'Ken Rayner ACII IMC',
+        role: 'Investment Committee',
+        location: 'Leeds',
+        photo: 'images/people/Ken Rayner.jpg',
+        linkedin: 'https://www.linkedin.com/in/ken-rayner-07b71727/',
+        summary: [
+            'Ken sits on the Family Capital investment committee, bringing over thirty-five years of experience in fund research and investment management. He is the founding director and CEO of RSMR, one of the UK\'s most respected independent fund rating and research agencies.',
+            'Family Capital has worked with Ken since 2008, when the firm\'s active portfolios were first launched. That relationship has been maintained throughout — through Benchmark, through the sale to Schroders, and into Family Capital as it is today.'
+        ],
+        experience: [
+            'Ken founded RSMR in 2004 to provide genuinely independent fund research to financial advisers and wealth managers across the UK. The business rates and monitors investment funds based on rigorous, face-to-face due diligence with fund managers — not desk-based screening or algorithm-driven shortlists. That hands-on approach is what sets RSMR apart, and it\'s why firms like Family Capital rely on its research.',
+            'Before founding RSMR, Ken spent fifteen years at Bradford & Bingley, where he was responsible for over seven hundred million pounds of client investment funds. That scale of responsibility, combined with a career that started in 1989, gives him a depth of market knowledge that\'s hard to replicate.',
+            'At Family Capital, Ken\'s role on the investment committee is to bring that independent research perspective to bear on the firm\'s fund selection and portfolio construction. He challenges the investment decisions, reviews the underlying research, and helps ensure the portfolios are built on evidence rather than habit.',
+            'Ken holds a degree in Economics from the University of Leeds and is both ACII and IMC qualified. He is well known on the UK investment circuit and regularly speaks at industry events on fund selection and due diligence.'
+        ]
+    },
+    {
+        slug: 'jonny-bush',
+        name: 'Jonny Bush',
+        role: 'Senior Administrator',
+        location: 'Leeds',
+        photo: 'images/people/Jonny Bush.jpg',
+        office: {
+            name: 'Family Capital North',
+            address: 'Seven Hills Business Centre\nSouth Street, Morley\nLeeds LS27 8AT',
+            phone: '0113 539 9100',
+            email: 'jonny.bush@familycapital.co.uk'
+        },
+        summary: [
+            'Jonny is Senior Administrator at the Leeds office. His job is the bit clients feel but rarely see — workflow, data integrity, compliance support, and making sure every process lands cleanly and on time.',
+            'He works closely with Claire and Gill to keep the day-to-day running of the business tight and efficient, which is what makes the client experience feel seamless rather than something that had to be fought for.'
+        ],
+        experience: [
+            'Jonny has worked in financial services alongside Claire and Gill since leaving college, building his career through hands-on experience while studying for his Level 4 Diploma in Regulated Financial Planning.',
+            'That combination — knowing the theory and knowing how provider systems actually behave in the real world — is what stops small problems becoming big ones. When something needs doing properly, Jonny is usually the one who already did it.',
+            '"I always apply a client-first approach. That, plus a deep understanding of how each provider\'s systems and processes work, is how you deliver something that actually feels seamless."'
+        ]
+    },
+    {
+        slug: 'gill-popple',
+        name: 'Gill Popple',
+        role: 'Office Manager',
+        location: 'Leeds',
+        photo: 'images/people/Gill Popple.jpg',
+        office: {
+            name: 'Family Capital North',
+            address: 'Seven Hills Business Centre\nSouth Street, Morley\nLeeds LS27 8AT',
+            phone: '0113 539 9100',
+            email: 'gill.popple@familycapital.co.uk'
+        },
+        summary: [
+            'Gill is Office Manager at the Leeds office, with over thirty years of experience in financial services and a highly client-focused approach. She combines strong technical knowledge with a quiet commitment to delivering a consistently high standard of service.',
+            'Her job is the bit clients don\'t see — but feel when it\'s missing. Client care, regulatory standards, and the day-to-day operational work that keeps the business running smoothly.'
+        ],
+        experience: [
+            'Gill has worked in financial services for over thirty years and holds a broad range of qualifications. She is responsible for overseeing client care, maintaining robust regulatory standards, and ensuring the day-to-day operations of the business run properly.',
+            'Her attention to detail and organisational oversight are part of what allows the firm to deliver a dependable and professional client experience — consistently, and without fuss.',
+            'Having worked alongside Claire for over twenty-five years, Gill is an integral part of a well-established partnership that supports the continued success and stability of the Leeds office.',
+            '"I have worked with Claire for over twenty-five years and believe we make a great team. That creates a successful business while consistently delivering a trusted and reliable experience for our clients."'
+        ]
+    },
+    {
+        slug: 'ashley-rider',
+        name: 'Ashley Rider DipPFS',
+        role: 'Financial Planner',
+        location: 'Leeds',
+        photo: 'images/people/Ashley Rider.jpg',
+        office: {
+            name: 'Family Capital North',
+            address: 'Seven Hills Business Centre\nSouth Street, Morley\nLeeds LS27 8AT',
+            phone: '0113 539 9100',
+            email: 'ashley.rider@familycapital.co.uk'
+        },
+        summary: [
+            'Ash is a Financial Planner at the Leeds office, working with clients at every stage of life — from those building wealth, through retirement planning, to inheritance and legacy.',
+            'With thirteen years in financial services, including six years as Head of North Advisory Sales at Schroders, he brings a useful combination of market insight and planning discipline.'
+        ],
+        experience: [
+            'Ash spent the last six years as Head of North Advisory Sales for Schroders, working closely with advisers across the north of England. That gave him a clear view of the industry from the product side as well as the planning side — which turns out to be a useful perspective when helping clients think about investments, structure, and risk.',
+            'He specialises in developing tailored wealth management strategies for individuals, families, and business owners — focusing on the long-term goals that matter most to each client, whether that\'s financial security, freedom, or passing something meaningful on.',
+            'His approach combines strong market insight with disciplined risk management and a clear focus on the client\'s priorities. Retirement planning, investment growth, legacy planning, life transitions — each plan is aligned with what actually matters to the person it\'s being built for.',
+            'Ash holds the Level 4 Diploma in Regulated Financial Planning (DipPFS).',
+            '"I believe financial planning isn\'t just about numbers — it\'s about giving you the confidence and clarity to live life on your terms."'
+        ]
+    },
+    {
+        slug: 'kiera-stones',
+        name: 'Kiera Stones DipPFS',
+        role: 'Paraplanner',
+        location: 'Leeds',
+        photo: 'images/people/Kiera Stones.jpg',
+        office: {
+            name: 'Family Capital North',
+            address: 'Seven Hills Business Centre\nSouth Street, Morley\nLeeds LS27 8AT',
+            phone: '0113 539 9100',
+            email: 'kiera.stones@familycapital.co.uk'
+        },
+        summary: [
+            'Kiera is a paraplanner at the Leeds office, working closely with Claire to turn client conversations into clear, well-structured financial plans and suitability reports.',
+            'Her role involves in-depth research, detailed analysis, and the construction of recommendations that genuinely reflect each client\'s circumstances.'
+        ],
+        experience: [
+            'Kiera is Claire\'s daughter and joined the team after completing her A-levels. Since then, she has built her technical knowledge through both study and hands-on experience inside the business — working on real client plans under proper supervision from day one.',
+            'She has completed her Diploma in Financial Planning and is currently studying towards Chartered status, with the long-term ambition of moving into a financial adviser role.',
+            'Her job is the detailed, unglamorous work that underpins every good recommendation: researching options, running the numbers, and making sure the written advice reflects the client accurately. Done well, it is the difference between a plan that works and one that just looks good on paper.',
+            '"No two clients are the same, which keeps the role interesting and challenging. It is very rewarding to understand each individual\'s circumstances and reflect this clearly in the reports I provide."'
+        ]
     }
 ];
