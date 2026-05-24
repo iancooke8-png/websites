@@ -1,26 +1,9 @@
-# Perpetual Wealth Group websites
+# Perpetual Wealth Group websites — LEGACY / SANDBOX
 
-Monorepo for the group's marketing websites.
+⚠️ **This repo is not the live source.** The live Family Capital website is at https://github.com/iancooke8-png/familycapital — edit that one directly.
 
-## Sites
-- `family-capital/` — familycapital.co.uk (live)
+This repo was an attempt to separate "source" from "deploy" with a `family-capital/` working copy and a `deploy-fc.sh` rsync script. It diverged from the live deploy repo over time and is no longer the canonical source.
 
-## Workflow
-Three machines, identical setup. GitHub is source of truth.
+**Day-to-day:** ignore this. Work in `iancooke8-png/familycapital`.
 
-```
-git pull → edit → git push → bash deploy-fc.sh "msg" (when ready to publish)
-```
-
-## Family Capital
-
-**Source of truth**: `family-capital/` in this repo.
-
-**Local preview**: `npx http-server family-capital -p 8080 -c-1` (VS Code launch config in `.claude/launch.json`).
-
-**Deploy**: `bash deploy-fc.sh "commit message"` — rsyncs source to `../familycapital-deploy/`, writes CNAME, commits, pushes. GitHub Pages on `iancooke8-png/familycapital` serves familycapital.co.uk.
-
-**Never** edit the deploy repo (`iancooke8-png/familycapital`) directly — it gets clobbered on next deploy.
-
-## Stack
-Plain static HTML/CSS/JS. No build step. No framework.
+**This repo may still be useful as:** a sandbox for experimental redesigns, branched changes that need testing before being applied to live.
