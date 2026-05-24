@@ -282,5 +282,46 @@ const PEOPLE = [
             'James works with families navigating significant financial milestones, business owners with complex planning needs, and individuals who want proper clarity about their financial future. His approach is straightforward: understand what matters to the client, cut through the complexity, and build a plan that actually works.',
             'He is a Fellow of the Personal Finance Society, a Chartered Financial Planner, a Certified Financial Planner, and a qualified discretionary fund manager. He also holds a BSc in Psychology — which, in a profession built on understanding how people think and feel about money, turns out to be more useful than most financial qualifications.'
         ]
+    },
+    {
+        slug: 'barry-lambourne',
+        name: 'Barry Lambourne',
+        role: 'Paraplanner',
+        location: 'London',
+        photo: 'images/people/Barry Lambourne.jpg',
+        office: {
+            name: 'Family Capital',
+            address: '68 King William Street\nLondon EC4N 7HR',
+            phone: '0207 082 5650',
+            email: 'barry.lambourne@familycapital.co.uk'
+        },
+        summary: [
+            'Barry is a paraplanner at Family Capital, working alongside Duncan and Ollie on the London team. The three came across together from Standard Life — they\'ve worked side by side for years, and that continuity is a big part of why the advice process runs smoothly.'
+        ],
+        experience: [
+            'Barry built his paraplanning career at Standard Life, where he worked with Duncan Jones for many years. When Duncan moved to Family Capital, Barry and Ollie Hackett came with him, keeping the team intact.',
+            'His job is the technical detail behind every good piece of advice: researching products, running the numbers, and turning client conversations into clear, defensible recommendations. He specialises in the pension, investment and trust areas that come up most often in long-term family planning work.',
+            'Done well, paraplanning is the unglamorous part that makes the difference between recommendations that sound right and recommendations that actually hold up.'
+        ]
+    },
+    {
+        slug: 'shikha-malde',
+        name: 'Shikha Malde',
+        role: 'Head of Finance',
+        location: 'London',
+        photo: 'images/people/Shikha Malde.jpg',
+        office: {
+            name: 'Family Capital',
+            address: '68 King William Street\nLondon EC4N 7HR',
+            phone: '0207 082 5650',
+            email: 'shikha.malde@familycapital.co.uk'
+        },
+        summary: [
+            'Shikha runs the finance function at Family Capital — payroll, supplier payments, and the firm\'s commercial relationships with the providers we hold agencies with as an independent firm. That second piece is bigger than it sounds: genuine independence means a long list of agencies across investments, protection, pensions, and lending — and Shikha keeps every one of those relationships clean and current.'
+        ],
+        experience: [
+            'She came to Family Capital from senior finance roles at major UK banks, working on the custody platform side — the institutional plumbing behind asset servicing and settlement. That background is unusual in a wealth management firm of our size, and it shows in how tidily the back office runs.',
+            'Shikha is based at the London office and works principally from home.'
+        ]
     }
 ];
